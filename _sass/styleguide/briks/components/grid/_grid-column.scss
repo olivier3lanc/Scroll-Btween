@@ -1,0 +1,75 @@
+
+/*
+    GRID COLUMNS
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false
+and $briks-components__grid__column-name != false 
+and $briks-components__grid__column-name != '' {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        &.#{$briks-modifiers-prefix}#{$briks-components__grid__column-name} {
+            flex-direction: column;
+            @if $briks-components__grid__justify-content-flex-end-name != false and $briks-components__grid__justify-content-flex-end-name != '' {
+                &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-end-name} {
+                    align-items: flex-end;
+                }
+            }
+            @if $briks-components__grid__justify-content-center-name != false and $briks-components__grid__justify-content-center-name != '' {
+                &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-center-name} {
+                    align-items: center;
+                }
+            }
+            @if $briks-components__grid__justify-content-flex-start-name != false and $briks-components__grid__justify-content-flex-start-name != '' {
+                &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-start-name} {
+                    align-items: flex-start;
+                }
+            }
+            @if $briks-components__grid__reverse-order-name != false and $briks-components__grid__reverse-order-name != '' {
+                &.#{$briks-modifiers-prefix}#{$briks-components__grid__reverse-order-name} {
+                    flex-flow: column-reverse;
+                }
+            }
+        }
+
+        @if $briks-components__grid__column-responsive {
+            @each $screen, $value in $briks-screen-sizes {
+                @include my-screen-size($screen) {
+                    &.#{$briks-modifiers-prefix}#{$briks-components__grid__column-name}#{$briks-responsive-prefix}#{$screen},
+                    &[#{$briks-modifiers-prefix}#{$briks-components__grid__column-name}*="#{$screen}"] {
+                        flex-direction: column;
+                        @if $briks-components__grid__justify-content-flex-end-name != false and $briks-components__grid__justify-content-flex-end-name != '' {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-end-name}#{$briks-responsive-prefix}#{$screen},
+                            &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-end-name}*="#{$screen}"] {
+                                align-items: flex-end;
+                            }
+                        }
+                        @if $briks-components__grid__justify-content-center-name != false and $briks-components__grid__justify-content-center-name != '' {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-center-name}#{$briks-responsive-prefix}#{$screen},
+                            &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-center-name}*="#{$screen}"] {
+                                align-items: center;
+                            }
+                        }
+                        @if $briks-components__grid__justify-content-flex-start-name != false and $briks-components__grid__justify-content-flex-start-name != '' {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-start-name}#{$briks-responsive-prefix}#{$screen},
+                            &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-start-name}*="#{$screen}"] {
+                                align-items: flex-start;
+                            }
+                        }
+                        @if $briks-components__grid__reverse-order-name != false and $briks-components__grid__reverse-order-name != '' {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__reverse-order-name}#{$briks-responsive-prefix}#{$screen},
+                            &[#{$briks-modifiers-prefix}#{$briks-components__grid__reverse-order-name}*="#{$screen}"] {
+                                flex-flow: column-reverse;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

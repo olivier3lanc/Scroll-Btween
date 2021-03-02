@@ -1,0 +1,66 @@
+/*
+    CSS CUSTOM VARIABLES
+    This component adds design system data to CSS variables
+*/
+:root {
+    --#{$briks-css-variables-prefix}unit:#{$briks-unit};
+    --#{$briks-css-variables-prefix}components-prefix:#{$briks-components-prefix};
+    --#{$briks-css-variables-prefix}modifiers-prefix:#{$briks-modifiers-prefix};
+    --#{$briks-css-variables-prefix}utilities-prefix:#{$briks-utilities-prefix};
+    --#{$briks-css-variables-prefix}responsive-prefix:#{$briks-responsive-prefix};
+    --#{$briks-css-variables-prefix}luminance-threshold:#{$briks-luminance-threshold};
+    --#{$briks-css-variables-prefix}luminance-method:#{$briks-luminance-method};
+    // COLORS
+    @each $color, $value in $briks-colors {
+        --#{$briks-css-variables-prefix}color-#{$color}:#{$value};
+    }
+    // SCREEN SIZES
+    @each $screen-size, $value in $briks-screen-sizes {
+        --#{$briks-css-variables-prefix}screen-size-#{$screen-size}:#{$value + $briks-unit};
+    }
+    // FONT FAMILIES
+    @each $font, $value in $briks-fonts {
+        --#{$briks-css-variables-prefix}font-family_type_#{$font}:#{map-get(map-get($briks-fonts, $font), type)};
+        @if map-get(map-get($briks-fonts, $font), type) == 'local' {
+            --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name)), unquote(map-get(map-get($briks-fonts, $font), fallback))};
+            --#{$briks-css-variables-prefix}font-family_filename_#{$font}:#{map-get(map-get($briks-fonts, $font), filename)};
+        }
+        // Websafe
+        @else if map-get(map-get($briks-fonts, $font), type) == 'websafe' {
+            --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name))};
+        }
+        // If Google font
+        @else if map-get(map-get($briks-fonts, $font), type) == 'google' {
+            --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name)), unquote(map-get(map-get($briks-fonts, $font), fallback))};
+        }
+    }
+    // FONT SIZES
+    @each $font-size, $value in $briks-font-sizes {
+        --#{$briks-css-variables-prefix}font-size-#{$font-size}:#{$value + $briks-unit};
+    }
+    // TYPOGRAPHY
+    @each $typography, $value in $briks-typography {
+        --#{$briks-css-variables-prefix}typo-#{$typography}:#{$value};
+    }
+    // SPACINGS
+    @each $spacing, $value in $briks-spacings {
+        --#{$briks-css-variables-prefix}spacing-#{$spacing}:#{$value + $briks-unit};
+    }
+    // BORDERS
+    @each $border, $value in $briks-borders {
+        --#{$briks-css-variables-prefix}border-#{$border}:#{$value};
+    }
+    // BORDER RADIUS
+    @each $border-radius, $value in $briks-border-radius {
+        --#{$briks-css-variables-prefix}border-radius-#{$border-radius}:#{$value + $briks-unit};
+    }
+    // SHADOWS
+    @each $shadow, $value in $briks-shadows {
+        --#{$briks-css-variables-prefix}shadow-#{$shadow}:#{$value};
+    }
+    // BACKGROUNDS
+    @each $background, $value in $briks-backgrounds {
+        --#{$briks-css-variables-prefix}background-#{$background}:#{$value};
+    }
+}
+

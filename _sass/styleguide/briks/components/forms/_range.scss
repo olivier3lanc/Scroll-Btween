@@ -1,0 +1,384 @@
+
+/*
+    FORMS RANGES
+    Briks forms component
+    ---
+    Input type range
+    ---
+    Based on Daniel Stern work http://danielstern.ca/range.css
+*/
+@if $briks-components__forms__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__forms__name != '' 
+and $briks-components__forms__name != false
+and length($briks-components__forms__ranges-hooks) > 0 {
+    .#{$briks-components-prefix}#{$briks-components__forms__name} {
+        // root-css is component root
+        @if type-of(map-get($briks-components__forms__ranges-hooks, root-css)) == map {
+            @if length(map-get($briks-components__forms__ranges-hooks, root-css)) > 0 {
+                @each $property, $value in map-get($briks-components__forms__ranges-hooks, root-css) {
+                    #{$property}: $value;
+                }
+            }
+        }
+        &>input[type="range"] {
+            width: 100%;
+            outline: none;
+            margin: #{(map-get($briks-components__forms__ranges-hooks, thumb-height) - map-get($briks-components__forms__ranges-hooks, track-height)) / 2} 0;
+            background-color: transparent;
+            -webkit-appearance: none;
+            // label-css is the label tag
+            @if type-of(map-get($briks-components__forms__ranges-hooks, label-css)) == map {
+                @if length(map-get($briks-components__forms__ranges-hooks, label-css)) > 0 {
+                    &+label {
+                        @each $property, $value in map-get($briks-components__forms__ranges-hooks, label-css) {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // input-disabled-css is the input range when disabled
+            @if type-of(map-get($briks-components__forms__ranges-hooks, input-disabled-css)) == map {
+                @if length(map-get($briks-components__forms__ranges-hooks, input-disabled-css)) > 0 {
+                    &[disabled] {
+                        @each $property, $value in map-get($briks-components__forms__ranges-hooks, input-disabled-css) {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // input-focus-css is the input range when disabled
+            @if type-of(map-get($briks-components__forms__ranges-hooks, input-focus-css)) == map {
+                @if length(map-get($briks-components__forms__ranges-hooks, input-focus-css)) > 0 {
+                    &:focus {
+                        @each $property, $value in map-get($briks-components__forms__ranges-hooks, input-focus-css) {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // label-disabled-css is the label tag when input range is disabled
+            @if type-of(map-get($briks-components__forms__ranges-hooks, label-disabled-css)) == map {
+                @if length(map-get($briks-components__forms__ranges-hooks, label-disabled-css)) > 0 {
+                    &[disabled] {
+                        &+label {
+                            @each $property, $value in map-get($briks-components__forms__ranges-hooks, label-disabled-css) {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // label-focus-css is the label tag when input range is disabled
+            @if type-of(map-get($briks-components__forms__ranges-hooks, label-focus-css)) == map {
+                @if length(map-get($briks-components__forms__ranges-hooks, label-focus-css)) > 0 {
+                    &:focus {
+                        &+label {
+                            @each $property, $value in map-get($briks-components__forms__ranges-hooks, label-focus-css) {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // Track
+            &::-webkit-slider-runnable-track {
+                background: map-get($briks-components__forms__ranges-hooks, track-background);
+                border: map-get($briks-components__forms__ranges-hooks, track-border);
+                border-radius: map-get($briks-components__forms__ranges-hooks, track-border-radius);
+                width: map-get($briks-components__forms__ranges-hooks, track-width);
+                height: map-get($briks-components__forms__ranges-hooks, track-height);
+                cursor: map-get($briks-components__forms__ranges-hooks, track-cursor);
+            }
+            &::-moz-range-track {
+                background: map-get($briks-components__forms__ranges-hooks, track-background);
+                border: map-get($briks-components__forms__ranges-hooks, track-border);
+                border-radius: map-get($briks-components__forms__ranges-hooks, track-border-radius);
+                width: map-get($briks-components__forms__ranges-hooks, track-width);
+                height: map-get($briks-components__forms__ranges-hooks, track-height);
+                cursor: map-get($briks-components__forms__ranges-hooks, track-cursor);
+            }
+            &::-ms-track {
+                background: transparent;
+                border-color: transparent;
+                border-width: #{(map-get($briks-components__forms__ranges-hooks, thumb-height) - map-get($briks-components__forms__ranges-hooks, track-height)) / 2} 0;
+                color: transparent;
+                width: 100%;
+                height: map-get($briks-components__forms__ranges-hooks, track-height);
+                cursor: map-get($briks-components__forms__ranges-hooks, track-cursor);
+            }
+            // Thumb
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                margin-top: #{-1 * (map-get($briks-components__forms__ranges-hooks, thumb-height) - map-get($briks-components__forms__ranges-hooks, track-height)) / 2};
+                background: map-get($briks-components__forms__ranges-hooks, thumb-background);
+                border: map-get($briks-components__forms__ranges-hooks, thumb-border);
+                border-radius: map-get($briks-components__forms__ranges-hooks, thumb-border-radius);
+                width: map-get($briks-components__forms__ranges-hooks, thumb-width);
+                height: map-get($briks-components__forms__ranges-hooks, thumb-height);
+                cursor: map-get($briks-components__forms__ranges-hooks, thumb-cursor);
+            }
+            &::-moz-range-thumb {
+                box-sizing: border-box;
+                margin-top: #{-1 * (map-get($briks-components__forms__ranges-hooks, thumb-height) - map-get($briks-components__forms__ranges-hooks, track-height)) / 2};
+                background: map-get($briks-components__forms__ranges-hooks, thumb-background);
+                border: map-get($briks-components__forms__ranges-hooks, thumb-border);
+                border-radius: map-get($briks-components__forms__ranges-hooks, thumb-border-radius);
+                width: map-get($briks-components__forms__ranges-hooks, thumb-width);
+                height: map-get($briks-components__forms__ranges-hooks, thumb-height);
+                cursor: map-get($briks-components__forms__ranges-hooks, thumb-cursor);
+                
+            }
+            &::-ms-thumb {
+                width: map-get($briks-components__forms__ranges-hooks, thumb-width);
+                height: map-get($briks-components__forms__ranges-hooks, thumb-height);
+                background: map-get($briks-components__forms__ranges-hooks, thumb-background);
+                border: map-get($briks-components__forms__ranges-hooks, thumb-border);
+                border-radius: map-get($briks-components__forms__ranges-hooks, thumb-border-radius);
+                cursor: map-get($briks-components__forms__ranges-hooks, thumb-cursor);
+                margin-top: 0px;
+                /*Needed to keep the Edge thumb centred*/
+            }
+    
+            &::-ms-fill-lower {
+                background: map-get($briks-components__forms__ranges-hooks, thumb-background);
+                border: map-get($briks-components__forms__ranges-hooks, thumb-border);
+                border-radius: map-get($briks-components__forms__ranges-hooks, thumb-border-radius);
+            }
+    
+            &::-ms-fill-upper {
+                background: map-get($briks-components__forms__ranges-hooks, thumb-background);
+                border: map-get($briks-components__forms__ranges-hooks, thumb-border);
+                border-radius: map-get($briks-components__forms__ranges-hooks, thumb-border-radius);
+            }
+        }
+        // Modifiers
+        @each $name, $zonesmap in $briks-components__forms__ranges-hooks-modifiers {
+            // Detect thumb height change of track height change
+            $track_height: map-get($briks-components__forms__ranges-hooks, track-height);
+            $thumb_height: map-get($briks-components__forms__ranges-hooks, thumb-height);
+            $track_or_thumb_modified: false;
+            @if type-of(map-get($zonesmap, track-height)) == number {
+                $track_height: map-get($zonesmap, track-height);
+                $track_or_thumb_modified: true;
+            }
+            @if type-of(map-get($zonesmap, thumb-height)) == number {
+                $thumb_height: map-get($zonesmap, thumb-height);
+                $track_or_thumb_modified: true;
+            }
+            &.#{$briks-modifiers-prefix}#{$name} {
+                // root-css is component root
+                @if type-of(map-get($zonesmap, root-css)) == map {
+                    @if length(map-get($zonesmap, root-css)) > 0 {
+                        @each $property, $value in map-get($zonesmap, root-css) {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+                &>input[type="range"] {
+                    @if $track_or_thumb_modified {
+                        margin: #{($thumb_height - $track_height) / 2} 0;
+                    }
+                    // label-css is the label tag
+                    @if type-of(map-get($zonesmap, label-css)) == map {
+                        @if length(map-get($zonesmap, label-css)) > 0 {
+                            &+label {
+                                @each $property, $value in map-get($zonesmap, label-css) {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // input-disabled-css is the input range when disabled
+                    @if type-of(map-get($zonesmap, input-disabled-css)) == map {
+                        @if length(map-get($zonesmap,input-disabled-css)) > 0 {
+                            &[disabled] {
+                                @each $property, $value in map-get($zonesmap,input-disabled-css) {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // input-focus-css is the input range when disabled
+                    @if type-of(map-get($zonesmap, input-focus-css)) == map {
+                        @if length(map-get($zonesmap, input-focus-css)) > 0 {
+                            &:focus {
+                                @each $property, $value in map-get($zonesmap, input-focus-css) {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // label-disabled-css is the label tag when input range is disabled
+                    @if type-of(map-get($zonesmap, label-disabled-css)) == map {
+                        @if length(map-get($zonesmap, label-disabled-css)) > 0 {
+                            &[disabled] {
+                                &+label {
+                                    @each $property, $value in map-get($zonesmap, label-disabled-css) {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // label-focus-css is the label tag when input range is disabled
+                    @if type-of(map-get($zonesmap, label-focus-css)) == map {
+                        @if length(map-get($zonesmap, label-focus-css)) > 0 {
+                            &:focus {
+                                &+label {
+                                    @each $property, $value in map-get($zonesmap, label-focus-css) {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // Track
+                    &::-webkit-slider-runnable-track {
+                        @if type-of(map-get($zonesmap, track-background)) != 'null' {
+                            background: map-get($zonesmap, track-background);
+                        }
+                        @if type-of(map-get($zonesmap, track-border)) != 'null' {
+                            border: map-get($zonesmap, track-border);
+                        }
+                        @if type-of(map-get($zonesmap, track-border-radius)) != 'null' {
+                            border-radius: map-get($zonesmap, track-border-radius);
+                        }
+                        @if type-of(map-get($zonesmap, track-width)) != 'null' {
+                            width: map-get($zonesmap, track-width);
+                        }
+                        @if type-of(map-get($zonesmap, track-height)) != 'null' {
+                            height: map-get($zonesmap, track-height);
+                        }
+                        @if type-of(map-get($zonesmap, track-cursor)) != 'null' {
+                            cursor: map-get($zonesmap, track-cursor);
+                        }
+                    }
+                    &::-moz-range-track {
+                        @if type-of(map-get($zonesmap, track-background)) != 'null' {
+                            background: map-get($zonesmap, track-background);
+                        }
+                        @if type-of(map-get($zonesmap, track-border)) != 'null' {
+                            border: map-get($zonesmap, track-border);
+                        }
+                        @if type-of(map-get($zonesmap, track-border-radius)) != 'null' {
+                            border-radius: map-get($zonesmap, track-border-radius);
+                        }
+                        @if type-of(map-get($zonesmap, track-width)) != 'null' {
+                            width: map-get($zonesmap, track-width);
+                        }
+                        @if type-of(map-get($zonesmap, track-height)) != 'null' {
+                            height: map-get($zonesmap, track-height);
+                        }
+                        @if type-of(map-get($zonesmap, track-cursor)) != 'null' {
+                            cursor: map-get($zonesmap, track-cursor);
+                        }
+                    }
+                    &::-ms-track {
+                        @if $track_or_thumb_modified {
+                            border-width: #{($thumb_height - $track_height) / 2} 0;
+                        }
+                        @if type-of(map-get($zonesmap, track-height)) != 'null' {
+                            height: map-get($zonesmap, track-height);
+                        }
+                        @if type-of(map-get($zonesmap, track-cursor)) != 'null' {
+                            cursor: map-get($zonesmap, track-cursor);
+                        }
+                    }
+                    // Thumb
+                    &::-webkit-slider-thumb {
+                        @if $track_or_thumb_modified {
+                            margin-top: #{-1 * ($thumb_height - $track_height) / 2};
+                        }
+                        @if type-of(map-get($zonesmap, thumb-background)) != 'null' {
+                            background: map-get($zonesmap, thumb-background);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border)) != 'null' {
+                            border: map-get($zonesmap, thumb-border);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border-radius)) != 'null' {
+                            border-radius: map-get($zonesmap, thumb-border-radius);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-width)) != 'null' {
+                            width: map-get($zonesmap, thumb-width);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-height)) != 'null' {
+                            height: map-get($zonesmap, thumb-height);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-cursor)) != 'null' {
+                            cursor: map-get($zonesmap, thumb-cursor);
+                        }
+                    }
+                    &::-moz-range-thumb {
+                        @if $track_or_thumb_modified {
+                            margin-top: #{-1 * ($thumb_height - $track_height) / 2};
+                        }
+                        @if type-of(map-get($zonesmap, thumb-background)) != 'null' {
+                            background: map-get($zonesmap, thumb-background);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border)) != 'null' {
+                            border: map-get($zonesmap, thumb-border);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border-radius)) != 'null' {
+                            border-radius: map-get($zonesmap, thumb-border-radius);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-width)) != 'null' {
+                            width: map-get($zonesmap, thumb-width);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-height)) != 'null' {
+                            height: map-get($zonesmap, thumb-height);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-cursor)) != 'null' {
+                            cursor: map-get($zonesmap, thumb-cursor);
+                        }
+                    }
+                    &::-ms-thumb {
+                        @if type-of(map-get($zonesmap, thumb-background)) != 'null' {
+                            background: map-get($zonesmap, thumb-background);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border)) != 'null' {
+                            border: map-get($zonesmap, thumb-border);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border-radius)) != 'null' {
+                            border-radius: map-get($zonesmap, thumb-border-radius);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-width)) != 'null' {
+                            width: map-get($zonesmap, thumb-width);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-height)) != 'null' {
+                            height: map-get($zonesmap, thumb-height);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-cursor)) != 'null' {
+                            cursor: map-get($zonesmap, thumb-cursor);
+                        }
+                    }
+            
+                    &::-ms-fill-lower {
+                        @if type-of(map-get($zonesmap, thumb-background)) != 'null' {
+                            background: map-get($zonesmap, thumb-background);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border)) != 'null' {
+                            border: map-get($zonesmap, thumb-border);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border-radius)) != 'null' {
+                            border-radius: map-get($zonesmap, thumb-border-radius);
+                        }
+                    }
+            
+                    &::-ms-fill-upper {
+                        @if type-of(map-get($zonesmap, thumb-background)) != 'null' {
+                            background: map-get($zonesmap, thumb-background);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border)) != 'null' {
+                            border: map-get($zonesmap, thumb-border);
+                        }
+                        @if type-of(map-get($zonesmap, thumb-border-radius)) != 'null' {
+                            border-radius: map-get($zonesmap, thumb-border-radius);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

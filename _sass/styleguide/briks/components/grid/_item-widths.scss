@@ -1,0 +1,56 @@
+
+/*
+    GRID ITEM WIDTHS
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__item-widths-percentages-prefix != false 
+and $briks-components__grid__item-widths-percentages-prefix != '' 
+and length($briks-components__grid__item-widths-percentages-names-and-values) > 0 {
+    // :not conditions depending on gutter
+    $not_conditions: ':not([class*="'+$briks-modifiers-prefix+$briks-components__grid__gutters-prefix+'"])';
+    @if $briks-components__grid__gutters-prefix != false
+    and $briks-components__grid__gutters-prefix != '' {
+        @each $name, $value in $briks-components__grid__gutters-names-and-values {
+            $not_conditions: $not_conditions+':not([';
+            $not_conditions: $not_conditions+$briks-modifiers-prefix+$briks-components__grid__gutters-prefix+$name;
+            $not_conditions: $not_conditions+'])';
+        }
+    }
+    // Base widths pattern
+    $base-pattern: $briks-modifiers-prefix+$briks-components__grid__item-widths-percentages-prefix;
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        &#{$not_conditions} {
+            @each $width_name, $width_value in $briks-components__grid__item-widths-percentages-names-and-values {
+                &>.#{$base-pattern}#{$width_name}  {
+                    @if type-of($width_value) == 'string' {
+                        $width_value: unquote($width_value);
+                    }
+                    width: $width_value;
+                }
+            }
+            
+            @if $briks-components__grid__item-widths-percentages-responsive {
+                @each $screen, $width_value in $briks-screen-sizes {
+                    @include my-screen-size($screen) {
+                        @each $width_name, $width_value in $briks-components__grid__item-widths-percentages-names-and-values {
+                            &>.#{$base-pattern}#{$width_name}#{$briks-responsive-prefix}#{$screen},
+                            &>[#{$base-pattern}#{$width_name}*="#{$screen}"]  {
+                                @if type-of($width_value) == 'string' {
+                                    $width_value: unquote($width_value);
+                                }
+                                width: $width_value;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

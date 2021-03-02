@@ -1,0 +1,34 @@
+
+/*
+    GRID ITEM GROW
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__item-grow-name != false 
+and $briks-components__grid__item-grow-name != '' {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        &>* {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__item-grow-name} {
+                flex-grow: 1;
+            }
+        }
+        @if $briks-components__grid__item-grow-responsive {
+            &>* {
+                @each $screen, $value in $briks-screen-sizes {
+                    @include my-screen-size($screen) {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__item-grow-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__item-grow-name}*="#{$screen}"] {
+                            flex-grow: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

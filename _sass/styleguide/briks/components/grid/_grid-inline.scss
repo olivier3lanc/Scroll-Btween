@@ -1,0 +1,30 @@
+
+/*
+    GRID INLINE
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__inline-name != false 
+and $briks-components__grid__inline-name != '' {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        &.#{$briks-modifiers-prefix}#{$briks-components__grid__inline-name} {
+            display: inline-flex;
+        }
+        @if $briks-components__grid__inline-responsive {
+            @each $screen, $value in $briks-screen-sizes {
+                @include my-screen-size($screen) {
+                    &.#{$briks-modifiers-prefix}#{$briks-components__grid__inline-name}#{$briks-responsive-prefix}#{$screen},
+                    &[#{$briks-modifiers-prefix}#{$briks-components__grid__inline-name}*="#{$screen}"] {
+                        display: inline-flex;
+                    }
+                }
+            }
+        }
+    }
+}

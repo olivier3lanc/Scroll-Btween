@@ -1,0 +1,43 @@
+
+/*
+    GRID ITEM ORDERS
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__item-orders-prefix != false 
+and $briks-components__grid__item-orders-prefix != '' 
+and length($briks-components__grid__item-orders-names-and-values) > 0 {
+    // Base widths pattern
+    $base-pattern: $briks-modifiers-prefix+$briks-components__grid__item-orders-prefix;
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        @each $name, $value in $briks-components__grid__item-orders-names-and-values {
+            &>.#{$base-pattern}#{$name} {
+                @if type-of($value) == 'string' {
+                    $value: unquote($value);
+                }
+                order: $value;
+            }
+        }
+        @if $briks-components__grid__item-widths-percentages-responsive {
+            @each $screen, $value in $briks-screen-sizes {
+                @include my-screen-size($screen) {
+                    @each $name, $value in $briks-components__grid__item-orders-names-and-values {
+                        &>.#{$base-pattern}#{$name}#{$briks-responsive-prefix}#{$screen},
+                        &>[#{$base-pattern}#{$name}*="#{$screen}"]  {
+                            @if type-of($value) == 'string' {
+                                $value: unquote($value);
+                            }
+                            order: $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+
+/*
+    GRID BASE
+    Briks grid component
+    ---
+    Base features
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false {
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        /**
+        * Flex items can be any HTML5 tag
+        */
+        &>* {
+            box-sizing: border-box; // Important to avoid border counts in width calculation
+            padding: 0;
+            margin: 0;
+            max-width: 100%;
+            list-style: none;
+        }
+    }
+}

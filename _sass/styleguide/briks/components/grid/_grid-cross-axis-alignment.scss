@@ -1,0 +1,65 @@
+
+/*
+    GRID CROSS AXIS ALIGNMENT
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        @if $briks-components__grid__align-items-flex-start-name != false and $briks-components__grid__align-items-flex-start-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-flex-start-name} {
+                align-items: flex-start;
+            }
+        }
+        @if $briks-components__grid__align-items-baseline-name != false and $briks-components__grid__align-items-baseline-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-baseline-name} {
+                align-items: baseline;
+            }
+        }
+        @if $briks-components__grid__align-items-center-name != false and $briks-components__grid__align-items-center-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-center-name} {
+                align-items: center;
+            }
+        }
+        @if $briks-components__grid__align-items-flex-end-name != false and $briks-components__grid__align-items-flex-end-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-flex-end-name} {
+                align-items: flex-end;
+            }
+        }
+        @if $briks-components__grid__align-items-responsive {
+            @each $screen, $value in $briks-screen-sizes {
+                @include my-screen-size($screen) {
+                    @if $briks-components__grid__align-items-flex-start-name != false and $briks-components__grid__align-items-flex-start-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-flex-start-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-flex-start-name}*="#{$screen}"] {
+                            align-items: flex-start;
+                        }
+                    }
+                    @if $briks-components__grid__align-items-baseline-name != false and $briks-components__grid__align-items-baseline-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-baseline-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-baseline-name}*="#{$screen}"] {
+                            align-items: baseline;
+                        }
+                    }
+                    @if $briks-components__grid__align-items-center-name != false and $briks-components__grid__align-items-center-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-center-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-center-name}*="#{$screen}"] {
+                            align-items: center;
+                        }
+                    }
+                    @if $briks-components__grid__align-items-flex-end-name != false and $briks-components__grid__align-items-flex-end-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-flex-end-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__align-items-flex-end-name}*="#{$screen}"] {
+                            align-items: flex-end;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

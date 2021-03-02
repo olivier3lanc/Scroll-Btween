@@ -1,0 +1,105 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- comment -%} Description of the page {%- endcomment -%}
+    {% assign pagecontent_description = page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 160 %}
+    {% if page.description %}
+        {% assign meta_description = page.description %}
+    {% else %}
+        {% if pagecontent_description.size > 10 %}
+            {% assign meta_description = pagecontent_description %}
+        {% else %}
+            {% assign meta_description = site.description %}
+        {% endif %}
+    {% endif %}
+    {%- comment -%} Title of the page {%- endcomment -%}
+    {% assign meta_title = site.title %}
+    {% if page.title %}
+        {% assign meta_title = page.title | append: ' | ' | append: site.title %}
+    {% endif %}
+    {%- comment -%} Favicon {%- endcomment -%}
+    {% assign meta_favicon = site.url | append: site.baseurl | append: '/styleguide/img/favicon/favicon-32x32.png' %}
+    {% if site.metadata.favicon %}
+        {% if site.metadata.favicon contains 'https:' or site.metadata.favicon contains 'http:' %}
+            {% assign meta_favicon = site.metadata.favicon %}
+        {% else %}
+            {% assign meta_favicon = site.metadata.favicon | absolute_url %}
+        {% endif %}
+    {% endif %}
+    {%- comment -%} Image {%- endcomment -%}
+    {% if site.metadata.image %}
+        {% assign meta_image = site.url | append: site.baseurl | append: site.metadata.image %}
+    {% else %}
+        {% assign meta_image = site.url | append: site.baseurl | append: '/styleguide/img/meta-image.png' %}
+    {% endif %}
+    {% if page.metadata.image %}
+        {% assign meta_image = site.url | append: site.baseurl | append: page.metadata.image %}
+    {% endif %}
+    {% if meta_image contains 'https:' or meta_image contains 'http:' %}
+    {% else %}
+        {% assign meta_image = meta_image | absolute_url %}
+    {% endif %}
+    {%- comment -%} Theme color {%- endcomment -%}
+    {% assign meta_color = '#323b44' %}
+    {% if site.metadata.color %}
+        {% assign meta_color = site.metadata.color %}
+    {% endif %}
+    <!-- General metadata -->
+    <title>{{ meta_title }}</title>
+    <meta itemprop="name" content="{{ meta_title }}">
+    <meta name="description" itemprop="description" content="{{ meta_description }}">
+    <link rel="icon" type="image/png" href="{{ meta_favicon }}">
+    <meta name="application-name" content="{{ site.title }}">
+    {% if site.metadata.author %}
+        <meta name="author" content="{{ site.metadata.author }}">
+    {% endif %}
+
+    <!-- Microsoft -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="msapplication-tooltip" content="{{ meta_title }}">
+    <meta name="msapplication-TileColor" content="{{ meta_color }}">
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:image" content="{{ meta_image }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="app">
+    <meta name="twitter:title" content="{{ meta_title }}">
+    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:url" content="{{ page.url | absolute_url }}">
+    <meta name="twitter:image" content="{{ meta_image }}">
+
+    <!-- iOS -->
+    <meta name="apple-mobile-web-app-title" content="{{ meta_title }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="{{ meta_color }}">
+    <link rel="apple-touch-icon" href="{{ meta_favicon }}">
+
+    <!-- Android -->
+    <meta name="theme-color" content="{{ meta_color }}">
+    <meta name="color-scheme" content="light">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="{{ '/styleguide/css/normalize.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/styleguide/fonts/icomoon/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/styleguide/css/styleguide.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/styleguide/css/prism.css' | relative_url }}">
+
+    <script type="text/javascript" src="{{ '/styleguide/js/jquery-3.5.1.slim.min.js' | relative_url }}"></script>
+    <script>
+        window.site = {
+            url: '{{ site.url }}',
+            baseurl: '{{ site.baseurl }}',
+            playground: {
+                min_height: '{% if site.playground.min_height %}{{ site.playground.min_height }}{% else %}300px{% endif %}'
+            }
+        }
+    </script>
+</head>

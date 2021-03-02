@@ -1,0 +1,35 @@
+/*
+    MY SCREEN SIZE
+    Responsive tool, include a media query declaration
+    @param $list - list - List of screen sizes
+    @include my-screen-size(xs) {
+        h1 { color: red }
+    } -> Applies declarations on screen sizes called "xs"
+
+    @include my-screen-size(xs, sm, lg) {
+        h1 { color: red }
+    }
+    Applies declarations on screen sizes called "xs", "sm" and "lg"
+*/
+@mixin my-screen-size($list...){
+    @each $data in $list {
+        @if map-has-key($briks-screen-sizes, $data) == true {
+            $dataIndex: index(map-keys($briks-screen-sizes), $data);
+            $dataValue: map-get($briks-screen-sizes, $data);
+            $theNextIndex: $dataIndex + 1;
+            $theNextDataValue: map-get($briks-screens, $theNextIndex);
+            // First screen size
+            @if $dataIndex == 1 {
+                @media (max-width: $theNextDataValue+$briks-unit) { @content; }
+            } 
+            // Last screen size
+            @else if $dataIndex == length($briks-screen-sizes) {
+                @media (min-width: map-get($briks-screens, $dataIndex)+$briks-unit) { @content; }
+            } 
+            // Any other screen size
+            @else {
+                @media (min-width: $dataValue+$briks-unit) and (max-width: $theNextDataValue+$briks-unit) { @content; }
+            }
+        }
+    }
+}

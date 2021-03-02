@@ -1,0 +1,38 @@
+
+/*
+    GRID ITEM MAX WIDTHS
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__item-max-widths-prefix != false 
+and length($briks-components__grid__item-max-widths-names-and-values) > 0 {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        &>* {
+            @each $name, $value in $briks-components__grid__item-max-widths-names-and-values {
+                &.#{$briks-modifiers-prefix}#{$briks-components__grid__item-max-widths-prefix}#{$name} {
+                    // width: 100%;
+                    max-width: unquote($value+$briks-unit);
+                }
+            }
+            @if $briks-components__grid__item-max-widths-responsive {
+                @each $screen, $value in $briks-screen-sizes {
+                    @include my-screen-size($screen) {
+                        @each $name, $value in $briks-components__grid__item-max-widths-names-and-values {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__item-max-widths-prefix}#{$name}#{$briks-responsive-prefix}#{$screen},
+                            &[#{$briks-modifiers-prefix}#{$briks-components__grid__item-max-widths-prefix}#{$name}*="#{$screen}"] {
+                                width: 100%;
+                                max-width: unquote($value+$briks-unit);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

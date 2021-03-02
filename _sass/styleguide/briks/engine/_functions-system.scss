@@ -1,0 +1,173 @@
+/*
+    SQUARE ROOT
+    DESIGN SYSTEM FUNCTION
+    @return the quare root value of the specified number
+    @param $number - the number
+    Source https://www.antimath.info/css/sass-sqrt-function/
+*/
+@function briks-sqrt($number) {
+    $x0: 1;
+    $x1: $x0;
+    @for $i from 1 through 10 {
+        $x1: $x0 - ($x0 * $x0 - abs($number)) / (2 * $x0);
+        $x0: $x1;
+    }
+    @return $x1;
+}
+/*
+    FONT SIZE
+    DESIGN SYSTEM FUNCTION
+    @return the value of the specified font size name
+    @param $name - the name of the font size specified into config/font-sizes
+*/
+@function briks-font-size($name) {
+    @return map-get($briks-font-sizes, $name);
+}
+
+/*
+    SPACING
+    DESIGN SYSTEM FUNCTION
+    @return the value of the specified spacing name
+    @param $name - the name of the spacing specified into config/spacings
+*/
+@function briks-spacing($name) {
+    @return map-get($briks-spacings, $name);
+}
+
+/*
+    LUMINANCE CALCULATION
+    DESIGN SYSTEM FUNCTION
+    Calculate the luminance for a color.
+    @param $color - color - the color to analyze
+    @param $method - integer - the method to use
+*/
+@function briks-luminance($color, $method: $briks-luminance-method) {
+    $red: nth($linear-channel-values, red($color) + 1);
+    $green: nth($linear-channel-values, green($color) + 1);
+    $blue: nth($linear-channel-values, blue($color) + 1);
+    @if $method == 1 {
+        // Weighted Euclidean Distance in 3D RGB Space http://alienryderflex.com/hsp.html
+        @return briks-sqrt(.299 * $red * $red + .587 * $green * $green + .114 * $blue * $blue);
+    }
+    @else if $method == 2 {
+        // W3C recommandation https://www.w3.org/TR/AERT/#color-contrast
+        @return .299 * $red + .587 * $green + .117 * $blue;
+    }
+    @else if $method == 3 {
+        // Luma sRGB https://en.wikipedia.org/wiki/Rec._709
+        @return .2126 * $red + .7152 * $green + .0722 * $blue;
+    }
+}
+
+/*
+    SMART CONTRAST CALCULATION
+    DESIGN SYSTEM FUNCTION
+    Returns the specified contrasted or accentuated color
+    See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+    @param $step - integer from -100 to 100
+    @param $color - color value - the color value to process
+    How it works:
+    * $step = 0 returns the same color as input
+    * $step = -100 and value = 100 always return black or white colors
+    * $step = 100 returns WHITE if the input color luminance is below or equal 50%
+    * $step = 100 returns BLACK if the input color luminance is above 50%
+    * $step = -100 returns WHITE if the input color luminance is above 50%
+    * $step = -100 returns BLACK if the input color luminance is below or equal 50%
+*/
+@function briks-smart-contrast($step, $color) {
+    @if type-of($step) == number and type-of($color) == color {
+        $color_final: null;
+        $lightness: lightness($color);
+        $luminance: briks-luminance($color);
+        //Accentuated contrast mode
+        @if $step < 0 {
+             @if $luminance > $briks-luminance-threshold {
+                $new_amount: -($step/100) * (100 - briks-strip-units($lightness));
+                $color_final: lighten($color, $new_amount);
+            }
+            @else {
+                $new_amount: -($step/100) * briks-strip-units($lightness);
+                $color_final: darken($color, $new_amount);
+            }
+        }
+        //Smart contrast mode
+        @else {
+             @if $luminance > $briks-luminance-threshold {
+                $new_amount: ($step/100) * briks-strip-units($lightness);
+                $color_final: darken($color, $new_amount);
+            }
+            @else {
+                $new_amount: ($step/100) * (100 - briks-strip-units($lightness));
+                $color_final: lighten($color, $new_amount);
+            }
+        }
+        @return $color_final;
+    }
+    @else {
+        @warn 'briks-smart-contrast: $step is not an number or $color is not a valid css color value';
+        @warn 'You may call a color contrast that does not exist';
+        @return '';
+    }
+
+}
+
+@function briks-contrast-ratio($color1, $color2) {
+    // Check alpha == 1 to avoid bad results
+    @if alpha($color1) < 1 or alpha($color2) < 1  {
+        @return 0;
+    } @else {
+        $luminance1: briks-luminance($color1);
+        $luminance2: briks-luminance($color2);
+        $difference: $luminance1 - $luminance2;
+        @if $difference <= 0 {
+            @return ($luminance2 + 0.05) / ($luminance1 + 0.05);
+        }
+        @else {
+            @return ($luminance1 + 0.05) / ($luminance2 + 0.05);
+        }
+    }
+}
+
+/*
+    STRIP UNITS
+    DESIGN SYSTEM FUNCTION
+    Returns a value without its unit
+    @param $string - string - The value  with its unit to trim
+*/
+@function briks-strip-units($string) {
+    @return $string / ($string * 0 + 1);
+}
+
+/*
+    GENERIC UTILITY VALUE
+    DESIGN SYSTEM FUNCTION
+    @return the proper value of the specified utility
+    @param $property - the CSS property
+    @param $name - name of the pattern
+    @param $value - the value fallback if $name is not associated to any pattern
+*/
+@function briks-generic-utility($property, $name, $value) {
+    @if $property == 'font-family' {
+        @return my-font-family($name);
+    } @else if $property == 'border-radius' or $property == 'border-top-left-radius' or $property == 'border-top-right-radius' or $property == 'border-bottom-right-radius' or $property == 'border-bottom-left-radius' {
+        @return my-border-radius($name);
+    } @else if $property == 'border' or $property == 'border-top' or $property == 'border-right' or $property == 'border-bottom' or $property == 'border-left' {
+        @return my-border($name);
+    } @else if $property == 'color' or $property == 'background-color' {
+        @return my-color($name);
+    } @else if $property == 'background' {
+        @return my-background($name);
+    } @else if $property == 'box-shadow' {
+        @return my-shadow($name);
+    } @else if $property == 'font-size' {
+        @return my-font-size($name);
+    } @else if $property == 'font' {
+        @return my-typography($name);
+    } @else if $property == 'margin' or $property == 'margin-top' or $property == 'margin-right' or $property == 'margin-bottom' or $property == 'margin-left'
+            or $property == 'padding' or $property == 'padding-top' or $property == 'padding-right' or $property == 'padding-bottom' or $property == 'padding-left'
+            or $property == 'top' or $property == 'right' or $property == 'bottom' or $property == 'left' {
+        @return my-spacing($name);
+    } @else {
+        @return $value;
+    }
+}

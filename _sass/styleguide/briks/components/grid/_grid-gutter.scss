@@ -1,0 +1,98 @@
+
+/*
+    GRID GUTTER
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__gutters-prefix != false 
+and $briks-components__grid__gutters-prefix != '' 
+and length($briks-components__grid__gutters-names-and-values) > 0
+and $briks-components__grid__item-widths-percentages-prefix != false 
+and $briks-components__grid__item-widths-percentages-prefix != '' 
+and length($briks-components__grid__item-widths-percentages-names-and-values) > 0 {
+    // Base widths pattern
+    $base-pattern: $briks-modifiers-prefix+$briks-components__grid__item-widths-percentages-prefix;
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name}{
+        @each $gutter_name, $gutter_value in $briks-components__grid__gutters-names-and-values {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__gutters-prefix}#{$gutter_name} {
+                &>*  { 
+                    margin: unquote($gutter_value+$briks-unit);
+                }
+                @each $width_name, $width_value in $briks-components__grid__item-widths-percentages-names-and-values {
+                    &>.#{$base-pattern}#{$width_name}  {
+                        width: calc(#{$width_value} - #{2 * $gutter_value + $briks-unit});
+                    }
+                }
+            }
+        }
+
+        @if $briks-components__grid__gutters-responsive {
+            @each $screen, $v in $briks-screen-sizes {
+                @include my-screen-size($screen) {
+                    // Set default percentage with behavior for gutter-inactive screen sizes
+                    @each $width_name, $width_value in $briks-components__grid__item-widths-percentages-names-and-values {
+                        // &>.#{$base-pattern}#{$width_name},
+                        &>.#{$base-pattern}#{$width_name}#{$briks-responsive-prefix}#{$screen},
+                        &>[#{$base-pattern}#{$width_name}*="#{$screen}"]  {
+                            width: $width_value;
+                        }
+                    }
+                    @each $gutter_name, $gutter_value in $briks-components__grid__gutters-names-and-values {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__gutters-prefix}#{$gutter_name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__gutters-prefix}#{$gutter_name}*="#{$screen}"] {
+                            &>*  { 
+                                margin: unquote($gutter_value+$briks-unit);
+                            }
+                            // Set default percentage with behavior for gutter-inactive screen sizes
+                            @each $width_name, $width_value in $briks-components__grid__item-widths-percentages-names-and-values {
+                                &>.#{$base-pattern}#{$width_name} {
+                                    width: calc(#{$width_value} - #{2 * $gutter_value + $briks-unit});
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Start inheritance from body to override responsive item gutter width percentage
+
+    @if $briks-components__grid__gutters-responsive {
+        body {
+            // Grid component
+            .#{$briks-components-prefix}#{$briks-components__grid__name}{
+                @each $screen, $v in $briks-screen-sizes {
+                    @include my-screen-size($screen) {
+                        @each $gutter_name, $gutter_value in $briks-components__grid__gutters-names-and-values {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__gutters-prefix}#{$gutter_name}#{$briks-responsive-prefix}#{$screen},
+                            &[#{$briks-modifiers-prefix}#{$briks-components__grid__gutters-prefix}#{$gutter_name}*="#{$screen}"] {
+                                @each $width_name, $width_value in $briks-components__grid__item-widths-percentages-names-and-values {
+                                    &>.#{$base-pattern}#{$width_name}#{$briks-responsive-prefix}#{$screen},
+                                    &>[#{$base-pattern}#{$width_name}*="#{$screen}"]  {
+                                        width: calc(#{$width_value} - #{2 * $gutter_value + $briks-unit});
+                                    }
+                                }
+                            }
+                        }
+                        @each $gutter_name, $gutter_value in $briks-components__grid__gutters-names-and-values {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__gutters-prefix}#{$gutter_name} {
+                                @each $width_name, $width_value in $briks-components__grid__item-widths-percentages-names-and-values {
+                                    &>.#{$base-pattern}#{$width_name}#{$briks-responsive-prefix}#{$screen},
+                                    &>[#{$base-pattern}#{$width_name}*="#{$screen}"]  {
+                                        width: calc(#{$width_value} - #{2 * $gutter_value + $briks-unit});
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

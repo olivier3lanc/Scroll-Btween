@@ -1,0 +1,257 @@
+// Playground - Auto iframe
+let playground = {
+    /**
+    * DECODE HTML
+    * Decodes HTML entities
+    * @html - string - HTML entities to decode
+    */  
+    decodeHtml: function(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    },
+    /**
+    * IS IN VIEWPORT
+    * Tells whether or not an DOM element is into the viewport 
+    * @el - DOM element to parse
+    */  
+    isInViewport: function(el) {
+        if (typeof el === 'object') {
+            var jQ_el = jQuery(el),
+                screenHeight = jQuery(window).height(),
+                scrollTop = jQuery(window).scrollTop(),
+                viewportTop = scrollTop,
+                viewportBottom = scrollTop + screenHeight;
+            // Top position of the element
+            var positionTop = jQ_el.offset().top;
+            // Bottom position of the element
+            var positionBottom = positionTop + jQ_el.height();
+            // If "into the viewport"
+            if ((positionTop >= viewportTop && positionTop <= viewportBottom) || (positionBottom >= viewportTop && positionBottom <= viewportBottom)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    },
+    // UPDATE
+    // Method
+    // @id - string - optional - id of the playground to process
+    update: function(id) {
+        // Default playground selector
+        var mainSelector = '.playground';
+        // If id argument is a string
+        if (typeof(id) == 'string') {
+            // If the string is a valid playground id
+            if (jQuery(mainSelector+'#'+id).length == 1) {
+                // Remove the instance
+                jQuery('#'+id+'-instance').remove();
+                // Set this id as new selector
+                mainSelector = '#'+id;
+            } 
+            // Otherwise stop
+            else {
+                return;
+            }
+        } 
+        // Otherwise remove any playgraound instance
+        else {
+            jQuery(mainSelector+'-instance').remove();
+        }
+        // Iterate each playgournd from selector
+        jQuery(mainSelector).each(function(playgroundIndex) {
+            var jQ_this = jQuery(this);
+                playgroundId = jQ_this.attr('id'); // Playground id
+            if (playgroundId === undefined) {
+                // If playground id is not set, apply one based on index
+                playgroundId = 'playground-'+playgroundIndex;
+                jQ_this.attr('id', playgroundId);
+            }
+            // The HTML content of the current playground
+            // var content = jQ_this.html();
+            var content = jQ_this.find('code').html();
+            // console.log(jQ_this.find('code').html());
+            content = playground.decodeHtml(content);
+            // Set up the final opbject that will be base64 and stringified
+            var sentObject = {
+                options: {
+                    // padding: optionPadding,
+                    // forcePattern: optionForcePattern,
+                    // forceHardPattern: optionForceHardPattern,
+                    // centered: optionCentered
+                },
+                content: content
+            }
+            // Stringify the object to send
+            var stringifiedSentObject = JSON.stringify(sentObject);
+            // Set to base64
+            var sentObject64 = btoa(stringifiedSentObject);
+            // Build the iframe HTML string
+            var iframeStr = '<iframe id="'+playgroundId+'-iframe" data-src="'+site.url+site.baseurl+'/styleguide/playground.html#'+sentObject64+'" class="playground-iframe not-rendered u-transition-none u-absolute u-h-100 u-b-none u-w-100"></iframe>';
+            // Sets the href attribute on the open new tab button link
+            // jQuery('[data-playground-new-tab="'+playgroundId+'"]').attr('href', site.url+site.baseurl+'/styleguide/playground.html#'+sentObject64);
+            var iframeUrl = site.url+site.baseurl+'/styleguide/playground.html#'+sentObject64;
+            // Trim to remove unwanted white spaces
+            var trimmed = content.replace(/ /g,'');
+            var buf = [];
+            for (var i = content.length-1; i >= 0; i--) {
+                buf.unshift(['&#', content[i].charCodeAt(), ';'].join(''));
+            }
+            trimmed = buf.join('');
+            // Insert HTML after hidden playground
+            jQuery(this).after(
+                '<code class="u-p-xxs u-fs-xxs u-bc-primary-edge u-lh-base u-bl-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt c-text m-nowrap u-c-primary-alt">'+
+                    '<span class="i-code u-va-middle"></span> playground'+
+                '</code>'+
+                '<ul class="c-grid m-space-between u-bl-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt" data-playground-commands="'+playgroundId+'">'+
+                    '<li class="m-grow u-p-sm u-bb-thin-dashed-alt"></li>'+
+                    '<li class="c-grid">'+
+                        '<a href="'+iframeUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Open in a new tab" target="_blank" data-playground-new-tab="'+playgroundId+'">'+
+                            '<span class="i-external-link"></span>'+
+                        '</a>'+
+                        '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt maximize" title="Maximize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
+                            '<span class="i-maximize-2"></span>'+
+                        '</button>'+
+                        '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt u-none minimize" title="Minimize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
+                            '<span class="i-minimize-2"></span>'+
+                        '</button>'+
+                    '</li>'+
+                '</ul>'+
+                '<div class="playground-instance" id="'+playgroundId+'-instance">'+
+                    '<div class="u-relative u-transition-none u-bl-thin-dashed-alt u-br-thin-dashed-alt u-o-auto u-resize-both u-mw-100" id="'+playgroundId+'-wrapper" style="min-height: '+window.site.playground.min_height+'">'+
+                        iframeStr+
+                        '<div class="playground-preview c-position m-absolute m-top-left u-w-100 u-h-100 u-bg-play u-cur-pointer" onclick="playground.loadIframe(\''+playgroundId+'-iframe\')"></div>'+
+                    '</div>'+
+                    '<pre id="'+playgroundId+'-iframe-code" class="u-m-none">'+
+                        '<code class="language-html">'+
+                            trimmed+
+                        '</code>'+
+                    '</pre>'+
+                '</div>'
+            );
+        });
+        // Code formatter
+        if (typeof Prism !== undefined) {
+            Prism.highlightAll();
+        }
+        // Manage playground top position to match the bottom of the commands
+        // playground.adjustPlaygroundInstanceMaximized();
+        jQuery(window).on('resize', function() {
+            // playground.adjustPlaygroundInstanceMaximized();
+        });
+    },
+    /**
+    * EXPAND
+    * Expands the specified playground
+    * @playgroundId - string - ID of the playground
+    */
+    expand: function(playgroundId) {
+        if (typeof playgroundId === 'string') {
+            let jQ_playground = jQuery('#'+playgroundId),
+                jQ_instance = jQuery('#'+playgroundId+'-instance'),
+                jQ_commands = jQuery('[data-playground-commands="'+playgroundId+'"]'),
+                instanceClasses = 'c-position m-fixed m-left-0 u-w-100 u-o-auto u-z-11 u-bc-primary-max u-pb-md',
+                commandsClasses = 'c-position m-fixed m-top-left u-w-100 u-z-11 u-bc-primary-max';
+            if (jQ_playground.length === 1) {
+                jQ_commands.find('.maximize, .minimize').addClass('u-none');
+                // Playground already expanded
+                if (jQ_instance.hasClass('expanded')) {
+                    jQ_instance.removeClass(instanceClasses+' expanded');
+                    jQ_commands.removeClass(commandsClasses).find('.maximize').removeClass('u-none');
+                    jQ_playground.removeAttr('data-expand');
+                }
+                // If not already expanded, apply specified classes above
+                else {
+                    jQ_instance.addClass(instanceClasses+' expanded');
+                    jQ_commands.addClass(commandsClasses).find('.minimize').removeClass('u-none');
+                    jQ_playground.attr('data-expand', instanceClasses+' expanded');
+                }
+                playground.adjustPlaygroundInstanceMaximized();
+            }
+        }
+    },
+    // Adjust CSS top of expanded playground to fit playground commands at bottom
+    adjustPlaygroundInstanceMaximized: function() {
+        jQuery('.playground-instance').each(function() {
+            if (jQuery(this).hasClass('expanded')) {
+                // Get commands height
+                let playgroundId = jQuery(this).attr('id');
+                playgroundId = playgroundId.replace('-instance', '');
+                const commandsHeight = jQuery('[data-playground-commands="'+playgroundId+'"]').outerHeight();
+                // Set the playground height window height minus commands height
+                const playgroundInstanceHeight = jQuery(window).height() - commandsHeight;
+                jQuery(this).css({
+                    top: commandsHeight+'px',
+                    height: playgroundInstanceHeight+'px'
+                });
+            } else {
+                jQuery(this).css({
+                    top: 'inherit',
+                    height: 'inherit'
+                });
+            }
+        });
+    },
+    // true if lazy loading is started
+    lazyLoadingInit: false,
+    /**
+    * LOAD IFRAME
+    * Loads the specified playground iframe
+    * @id - string - ID of the playground iframe to load
+    */
+    loadIframe: function(id) {
+        if (typeof id === 'string') {
+            let jQ_el = jQuery('#'+id);
+            if (jQ_el.length === 1) {
+                const iframeUrl = jQ_el.attr('data-src');
+                let jQ_preview = jQ_el.closest('.playground-instance').find('.playground-preview');
+                jQ_preview
+                    .removeClass('u-bg-play')
+                    .addClass('u-bg-loading');
+                jQ_el
+                    .on('load', function() {
+                        jQ_preview.remove();
+                    })
+                    .attr('src', iframeUrl)
+                    .removeClass('not-rendered');
+            }
+        }
+    },
+    /**
+    * LAZY LOADING
+    * Loads playground iframes into the viewport
+    */  
+    lazyLoading: function() {
+        let pastScrollAmount = 0;
+        // Run only is not alreadu started
+        if (!playground.lazyLoadingInit) {
+            let loadViewableIframeUrl = function() {
+                const   currentScrollAmount = jQuery(window).scrollTop(),
+                        sensitivity = Math.abs(pastScrollAmount - currentScrollAmount);
+                pastScrollAmount = currentScrollAmount;
+                // Load only if scroll speed if below a threshold to avoid bottleneck
+                if (sensitivity < 100) {
+                    jQuery('.playground-iframe.not-rendered').each(function() {
+                        if (playground.isInViewport(jQuery(this)[0])) {
+                            const id = jQuery(this).attr('id');
+                            playground.loadIframe(id);
+                        }
+                    });
+                }
+            };
+            loadViewableIframeUrl();
+            jQuery(window).on('scroll', function() {
+                loadViewableIframeUrl();
+            });
+            playground.lazyLoadingInit = true;
+        } else {
+            console.log('Playground lazy loading is already running');
+            return false;
+        }
+    }
+}
+playground.update();
+playground.lazyLoading();
+

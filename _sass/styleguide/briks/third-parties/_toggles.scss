@@ -1,0 +1,66 @@
+/*
+    TOGGLES
+    Toggles component
+    ---
+*/
+@keyframes toggleIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+[my-toggle-name] {
+    display: none;
+    &.active {
+        display: inherit;
+        animation-name: toggleIn;
+        animation-duration: 300ms;
+        animation-iteration-count: 1;
+    }
+}
+// The trigger
+[my-toggle] {
+    .mod-off {
+        display: inherit;
+    }
+    .mod-on {
+        display: none;
+    }
+    &[my-toggle-options*="icon-rotate"] {
+        &>[class*="icon-"] {
+            transition: all 300ms;
+        }
+    }
+    &[my-toggle-options*="icon-toggle"] {
+        &>[class*="icon-"] {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+    &.active {
+        .mod-off {
+            display: none;
+        }
+        .mod-on {
+            display: inherit;
+        }
+        &[my-toggle-options*="icon-rotate"] {
+            &>[class*="icon-"] {
+                transform: rotate(180deg);
+            }
+        }
+        &[my-toggle-options*="icon-toggle"] {
+            &>[class*="icon-"] {
+                &:nth-child(1) {
+                    display: none;
+                }
+                &:nth-child(2) {
+                    display: inherit;
+                }
+            }
+        }
+    }
+}

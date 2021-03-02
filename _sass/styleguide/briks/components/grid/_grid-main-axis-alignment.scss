@@ -1,0 +1,87 @@
+
+/*
+    GRID MAIN AXIS ALIGNMENT
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        @if $briks-components__grid__justify-content-flex-start-name != false and $briks-components__grid__justify-content-flex-start-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-start-name} {
+                justify-content: flex-start;
+            }
+        }
+        @if $briks-components__grid__justify-content-flex-end-name != false and $briks-components__grid__justify-content-flex-end-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-end-name} {
+                justify-content: flex-end;
+            }
+        }
+        @if $briks-components__grid__justify-content-center-name != false and $briks-components__grid__justify-content-center-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-center-name} {
+                justify-content: center;
+            }
+        }
+        @if $briks-components__grid__justify-content-space-around-name != false and $briks-components__grid__justify-content-space-around-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-around-name} {
+                justify-content: space-around;
+            }
+        }
+        @if $briks-components__grid__justify-content-space-between-name != false and $briks-components__grid__justify-content-space-between-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-between-name} {
+                justify-content: space-between;
+            }
+        }
+        @if $briks-components__grid__justify-content-space-evenly-name != false and $briks-components__grid__justify-content-space-evenly-name != '' {
+            &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-evenly-name} {
+                justify-content: space-evenly;
+            }
+        }
+        @if $briks-components__grid__justify-content-responsive {
+            @each $screen, $value in $briks-screen-sizes {
+                @include my-screen-size($screen) {
+                    @if $briks-components__grid__justify-content-flex-start-name != false and $briks-components__grid__justify-content-flex-start-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-start-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-start-name}*="#{$screen}"] {
+                            justify-content: flex-start;
+                        }
+                    }
+                    @if $briks-components__grid__justify-content-flex-end-name != false and $briks-components__grid__justify-content-flex-end-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-end-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-flex-end-name}*="#{$screen}"] {
+                            justify-content: flex-end;
+                        }
+                    }
+                    @if $briks-components__grid__justify-content-center-name != false and $briks-components__grid__justify-content-center-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-center-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-center-name}*="#{$screen}"] {
+                            justify-content: center;
+                        }
+                    }
+                    @if $briks-components__grid__justify-content-space-around-name != false and $briks-components__grid__justify-content-space-around-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-around-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-around-name}*="#{$screen}"] {
+                            justify-content: space-around;
+                        }
+                    }
+                    @if $briks-components__grid__justify-content-space-between-name != false and $briks-components__grid__justify-content-space-between-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-between-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-between-name}*="#{$screen}"] {
+                            justify-content: space-between;
+                        }
+                    }
+                    @if $briks-components__grid__justify-content-space-evenly-name != false and $briks-components__grid__justify-content-space-evenly-name != '' {
+                        &.#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-evenly-name}#{$briks-responsive-prefix}#{$screen},
+                        &[#{$briks-modifiers-prefix}#{$briks-components__grid__justify-content-space-evenly-name}*="#{$screen}"] {
+                            justify-content: space-evenly;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.metadata.lang | default: 'en' }}" dir="ltr" itemscope itemtype="https://schema.org/WebPage" prefix="og:http://ogp.me/ns#">
+    {% include styleguide/head.html %}
+    <body class="u-bc-primary-edge">
+        <div class="c-grid m-nowrap">
+            {% include styleguide/sidebar.html %}
+            <main class="m-grow m-w-1 c-grid m-nowrap" u-ml-md="xl">
+                {{ content }}
+            </main>
+        </div>
+        <footer class="u-p-lg u-fs-sm u-bc-primary-max u-c-primary-alt u-bt-thin-dashed-alt u-mt-md">
+            <nav class="c-grid m-space-between m-bottom">
+                <ul class="u-ls-none u-mb-md--sm">
+                    <li>
+                        <a href="{{ site.url }}{{ site.baseurl }}" class="c-btn m-translucid u-pl-none">{{ site.title | escape }}</a><br>
+                        {{ site.description | escape }} {% if site.metadata.author %}© {{ site.metadata.author }}{% endif %}
+                    </li>
+                    {% if site.shields %}
+                        <li class="u-mt-md">
+                            {% include styleguide/shields.html %}
+                        </li>
+                    {% endif %}
+                </ul>
+                <ul class="u-ls-none">
+                    <li class="u-fs-xxs">Powered by <a href="#" class="u-c-primary-alt">LibDoc Jekyll theme</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <script type="text/javascript" src="{{ '/styleguide/js/prism.min.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/styleguide/js/my-toggles.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/styleguide/js/template.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/styleguide/js/playground.js' | relative_url }}"></script>
+    </body>
+</html>

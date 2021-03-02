@@ -1,0 +1,21 @@
+/*
+    GRID
+    Briks component
+    ---
+    Features imports
+*/
+@import 'grid/grid-base';
+@import 'grid/grid-main-axis-alignment';
+@import 'grid/grid-cross-axis-alignment';
+@import 'grid/grid-reverse-order';
+@import 'grid/grid-column';
+@import 'grid/grid-nowrap';
+@import 'grid/grid-inline';
+@import 'grid/grid-gutter';
+@import 'grid/grid-aspect-ratios';
+@import 'grid/item-widths';
+@import 'grid/item-grow';
+@import 'grid/item-max-widths';
+@import 'grid/item-fixed-widths';
+@import 'grid/item-aspect-ratios';
+@import 'grid/item-orders';

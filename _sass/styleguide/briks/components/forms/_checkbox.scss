@@ -1,0 +1,320 @@
+
+
+/*
+    FORMS CHECKBOXES
+    Briks forms component
+    ---
+    Input type checkbox
+*/
+@if $briks-components__forms__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__forms__name != '' 
+and $briks-components__forms__name != false
+and length($briks-components__forms__checkboxes-hooks) > 0 {
+    .#{$briks-components-prefix}#{$briks-components__forms__name} {
+        // root-css is component root
+        @if type-of(map-get($briks-components__forms__checkboxes-hooks, root-css)) == map {
+            @if length(map-get($briks-components__forms__checkboxes-hooks, root-css)) > 0 {
+                @each $property, $value in map-get($briks-components__forms__checkboxes-hooks, root-css) {
+                    #{$property}: $value;
+                }
+            }
+        }
+        
+        // Input
+        &>input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            &+label {
+                &:before,
+                &:after {
+                    content: '';
+                }
+            }
+            @each $zone, $zonedata in $briks-components__forms__checkboxes-hooks {
+                // Everything happens in label
+                &+label {
+                    // label-css is the label tag
+                    @if $zone == 'label-css' {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                    // label-before-css is the checkbox background
+                    @if $zone == 'label-before-css' {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                    // label-after-css is the checkbox mark
+                    @if $zone == 'label-after-css' {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+                // Focus input
+                // label-focus-css is the checkbox mark when input is focused
+                @if $zone == 'label-focus-css' {
+                    &:focus {
+                        &+label {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+                // label-before-focus-css is the checkbox background when input is focused
+                @if $zone == 'label-before-focus-css' {
+                    &:focus {
+                        &+label {
+                            &:before {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                }
+                // label-after-focus-css is the checkbox mark when input is focused
+                @if $zone == 'label-after-focus-css' {
+                    &:focus {
+                        &+label {
+                            &:after {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Checked input
+                // label-checked-css is the checkbox label when input is checked
+                @if $zone == 'label-checked-css' {
+                    &:checked {
+                        &+label {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+                // label-before-checked-css is the checkbox background when input is checked
+                @if $zone == 'label-before-checked-css' {
+                    &:checked {
+                        &+label {
+                            &:before {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                }
+                // label-after-checked-css is the checkbox mark when input is checked
+                @if $zone == 'label-after-checked-css' {
+                    &:checked {
+                        &+label {
+                            &:after {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Disabled input
+                // label-disabled-css is the checkbox label when input is disabled
+                @if $zone == 'label-disabled-css' {
+                    &[disabled] {
+                        &+label {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+                // label-before-disabled-css is the checkbox background when input is disabled
+                @if $zone == 'label-before-disabled-css' {
+                    &[disabled] {
+                        &+label {
+                            &:before {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                }
+                // label-after-disabled-css is the checkbox mark when input is disabled
+                @if $zone == 'label-after-disabled-css' {
+                    &[disabled] {
+                        &+label {
+                            &:after {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Modifiers
+        @each $name, $zonesmap in $briks-components__forms__checkboxes-hooks-modifiers {
+            &.#{$briks-modifiers-prefix}#{$name} {
+                // root-css is component root
+                @if type-of(map-get($zonesmap, root-css)) == map {
+                    @if length(map-get($zonesmap, root-css)) > 0 {
+                        @each $property, $value in map-get($zonesmap, root-css) {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+                &>input[type="checkbox"] {
+                    @each $zone, $zonedata in $zonesmap {
+                        // Everything happens in label
+                        &+label {
+                            // label-css is the label tag
+                            @if $zone == 'label-css' {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                            // label-before-css is the checkbox background
+                            @if $zone == 'label-before-css' {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                            // label-after-css is the checkbox mark
+                            @if $zone == 'label-after-css' {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                        // Focus input
+                        // label-focus-css is the checkbox mark when input is focused
+                        @if $zone == 'label-focus-css' {
+                            &:focus {
+                                &+label {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                        // label-before-focus-css is the checkbox background when input is focused
+                        @if $zone == 'label-before-focus-css' {
+                            &:focus {
+                                &+label {
+                                    &:before {
+                                        @each $property, $value in $zonedata {
+                                            #{$property}: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // label-after-focus-css is the checkbox mark when input is focused
+                        @if $zone == 'label-after-focus-css' {
+                            &:focus {
+                                &+label {
+                                    &:after {
+                                        @each $property, $value in $zonedata {
+                                            #{$property}: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // Checked input
+                        // label-checked-css is the checkbox label when input is checked
+                        @if $zone == 'label-checked-css' {
+                            &:checked {
+                                &+label {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                        // label-before-checked-css is the checkbox background when input is checked
+                        @if $zone == 'label-before-checked-css' {
+                            &:checked {
+                                &+label {
+                                    &:before {
+                                        @each $property, $value in $zonedata {
+                                            #{$property}: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // label-after-checked-css is the checkbox mark when input is checked
+                        @if $zone == 'label-after-checked-css' {
+                            &:checked {
+                                &+label {
+                                    &:after {
+                                        @each $property, $value in $zonedata {
+                                            #{$property}: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // Disabled input
+                        // label-disabled-css is the checkbox label when input is disabled
+                        @if $zone == 'label-disabled-css' {
+                            &[disabled] {
+                                &+label {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                        // label-before-disabled-css is the checkbox background when input is disabled
+                        @if $zone == 'label-before-disabled-css' {
+                            &[disabled] {
+                                &+label {
+                                    &:before {
+                                        @each $property, $value in $zonedata {
+                                            #{$property}: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // label-after-disabled-css is the checkbox mark when input is disabled
+                        @if $zone == 'label-after-disabled-css' {
+                            &[disabled] {
+                                &+label {
+                                    &:after {
+                                        @each $property, $value in $zonedata {
+                                            #{$property}: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

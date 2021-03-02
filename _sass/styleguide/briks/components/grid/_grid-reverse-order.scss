@@ -1,0 +1,30 @@
+
+/*
+    GRID REVERSE ORDER
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__reverse-order-name != false 
+and $briks-components__grid__reverse-order-name != '' {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        &.#{$briks-modifiers-prefix}#{$briks-components__grid__reverse-order-name} {
+            flex-flow: row-reverse;
+        }
+        @if $briks-components__grid__reverse-order-responsive {
+            @each $screen, $value in $briks-screen-sizes {
+                @include my-screen-size($screen) {
+                    &.#{$briks-modifiers-prefix}#{$briks-components__grid__reverse-order-name}#{$briks-responsive-prefix}#{$screen},
+                    &[#{$briks-modifiers-prefix}#{$briks-components__grid__reverse-order-name}*="#{$screen}"] {
+                        flex-flow: row-reverse;
+                    }
+                }
+            }
+        }
+    }
+}

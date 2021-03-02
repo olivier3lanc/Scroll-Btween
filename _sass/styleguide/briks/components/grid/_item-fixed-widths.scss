@@ -1,0 +1,40 @@
+
+/*
+    GRID ITEM FIXED WIDTHS
+    ---
+    Feature of Briks grid component
+*/
+@if $briks-components__grid__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__grid__name != '' 
+and $briks-components__grid__name != false 
+and $briks-components__grid__item-fixed-widths-prefix != false 
+and length($briks-components__grid__item-fixed-widths-names-and-values) > 0 {
+    // Grid component
+    .#{$briks-components-prefix}#{$briks-components__grid__name} {
+        &>* {
+            @each $name, $value in $briks-components__grid__item-fixed-widths-names-and-values {
+                &.#{$briks-modifiers-prefix}#{$briks-components__grid__item-fixed-widths-prefix}#{$name} {
+                    width: unquote($value+$briks-unit);
+                    min-width: unquote($value+$briks-unit);
+                    max-width: unquote($value+$briks-unit);
+                }
+            }
+            @if $briks-components__grid__item-fixed-widths-responsive {
+                @each $screen, $value in $briks-screen-sizes {
+                    @include my-screen-size($screen) {
+                        @each $name, $value in $briks-components__grid__item-fixed-widths-names-and-values {
+                            &.#{$briks-modifiers-prefix}#{$briks-components__grid__item-fixed-widths-prefix}#{$name}#{$briks-responsive-prefix}#{$screen},
+                            &[#{$briks-modifiers-prefix}#{$briks-components__grid__item-fixed-widths-prefix}#{$name}*="#{$screen}"] {
+                                width: unquote($value+$briks-unit);
+                                min-width: unquote($value+$briks-unit);
+                                max-width: unquote($value+$briks-unit);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

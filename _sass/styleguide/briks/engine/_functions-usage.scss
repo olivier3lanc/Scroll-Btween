@@ -1,0 +1,418 @@
+/*
+    COLOR
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns the specified color name value
+    @param $name - the name of the color specified into $briks-colors
+*/
+@function my-color($name) {
+    // If color, it is a known color
+    @if type-of(map-get($briks-colors, $name)) == color {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+color-+$name;
+        $fallback1: map-get($briks-colors, $name);
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(map-get($briks-colors, $name));
+        }
+    }
+    // Otherwise it is a custom value
+    @else {
+        @warn 'UNKNOWN color name:'+$name;
+        @return $name;
+    }
+}
+
+/*
+    FONT SIZE
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns the specified font size name value with the design system unit
+    @param $name - the name of the font size specified into settings $briks-font-sizes
+*/
+@function my-font-size($name) {
+    // If number, it is a known font size
+    @if type-of(map-get($briks-font-sizes, $name)) == number {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+font-size-+$name;
+        $fallback1: map-get($briks-font-sizes, $name)+$briks-unit;
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(map-get($briks-font-sizes, $name)+$briks-unit);
+        }
+    }
+    // Otherwise it is a custom value
+    @else {
+        @warn 'UNKNOWN font size name:'+$name;
+        @return $name;
+    }
+}
+/*
+    TYPOGRAPHY
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns - the specified CSS font shorthand
+    @param $name - the name of the typography specified into settings $briks-typography
+*/
+@function my-typography($name) {
+    @if type-of(map-get($briks-typography, $name)) == 'null' {
+        @warn 'UNKNOWN typography:'+$name;
+        @return $name;
+    } @else {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+typo-+$name;
+        $fallback1: map-get($briks-typography, $name);
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(map-get($briks-typography, $name));
+        }
+    }
+}
+/*
+    BORDER
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns - the specified shorthand with the design system units
+    @param $name - the name of the border style specified into settings $briks-borders
+*/
+@function my-border($name) {
+    @if type-of(map-get($briks-borders, $name)) == 'null' {
+        @warn 'UNKNOWN border name:'+$name;
+        @return $name;
+    } @else {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+border-+$name;
+        $fallback1: map-get($briks-borders, $name);
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(map-get($briks-borders, $name));
+        }
+    }
+}
+
+/*
+    SHADOW
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns - the specified shorthand with the design system units
+    @param $name - the name of the shadow style specified into settings $briks-shadows
+*/
+@function my-shadow($name) {
+    @if type-of(map-get($briks-shadows, $name)) == 'null' {
+        @warn 'UNKNOWN shadow name:'+$name;
+        @return $name;
+    } @else {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+shadow-+$name;
+        $fallback1: map-get($briks-shadows, $name);
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(map-get($briks-shadows, $name));
+        }
+    }
+}
+
+/*
+    BORDER RADIUS
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns - the specified shorthand for border radius with the design system units
+    @param $glob-tlbr-tl   the name of the border radius specified into settings border-radius
+                                According to usage, it can be
+                                    -> global border radius,
+                                    -> top-left + top-right border radius
+                                    -> top-left border radius only
+    @param $trbl-tr          the name of the border radius specified into settings border-radius
+                                According to usage, it can be
+                                    -> top-right border radius
+                                    -> right border radius
+    @param $br         the name of the bottom right border radius specified into settings border-radius
+    @param $bl         the name of the bottom left border radius specified into settings border-radius
+    Examples:
+        my-border-radius(xs) returns 3px;
+        my-border-radius(xs, none) returns 3px 0px;
+        my-border-radius(xs, lg, sm, none) returns 3px 28px 9px 0px;
+*/
+@function my-border-radius($glob-tlbr-tl, $trbl-tr: '', $br: '', $bl: '') {
+    @if (type-of(map-get($briks-border-radius, $glob-tlbr-tl)) == 'null') {
+        @warn 'UNKNOWN BORDER RADIUS NAME:'+$glob-tlbr-tl;
+    }
+    @if (type-of(map-get($briks-border-radius, $trbl-tr)) == 'null') and ($trbl-tr != '') {
+        @warn 'UNKNOWN BORDER RADIUS NAME:'+$trbl-tr;
+    }
+    @if (type-of(map-get($briks-border-radius, $br)) == 'null') and ($br != '') {
+        @warn 'UNKNOWN BORDER RADIUS NAME:'+$br;
+    }
+    @if (type-of(map-get($briks-border-radius, $bl)) == 'null') and ($bl != '') {
+        @warn 'UNKNOWN BORDER RADIUS NAME:'+$bl;
+    }
+    @if (type-of(map-get($briks-border-radius, $glob-tlbr-tl)) != 'null') and (type-of(map-get($briks-border-radius, $trbl-tr)) != 'null') and (type-of(map-get($briks-border-radius, $br)) != 'null') and (type-of(map-get($briks-border-radius, $bl)) != 'null') {
+        $cssvar1: unquote('--')+$briks-css-variables-prefix+border-radius-+$glob-tlbr-tl;
+        $cssvar2: unquote('--')+$briks-css-variables-prefix+border-radius-+$trbl-tr;
+        $cssvar3: unquote('--')+$briks-css-variables-prefix+border-radius-+$br;
+        $cssvar4: unquote('--')+$briks-css-variables-prefix+border-radius-+$bl;
+        $fallback1: map-get($briks-border-radius, $glob-tlbr-tl)+$briks-unit;
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        $fallback2: map-get($briks-border-radius, $trbl-tr)+$briks-unit;
+        @if type-of($fallback2) == string {
+            $fallback2: unquote($fallback2);
+        }
+        $fallback3: map-get($briks-border-radius, $br)+$briks-unit;
+        @if type-of($fallback3) == string {
+            $fallback3: unquote($fallback3);
+        }
+        $fallback4: map-get($briks-border-radius, $bl)+$briks-unit;
+        @if type-of($fallback4) == string {
+            $fallback4: unquote($fallback4);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar1, $fallback1) var($cssvar2, $fallback2) var($cssvar3, $fallback3) var($cssvar4, $fallback4);
+        } @else {
+            @return $fallback1 $fallback2 $fallback3 $fallback4;
+            // @return unquote(map-get($briks-border-radius, $glob-tlbr-tl)+$briks-unit) unquote(map-get($briks-border-radius, $trbl-tr)+$briks-unit) unquote(map-get($briks-border-radius, $br)+$briks-unit) unquote(map-get($briks-border-radius, $bl)+$briks-unit);
+        }
+    } @else if (type-of(map-get($briks-border-radius, $trbl-tr)) != 'null') {
+        $cssvar1: unquote('--')+$briks-css-variables-prefix+border-radius-+$glob-tlbr-tl;
+        $cssvar2: unquote('--')+$briks-css-variables-prefix+border-radius-+$trbl-tr;
+        $fallback1: map-get($briks-border-radius, $glob-tlbr-tl)+$briks-unit;
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        $fallback2: map-get($briks-border-radius, $trbl-tr)+$briks-unit;
+        @if type-of($fallback2) == string {
+            $fallback2: unquote($fallback2);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar1, $fallback1) var($cssvar2, $fallback2);
+        } @else {
+            @return $fallback1 $fallback2;
+            // @return unquote(map-get($briks-border-radius, $glob-tlbr-tl)+$briks-unit) unquote(map-get($briks-border-radius, $trbl-tr)+$briks-unit);
+        }
+    } @else if type-of(map-get($briks-border-radius, $glob-tlbr-tl)) != 'null' {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+border-radius-+$glob-tlbr-tl;
+        $fallback1: map-get($briks-border-radius, $glob-tlbr-tl)+$briks-unit;
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(map-get($briks-border-radius, $glob-tlbr-tl)+$briks-unit);
+        }
+    } @else {
+        @return '';
+    }
+}
+
+/*
+    SPACING
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns - the specified shorthand for spacement between elements with the design system units
+    @param $glob-tb-t   the name of the spacing specified into settings spacings
+                                According to usage, it can be
+                                    -> global for the element
+                                    -> top+bottom for the element
+                                    -> left  for the element
+    @param $lr-r        the name of the spacing specified into settings spacings
+                                According to usage, it can be
+                                    -> left+right for the element
+                                    -> right  for the element
+    @param $b           the name of the bottom spacing specified into settings spacings
+    @param $l           the name of the left spacing specified into settings spacings
+    Examples:
+        my-spacing(xs) returns 12px;
+        my-spacing(xs, none) returns 12px 0px;
+        my-spacing(xs, lg, sm, none) returns 12px 28px 14px 0px;
+*/
+@function my-spacing($glob-tb-t, $lr-r: '', $b: '', $l: '') {
+    @if (type-of(briks-spacing($glob-tb-t)) == 'null') {
+        @warn 'UNKNOWN SPACING NAME:'+$glob-tb-t;
+    }
+    @if (type-of(briks-spacing($lr-r)) == 'null') and ($lr-r != '') {
+        @warn 'UNKNOWN SPACING NAME:'+$lr-r;
+    }
+    @if (type-of(briks-spacing($b)) == 'null') and ($b != '') {
+        @warn 'UNKNOWN SPACING NAME:'+$b;
+    }
+    @if (type-of(briks-spacing($l)) == 'null') and ($l != '') {
+        @warn 'UNKNOWN SPACING NAME:'+$l;
+    }
+    @if (type-of(briks-spacing($glob-tb-t)) != 'null') and (type-of(briks-spacing($lr-r)) != 'null') and (type-of(briks-spacing($b)) != 'null') and (type-of(briks-spacing($l)) != 'null') {
+        $cssvar1: unquote('--')+$briks-css-variables-prefix+spacing-+$glob-tb-t;
+        $cssvar2: unquote('--')+$briks-css-variables-prefix+spacing-+$lr-r;
+        $cssvar3: unquote('--')+$briks-css-variables-prefix+spacing-+$b;
+        $cssvar4: unquote('--')+$briks-css-variables-prefix+spacing-+$l;
+        $fallback1: briks-spacing($glob-tb-t)+$briks-unit;
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        $fallback2: briks-spacing($lr-r)+$briks-unit;
+        @if type-of($fallback2) == string {
+            $fallback2: unquote($fallback2);
+        }
+        $fallback3: briks-spacing($b)+$briks-unit;
+        @if type-of($fallback3) == string {
+            $fallback3: unquote($fallback3);
+        }
+        $fallback4: briks-spacing($l)+$briks-unit;
+        @if type-of($fallback4) == string {
+            $fallback4: unquote($fallback4);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar1, $fallback1) var($cssvar2, $fallback2) var($cssvar3, $fallback3) var($cssvar4, $fallback4);
+        } @else {
+            @return $fallback1 $fallback2 $fallback3 $fallback4;
+            // @return unquote(briks-spacing($glob-tb-t)+$briks-unit) unquote(briks-spacing($lr-r)+$briks-unit) unquote(briks-spacing($b)+$briks-unit) unquote(briks-spacing($l)+$briks-unit);
+        }
+    } @else if (type-of(briks-spacing($lr-r)) != 'null') {
+        $cssvar1: unquote('--')+$briks-css-variables-prefix+spacing-+$glob-tb-t;
+        $cssvar2: unquote('--')+$briks-css-variables-prefix+spacing-+$lr-r;
+        $fallback1: briks-spacing($glob-tb-t)+$briks-unit;
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        $fallback2: briks-spacing($lr-r)+$briks-unit;
+        @if type-of($fallback2) == string {
+            $fallback2: unquote($fallback2);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar1, $fallback1) var($cssvar2, $fallback2);
+        } @else {
+            @return $fallback1 $fallback2;
+            // @return unquote(briks-spacing($glob-tb-t)+$briks-unit) unquote(briks-spacing($lr-r)+$briks-unit);
+        }
+    } @else if type-of(briks-spacing($glob-tb-t)) != 'null' {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+spacing-+$glob-tb-t;
+        $fallback1: briks-spacing($glob-tb-t)+$briks-unit;
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(briks-spacing($glob-tb-t)+$briks-unit);
+        }
+    } @else {
+        @return '';
+    }
+}
+
+/*
+    FONT FAMILY
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns the specified font family name value
+    @param $name - the name of the font family specified into settings $briks-fonts
+*/
+@function my-font-family($name) {
+    @if type-of(map-get($briks-fonts, $name)) == 'null' {
+        @warn 'UNKNOWN font family:'+$name+' is not a valid font';
+        @return $name;
+    } @else {
+        @if type-of(map-get($briks-fonts, $name)) != 'null' {
+            $cssvar: unquote('--')+$briks-css-variables-prefix+font-family-+$name;
+            $fallback1: map-get(map-get($briks-fonts, $name), name);
+            @if type-of($fallback1) == string {
+                $fallback1: unquote($fallback1);
+            }
+            $fallback2: map-get(map-get($briks-fonts, $name), fallback);
+            @if type-of($fallback2) == string {
+                $fallback2: unquote($fallback2);
+            }
+            // @warn $cssvar;
+            // If local font
+            @if map-get(map-get($briks-fonts, $name), type) == 'local' {
+                @if $briks-css-variables-enabled {
+                    @return var($cssvar, $fallback1, $fallback2);
+                } @else {
+                    @return $fallback1, $fallback2;
+                }
+            }
+            // Websafe
+            @else if map-get(map-get($briks-fonts, $name), type) == 'websafe' {
+                @if $briks-css-variables-enabled {
+                    @return var($cssvar, unquote(map-get(map-get($briks-fonts, $name), name)));
+                } @else {
+                    @return unquote(map-get(map-get($briks-fonts, $name), name));
+                }
+            }
+            // If Google font
+            // The following code is needed to get proper Google font weight.
+            // To do so we add the 'font-weight' property with the proper font weight value
+            // @warn type-of(map-get($briks-fonts, $name));
+            @else if map-get(map-get($briks-fonts, $name), type) == 'google' {
+                $fallback1: map-get(map-get($briks-fonts, $name), name);
+                @if type-of($fallback1) == string {
+                    $fallback1: unquote($fallback1);
+                }
+                $fallback2: map-get(map-get($briks-fonts, $name), fallback);
+                @if type-of($fallback2) == string {
+                    $fallback2: unquote($fallback2);
+                }
+                @if $briks-css-variables-enabled {
+                    @return var($cssvar, $fallback1, $fallback2);
+                } @else {
+                    @return $fallback1, $fallback2;
+                }
+            }
+        }
+        @else {
+            @warn 'UNKNOWN font family:'+$name+' is not a valid font';
+            @return '';
+        }
+    }
+}
+
+/*
+    BACKGROUND
+    USAGE FUNCTION
+    Values ready to use for the end-user
+    @returns the specified background name value
+    @param $name - the name of the background specified into settings $briks-backgrounds
+*/
+@function my-background($name) {
+    // If not null, it is a known background
+    @if type-of(map-get($briks-backgrounds, $name)) != 'null' {
+        $cssvar: unquote('--')+$briks-css-variables-prefix+background-+$name;
+        $fallback1: map-get($briks-backgrounds, $name);
+        @if type-of($fallback1) == string {
+            $fallback1: unquote($fallback1);
+        }
+        @if $briks-css-variables-enabled {
+            @return var($cssvar, $fallback1);
+        } @else {
+            @return $fallback1;
+            // @return unquote(map-get($briks-font-sizes, $name)+$briks-unit);
+        }
+    }
+    // Otherwise it is a custom value
+    @else {
+        @warn 'UNKNOWN background name:'+$name;
+        @return '';
+    }
+}

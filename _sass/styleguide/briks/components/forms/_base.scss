@@ -1,0 +1,20 @@
+
+
+/*
+    FORMS BASE
+    Briks forms component
+    ---
+    Base declarations for forms component
+*/
+@if $briks-components__forms__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__forms__name != '' 
+and $briks-components__forms__name != false {
+    .#{$briks-components-prefix}#{$briks-components__forms__name} {
+        // Contiguous forms
+        &+.#{$briks-components-prefix}#{$briks-components__forms__name} {
+            margin-top: $briks-components__forms__gap;
+        }
+    }
+}

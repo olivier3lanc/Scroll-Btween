@@ -1,0 +1,318 @@
+
+
+/*
+    FORMS COMMON INPUTS
+    Briks forms component
+    ---
+    Affects selects, textarea and all inputs excepting the following types: checkbox, radio and range
+*/
+@if $briks-components__forms__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__forms__name != '' 
+and $briks-components__forms__name != false
+and length($briks-components__forms__common-inputs-hooks) > 0 {
+    $briks-components__forms-common-inputs__base-types: unquote('textarea,select,input:not([type="checkbox"]):not([type="radio"]):not([type="range"])');
+    .#{$briks-components-prefix}#{$briks-components__forms__name} {
+        // Component's root
+        @each $zone, $zonedata in $briks-components__forms__common-inputs-hooks {
+            // root-css
+            @if $zone == 'root-css' {
+                @each $property, $value in $zonedata {
+                    #{$property}: $value;
+                }
+            }
+            // input-css
+            @if $zone == 'input-css' {
+                &>#{$briks-components__forms-common-inputs__base-types} {
+                    -webkit-appearance: none; // Only for selects: Allows to apply same style
+                    -moz-appearance: none; // Only for selects: Allows to apply same style
+                    @each $property, $value in $zonedata {
+                        #{$property}: $value;
+                    }
+                    // Force box-sizing: content-box for input[type="color"] otherwise no height
+                    &[type="color"] {
+                        box-sizing: content-box;
+                    }
+                }
+            }
+            // input-disabled-css
+            @if $zone == 'input-disabled-css' {
+                &>#{$briks-components__forms-common-inputs__base-types} {
+                    &[disabled] {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // input-placeholder-css
+            @if $zone == 'input-placeholder-css' {
+                &>#{$briks-components__forms-common-inputs__base-types} {
+                    @each $property, $value in $zonedata {
+                        &:placeholder-shown {
+                            #{$property}: $value;
+                        }
+                        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                            #{$property}: $value;
+                        }
+                        &::-moz-placeholder { /* Firefox 19+ */
+                            #{$property}: $value;
+                        }
+                        &:-ms-input-placeholder { /* IE 10+ */
+                            #{$property}: $value;
+                        }
+                        &:-moz-placeholder { /* Firefox 18- */
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // input-focus-css
+            @if $zone == 'input-focus-css' {
+                &>#{$briks-components__forms-common-inputs__base-types} {
+                    &:focus {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // input-hover-css
+            @if $zone == 'input-hover-css' {
+                &:hover {
+                    &>#{$briks-components__forms-common-inputs__base-types} {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // label-css
+            @if $zone == 'label-css' {
+                // Label after input
+                @if $briks-components__forms__label_after_input {
+                    &>#{$briks-components__forms-common-inputs__base-types} {
+                        &+label {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+                // Label before input
+                @else {
+                    &>label {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // label-focus-css
+            @if $zone == 'label-focus-css' {
+                &>#{$briks-components__forms-common-inputs__base-types} {
+                    &:focus {
+                        &+label {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // label-hover-css
+            @if $zone == 'label-hover-css' {
+                // Label after input
+                @if $briks-components__forms__label_after_input {
+                    &:hover {
+                        &>#{$briks-components__forms-common-inputs__base-types} {
+                            &+label {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Label before input
+                @else {
+                    &:hover {
+                        &>label {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // label-disabled-css
+            @if $zone == 'label-disabled-css' {
+                &>#{$briks-components__forms-common-inputs__base-types} {
+                    &[disabled] {
+                        &+label {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // Overrides for select
+            &>select {
+                @each $property, $value in $briks-components__forms__common-inputs-select-overrides {
+                    #{$property}: $value;
+                }
+            }
+            // Overrides for textarea
+            &>textarea {
+                @each $property, $value in $briks-components__forms__common-inputs-textarea-overrides {
+                    #{$property}: $value;
+                }
+            }
+        }
+        // Modifiers
+        @each $name, $zonesmap in $briks-components__forms__common-inputs-hooks-modifiers {
+            &.#{$briks-modifiers-prefix}#{$name} {
+                @each $zone, $zonedata in $zonesmap {
+                    // root-css
+                    @if $zone == 'root-css' {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                    // input-css
+                    @if $zone == 'input-css' {
+                        &>#{$briks-components__forms-common-inputs__base-types} {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                    // input-disabled-css
+                    @if $zone == 'input-disabled-css' {
+                        &>#{$briks-components__forms-common-inputs__base-types} {
+                            &[disabled] {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // input-placeholder-css
+                    @if $zone == 'input-placeholder-css' {
+                        &>#{$briks-components__forms-common-inputs__base-types} {
+                            @each $property, $value in $zonedata {
+                                &:placeholder-shown {
+                                    #{$property}: $value;
+                                }
+                                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                                    #{$property}: $value;
+                                }
+                                &::-moz-placeholder { /* Firefox 19+ */
+                                    #{$property}: $value;
+                                }
+                                &:-ms-input-placeholder { /* IE 10+ */
+                                    #{$property}: $value;
+                                }
+                                &:-moz-placeholder { /* Firefox 18- */
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // input-focus-css
+                    @if $zone == 'input-focus-css' {
+                        &>#{$briks-components__forms-common-inputs__base-types} {
+                            &:focus {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // input-hover-css
+                    @if $zone == 'input-hover-css' {
+                        &:hover {
+                            &>#{$briks-components__forms-common-inputs__base-types} {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // label-css
+                    @if $zone == 'label-css' {
+                        // Label after input
+                        @if $briks-components__forms__label_after_input {
+                            &>#{$briks-components__forms-common-inputs__base-types} {
+                                &+label {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                        // Label before input
+                        @else {
+                            &>label {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // label-focus-css
+                    @if $zone == 'label-focus-css' {
+                        &>#{$briks-components__forms-common-inputs__base-types} {
+                            &:focus {
+                                &+label {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // label-hover-css
+                    @if $zone == 'label-hover-css' {
+                        // Label after input
+                        @if $briks-components__forms__label_after_input {
+                            &:hover {
+                                &>#{$briks-components__forms-common-inputs__base-types} {
+                                    &+label {
+                                        @each $property, $value in $zonedata {
+                                            #{$property}: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // Label before input
+                        @else {
+                            &:hover {
+                                &>label {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // label-disabled-css
+                    @if $zone == 'label-disabled-css' {
+                        &>#{$briks-components__forms-common-inputs__base-types} {
+                            &[disabled] {
+                                &+label {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

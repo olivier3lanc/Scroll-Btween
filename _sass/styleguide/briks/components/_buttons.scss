@@ -1,0 +1,694 @@
+
+
+/*
+    BUTTONS
+    Briks buttons component
+    ---
+    CSS declarations for buttons component
+*/
+@if $briks-components__buttons__enabled 
+and $briks-components-prefix != '' 
+and $briks-components-prefix != false 
+and $briks-components__buttons__name != '' 
+and $briks-components__buttons__name != false
+and length($briks-components__buttons__hooks) > 0 {
+    .#{$briks-components-prefix}#{$briks-components__buttons__name} {
+        @each $zone, $zonedata in $briks-components__buttons__hooks {
+            // root-css is component root
+            @if $zone == 'root-css' {
+                @each $property, $value in $zonedata {
+                    #{$property}: $value;
+                }
+            }
+            // hover-css is the :hover state
+            @if $zone == 'hover-css' {
+                // Optional class name that forces 'hover' state
+                @if $briks-components__buttons__hover-class != '' and $briks-components__buttons__hover-class != false {
+                    &:hover,
+                    &.#{$briks-components__buttons__hover-class} {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    &:hover {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // hover-before-css is the ::before pseudo class on hover state
+            @if $zone == 'hover-before-css' {
+                // Optional class name that forces 'hover' state
+                @if $briks-components__buttons__hover-class != '' and $briks-components__buttons__hover-class != false {
+                    &:hover,
+                    &.#{$briks-components__buttons__hover-class} {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:hover {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // hover-after-css is the ::after pseudo class on hover state
+            @if $zone == 'hover-after-css' {
+                // Optional class name that forces 'hover' state
+                @if $briks-components__buttons__hover-class != '' and $briks-components__buttons__hover-class != false {
+                    &:hover,
+                    &.#{$briks-components__buttons__hover-class} {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:hover {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // focus-css is the :focus state
+            @if $zone == 'focus-css' {
+                // Optional class name that forces 'focus' state
+                @if $briks-components__buttons__focus-class != '' and $briks-components__buttons__focus-class != false {
+                    &:focus,
+                    &.#{$briks-components__buttons__focus-class} {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    &:focus {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // focus-before-css is the ::before pseudo class on focus state
+            @if $zone == 'focus-before-css' {
+                // Optional class name that forces 'focus' state
+                @if $briks-components__buttons__focus-class != '' and $briks-components__buttons__focus-class != false {
+                    &:focus,
+                    &.#{$briks-components__buttons__focus-class} {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:focus {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // focus-after-css is the ::after pseudo class on focus state
+            @if $zone == 'focus-after-css' {
+                // Optional class name that forces 'focus' state
+                @if $briks-components__buttons__focus-class != '' and $briks-components__buttons__focus-class != false {
+                    &:focus,
+                    &.#{$briks-components__buttons__focus-class} {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:focus {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // active-css is the :active state
+            @if $zone == 'active-css' {
+                // Optional class name that forces 'active' state
+                @if $briks-components__buttons__active-class != '' and $briks-components__buttons__active-class != false {
+                    &:active,
+                    &.#{$briks-components__buttons__active-class} {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    &:active {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // active-before-css is the ::before pseudo class on active state
+            @if $zone == 'active-before-css' {
+                // Optional class name that forces 'active' state
+                @if $briks-components__buttons__active-class != '' and $briks-components__buttons__active-class != false {
+                    &:active,
+                    &.#{$briks-components__buttons__active-class} {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:active {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // active-after-css is the ::after pseudo class on active state
+            @if $zone == 'active-after-css' {
+                // Optional class name that forces 'active' state
+                @if $briks-components__buttons__active-class != '' and $briks-components__buttons__active-class != false {
+                    &:active,
+                    &.#{$briks-components__buttons__active-class} {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:active {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // visited-css is the :visited state
+            @if $zone == 'visited-css' {
+                // Optional class name that forces 'visited' state
+                @if $briks-components__buttons__visited-class != '' and $briks-components__buttons__visited-class != false {
+                    &:visited,
+                    &.#{$briks-components__buttons__visited-class} {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    &:visited {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // visited-before-css is the ::before pseudo class on visited state
+            @if $zone == 'visited-before-css' {
+                // Optional class name that forces 'visited' state
+                @if $briks-components__buttons__visited-class != '' and $briks-components__buttons__visited-class != false {
+                    &:visited,
+                    &.#{$briks-components__buttons__visited-class} {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:visited {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // visited-after-css is the ::after pseudo class on visited state
+            @if $zone == 'visited-after-css' {
+                // Optional class name that forces 'visited' state
+                @if $briks-components__buttons__visited-class != '' and $briks-components__buttons__visited-class != false {
+                    &:visited,
+                    &.#{$briks-components__buttons__visited-class} {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &:visited {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // disabled-css is the disabled state
+            @if $zone == 'disabled-css' {
+                // Optional class name that forces 'disabled' state
+                @if $briks-components__buttons__disabled-class != '' and $briks-components__buttons__disabled-class != false {
+                    &[disabled],
+                    &.#{$briks-components__buttons__disabled-class} {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    &[disabled] {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+            // disabled-before-css is the ::before pseudo class on disabled state
+            @if $zone == 'disabled-before-css' {
+                // Optional class name that forces 'disabled' state
+                @if $briks-components__buttons__disabled-class != '' and $briks-components__buttons__disabled-class != false {
+                    &[disabled],
+                    &.#{$briks-components__buttons__disabled-class} {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &[disabled] {
+                        &:before {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // disabled-after-css is the ::after pseudo class on disabled state
+            @if $zone == 'disabled-after-css' {
+                // Optional class name that forces 'disabled' state
+                @if $briks-components__buttons__disabled-class != '' and $briks-components__buttons__disabled-class != false {
+                    &[disabled],
+                    &.#{$briks-components__buttons__disabled-class} {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                } @else {
+                    &[disabled] {
+                        &:after {
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+            // before-css is the ::before pseudo class
+            @if $zone == 'before-css' {
+                &:before {
+                    content: '';
+                    @each $property, $value in $zonedata {
+                        #{$property}: $value;
+                    }
+                }
+            }
+            // after-css is the ::after pseudo class
+            @if $zone == 'after-css' {
+                &:after {
+                    content: '';
+                    @each $property, $value in $zonedata {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+        // Modifiers
+        @each $name, $zonesmap in $briks-components__buttons__hooks-modifiers {
+            &.#{$briks-modifiers-prefix}#{$name} {
+                @each $zone, $zonedata in $zonesmap {
+                    // root-css is component root
+                    @if $zone == 'root-css' {
+                        @each $property, $value in $zonedata {
+                            #{$property}: $value;
+                        }
+                    }
+                    // hover-css is the :hover state
+                    @if $zone == 'hover-css' {
+                        // Optional class name that forces 'hover' state
+                        @if $briks-components__buttons__hover-class != '' and $briks-components__buttons__hover-class != false {
+                            &:hover,
+                            &.#{$briks-components__buttons__hover-class} {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        } @else {
+                            &:hover {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // hover-before-css is the ::before pseudo class on hover state
+                    @if $zone == 'hover-before-css' {
+                        // Optional class name that forces 'hover' state
+                        @if $briks-components__buttons__hover-class != '' and $briks-components__buttons__hover-class != false {
+                            &:hover,
+                            &.#{$briks-components__buttons__hover-class} {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:hover {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // hover-after-css is the ::after pseudo class on hover state
+                    @if $zone == 'hover-after-css' {
+                        // Optional class name that forces 'hover' state
+                        @if $briks-components__buttons__hover-class != '' and $briks-components__buttons__hover-class != false {
+                            &:hover,
+                            &.#{$briks-components__buttons__hover-class} {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:hover {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // focus-css is the :focus state
+                    @if $zone == 'focus-css' {
+                        // Optional class name that forces 'focus' state
+                        @if $briks-components__buttons__focus-class != '' and $briks-components__buttons__focus-class != false {
+                            &:focus,
+                            &.#{$briks-components__buttons__focus-class} {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        } @else {
+                            &:focus {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // focus-before-css is the ::before pseudo class on focus state
+                    @if $zone == 'focus-before-css' {
+                        // Optional class name that forces 'focus' state
+                        @if $briks-components__buttons__focus-class != '' and $briks-components__buttons__focus-class != false {
+                            &:focus,
+                            &.#{$briks-components__buttons__focus-class} {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:focus {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // focus-after-css is the ::after pseudo class on focus state
+                    @if $zone == 'focus-after-css' {
+                        // Optional class name that forces 'focus' state
+                        @if $briks-components__buttons__focus-class != '' and $briks-components__buttons__focus-class != false {
+                            &:focus,
+                            &.#{$briks-components__buttons__focus-class} {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:focus {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // active-css is the :active state
+                    @if $zone == 'active-css' {
+                        // Optional class name that forces 'active' state
+                        @if $briks-components__buttons__active-class != '' and $briks-components__buttons__active-class != false {
+                            &:active,
+                            &.#{$briks-components__buttons__active-class} {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        } @else {
+                            &:active {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // active-before-css is the ::before pseudo class on active state
+                    @if $zone == 'active-before-css' {
+                        // Optional class name that forces 'active' state
+                        @if $briks-components__buttons__active-class != '' and $briks-components__buttons__active-class != false {
+                            &:active,
+                            &.#{$briks-components__buttons__active-class} {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:active {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // active-after-css is the ::after pseudo class on active state
+                    @if $zone == 'active-after-css' {
+                        // Optional class name that forces 'active' state
+                        @if $briks-components__buttons__active-class != '' and $briks-components__buttons__active-class != false {
+                            &:active,
+                            &.#{$briks-components__buttons__active-class} {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:active {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // visited-css is the :visited state
+                    @if $zone == 'visited-css' {
+                        // Optional class name that forces 'visited' state
+                        @if $briks-components__buttons__visited-class != '' and $briks-components__buttons__visited-class != false {
+                            &:visited,
+                            &.#{$briks-components__buttons__visited-class} {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        } @else {
+                            &:visited {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // visited-before-css is the ::before pseudo class on visited state
+                    @if $zone == 'visited-before-css' {
+                        // Optional class name that forces 'visited' state
+                        @if $briks-components__buttons__visited-class != '' and $briks-components__buttons__visited-class != false {
+                            &:visited,
+                            &.#{$briks-components__buttons__visited-class} {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:visited {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // visited-after-css is the ::after pseudo class on visited state
+                    @if $zone == 'visited-after-css' {
+                        // Optional class name that forces 'visited' state
+                        @if $briks-components__buttons__visited-class != '' and $briks-components__buttons__visited-class != false {
+                            &:visited,
+                            &.#{$briks-components__buttons__visited-class} {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &:visited {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // disabled-css is the disabled state
+                    @if $zone == 'disabled-css' {
+                        // Optional class name that forces 'disabled' state
+                        @if $briks-components__buttons__disabled-class != '' and $briks-components__buttons__disabled-class != false {
+                            &[disabled],
+                            &.#{$briks-components__buttons__disabled-class} {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        } @else {
+                            &[disabled] {
+                                @each $property, $value in $zonedata {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                    }
+                    // disabled-before-css is the ::before pseudo class on disabled state
+                    @if $zone == 'disabled-before-css' {
+                        // Optional class name that forces 'disabled' state
+                        @if $briks-components__buttons__disabled-class != '' and $briks-components__buttons__disabled-class != false {
+                            &[disabled],
+                            &.#{$briks-components__buttons__disabled-class} {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &[disabled] {
+                                &:before {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // disabled-after-css is the ::after pseudo class on disabled state
+                    @if $zone == 'disabled-after-css' {
+                        // Optional class name that forces 'disabled' state
+                        @if $briks-components__buttons__disabled-class != '' and $briks-components__buttons__disabled-class != false {
+                            &[disabled],
+                            &.#{$briks-components__buttons__disabled-class} {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        } @else {
+                            &[disabled] {
+                                &:after {
+                                    @each $property, $value in $zonedata {
+                                        #{$property}: $value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // before-css is the ::before pseudo class
+                    @if $zone == 'before-css' {
+                        &:before {
+                            content: '';
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                    // after-css is the ::after pseudo class
+                    @if $zone == 'after-css' {
+                        &:after {
+                            content: '';
+                            @each $property, $value in $zonedata {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

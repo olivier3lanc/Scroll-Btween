@@ -1,0 +1,50 @@
+// SCREEN SIZES
+@each $screen-size, $value in $briks-screen-sizes {
+    $index: index(map-keys($briks-screen-sizes), $screen-size);
+    $newmap: (
+        $index: $value
+    );
+    $briks-screens: map-merge($briks-screens, $newmap);
+}
+// FONTS MANAGEMENT
+@if length(map-keys($briks-fonts)) > 0 {
+    @each $item, $property in $briks-fonts {
+        //Font weight for Google Fonts only
+        $weight: '';
+        //If Local font
+        @if map-get($property, type) == 'local' {
+            @font-face {
+                font-family: map-get($property,name);
+                @if map-get($property, legacy) == true {
+                    // Legacy font formats
+                    src:    url(map-get($property,path)+map-get($property,filename)+'.ttf')     format('truetype'),
+                            url(map-get($property,path)+map-get($property,filename)+'.woff')    format('woff'),
+                            url(map-get($property,path)+map-get($property,filename)+'.svg')     format('svg');
+                    font-weight: normal;
+                } @else {
+                    // Modern font formats
+                    src:    url(map-get($property,path)+map-get($property,filename)+'.woff2')   format('woff2'), 
+                            url(map-get($property,path)+map-get($property,filename)+'.woff')    format('woff');
+                }
+                font-style: normal;
+                font-display: auto;
+                // Optional weight
+                @if type-of(map-get($property, weight)) == 'number' or type-of(map-get($property, weight)) == 'string' {
+                    font-weight: map-get($property, weight);
+                }
+            }
+        }
+        //If Google Font
+        @if (map-get($property, type) == 'google') {
+            $google_font_base_uri: 'https://fonts.googleapis.com/css?family=';
+            $weightedFontFamilyName: map-get($property, name);
+            @if (map-get($property, weight) != ''){
+                $weight: ':';
+                $weightedFontFamilyName: quote($weightedFontFamilyName+' '+map-get($property, weight));
+            }@else{
+                $weight: '';
+            }
+            @import url($google_font_base_uri+map-get($property, name)+$weight+map-get($property, weight));
+        }
+    }
+}

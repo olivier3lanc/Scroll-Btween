@@ -1,11 +1,11 @@
 # Jekyll LOCAL config
 url: "http://localhost" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/scroll-bindr/_site" # the subpath of your site, e.g. /blog
+baseurl: "/scroll-btween/_site" # the subpath of your site, e.g. /blog
 #destination: ../marcelrent/public/proto-app # Build relative path destination. The destination directory e.g. /blog
 # keep_files: [cache]
 title: Scroll Btween # title of the documentation
 description: >- # Description of the docs. (>- means to ignore newlines until next param)
-  ScrollBtween uses scroll position of document - or any DOM element - to tween CSS values on any DOM element.
+  Scroll Btween uses scroll position of document - or any DOM element - to tween CSS values on any DOM element.
 
 metadata:
     lang: en

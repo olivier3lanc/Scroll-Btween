@@ -2329,550 +2329,355 @@ $briks-components__buttons__hooks-modifiers: (
 );
 
 /*
-    BADGES
-    Briks component
+    GENERIC COMPONENTS
     ---
-    Badges management
-*/
-$briks-components__badges__enabled: false; // false to disable
-$briks-components__badges__name: 'badge'; // $briks-components-prefix will be added to this name
-/*
-    BADGES CSS
-    Briks component
-    ---
-    CSS declarations of badges
+    Generic components are compoments with muliple properties but no inheritance nor states
     Structure:
-    $briks-components__badges__css: (
-        property: value,
-        property: value
-        ...
-    );
-*/
-$briks-components__badges__css: (
-    // position: relative,
-    // box-sizing: border-box,
-    // transition: all 300ms,
-    // display: inline-flex,
-    // justify-content: center,
-    // align-items: center,
-    // line-height: 1.6em,
-    // text-decoration: none,
-    // text-align: center,
-    // vertical-align: middle,
-    // padding: my-spacing(xs),
-    // background-color: my-color(neutral-light),
-    // border-radius: my-border-radius(sm),
-    // color: my-color(neutral-dark-max),
-    // font-family: my-font-family(lead),
-    // font-size: my-font-size(sm),
-);
-/*
-    BADGES CSS MODIFIERS
-    ---
-    CSS declarations of what changes in badges
-    Structure:
-    $briks-components__badges__css-modifiers: (
-        name-of-the-modifier-1: (
-            property: value,
-            property: value
-        ),
-        name-of-the-modifier-2: (
-            property: value,
-            property: value
+    $briks-components-generic: (
+        name_of_the_component: (
+            enabled: true,
+            responsive: true,
+            defaults: (
+            ),
+            modifiers: (
+            )
         )
     );
 */
-$briks-components__badges__css-modifiers: (
-    // Name of the modifier
-    // primary: (
-    //     background-color: my-color(primary),
-    //     color: my-color(primary-max)
-    // ),
-);
-
-/*
-    CONTAINERS
-    Briks component
-    ---
-    Containers management
-*/
-$briks-components__containers__enabled: true; // false to disable
-$briks-components__containers__name: 'container'; // $briks-components-prefix will be added to this name
-$briks-components__containers__responsive: true; // false to disable
-/*
-    CONTAINERS CSS
-    Briks component
-    ---
-    CSS declarations of containers
-    Structure:
-    $briks-components__containers__css: (
-        property: value,
-        property: value
-        ...
-    );
-*/
-$briks-components__containers__css: (
-    margin: auto,
-    width: 100%
-);
-/*
-    CONTAINERS CSS MODIFIERS
-    ---
-    CSS declarations of what changes in containers
-    Structure:
-    $briks-components__containers__css-modifiers: (
-        name-of-the-modifier-1: (
-            property: value,
-            property: value
+$briks-components-generic: (
+    position: (
+        enabled: true,
+        responsive: true,
+        defaults: (
         ),
-        name-of-the-modifier-2: (
-            property: value,
-            property: value
+        modifiers: (
+            absolute: (
+                position: absolute
+            ),
+            fixed: (
+                position: fixed
+            ),
+            sticky: (
+                position: sticky
+            ),
+            relative: (
+                position: relative
+            ),
+            top-left: (
+                top: 0%,
+                left: 0%
+            ),
+            top-center: (
+                top: 0%,
+                left: 50%
+            ),
+            top-right: (
+                top: 0%,
+                left: 100%
+            ),
+            middle-left: (
+                top: 50%,
+                left: 0%
+            ),
+            middle-center: (
+                top: 50%,
+                left: 50%
+            ),
+            middle-right: (
+                top: 50%,
+                left: 100%
+            ),
+            bottom-left: (
+                top: 100%,
+                left: 0%
+            ),
+            bottom-center: (
+                top: 100%,
+                left: 50%
+            ),
+            bottom-right: (
+                top: 100%,
+                left: 100%
+            ),
+            top-0: (
+                top: 0%
+            ),
+            top-50: (
+                top: 50%
+            ),
+            top-100: (
+                top: 100%
+            ),
+            right-0: (
+                right: 0%
+            ),
+            right-50: (
+                right: 50%
+            ),
+            right-100: (
+                right: 100%
+            ),
+            bottom-0: (
+                bottom: 0%
+            ),
+            bottom-50: (
+                bottom: 50%
+            ),
+            bottom-100: (
+                bottom: 100%
+            ),
+            left-0: (
+                left: 0%
+            ),
+            left-50: (
+                left: 50%
+            ),
+            left-100: (
+                left: 100%
+            ),
+            top-none: (
+                top: my-spacing(none)
+            ),
+            top-xxs: (
+                top: my-spacing(xxs)
+            ),
+            top-xs: (
+                top: my-spacing(xs)
+            ),
+            top-sm: (
+                top: my-spacing(sm)
+            ),
+            top-md: (
+                top: my-spacing(md)
+            ),
+            top-lg: (
+                top: my-spacing(lg)
+            ),
+            top-xl: (
+                top: my-spacing(xl)
+            ),
+            top-xxl: (
+                top: my-spacing(xxl)
+            ),
+            right-none: (
+                right: my-spacing(none)
+            ),
+            right-xxs: (
+                right: my-spacing(xxs)
+            ),
+            right-xs: (
+                right: my-spacing(xs)
+            ),
+            right-sm: (
+                right: my-spacing(sm)
+            ),
+            right-md: (
+                right: my-spacing(md)
+            ),
+            right-lg: (
+                right: my-spacing(lg)
+            ),
+            right-xl: (
+                right: my-spacing(xl)
+            ),
+            right-xxl: (
+                right: my-spacing(xxl)
+            ),
+            bottom-none: (
+                bottom: my-spacing(none)
+            ),
+            bottom-xxs: (
+                bottom: my-spacing(xxs)
+            ),
+            bottom-xs: (
+                bottom: my-spacing(xs)
+            ),
+            bottom-sm: (
+                bottom: my-spacing(sm)
+            ),
+            bottom-md: (
+                bottom: my-spacing(md)
+            ),
+            bottom-lg: (
+                bottom: my-spacing(lg)
+            ),
+            bottom-xl: (
+                bottom: my-spacing(xl)
+            ),
+            bottom-xxl: (
+                bottom: my-spacing(xxl)
+            ),
+            left-none: (
+                left: my-spacing(none)
+            ),
+            left-xxs: (
+                left: my-spacing(xxs)
+            ),
+            left-xs: (
+                left: my-spacing(xs)
+            ),
+            left-sm: (
+                left: my-spacing(sm)
+            ),
+            left-md: (
+                left: my-spacing(md)
+            ),
+            left-lg: (
+                left: my-spacing(lg)
+            ),
+            left-xl: (
+                left: my-spacing(xl)
+            ),
+            left-xxl: (
+                left: my-spacing(xxl)
+            ),
+            anchor-top-left: (
+                transform: translateX(0%) translateY(0%)
+            ),
+            anchor-top-center: (
+                transform: translateX(-50%) translateY(0%)
+            ),
+            anchor-top-right: (
+                transform: translateX(-100%) translateY(0%)
+            ),
+            anchor-middle-left: (
+                transform: translateX(0%) translateY(-50%)
+            ),
+            anchor-middle-center: (
+                transform: translateX(-50%) translateY(-50%)
+            ),
+            anchor-middle-right: (
+                transform: translateX(-100%) translateY(-50%)
+            ),
+            anchor-bottom-left: (
+                transform: translateX(0%) translateY(-100%)
+            ),
+            anchor-bottom-center: (
+                transform: translateX(-50%) translateY(-100%)
+            ),
+            anchor-bottom-right: (
+                transform: translateX(-100%) translateY(-100%)
+            )
         )
-    );
-*/
-$briks-components__containers__css-modifiers: (
-    w-xs: (
-        max-width: 400px
     ),
-    w-sm: (
-        max-width: 700px
-    ),
-    w-md: (
-        max-width: 960px
-    ),
-    w-xl: (
-        max-width: 1440px
-    ),
-);
-
-/*
-    COLUMNS
-    Briks component
-    ---
-    Columns management
-*/
-$briks-components__columns__enabled: true; // false to disable
-$briks-components__columns__name: 'columns'; // $briks-components-prefix will be added to this name
-$briks-components__columns__responsive: true; // false to disable
-/*
-    COLUMNS CSS
-    Briks component
-    ---
-    CSS declarations of columns
-    Structure:
-    $briks-components__columns__css: (
-        property: value,
-        property: value
-        ...
-    );
-*/
-$briks-components__columns__css: (
-    column-count: 3,
-    column-gap: my-spacing(md),
-    // column-rule: my-border(thin-translucid)
-);
-/*
-    COLUMNS CSS MODIFIERS
-    ---
-    CSS declarations of what changes in columns
-    Structure:
-    $briks-components__columns__css-modifiers: (
-        name-of-the-modifier-1: (
-            property: value,
-            property: value
+    text: (
+        enabled: true,
+        responsive: false,
+        defaults: (
         ),
-        name-of-the-modifier-2: (
-            property: value,
-            property: value
+        modifiers: (
+            reset: (
+                text-decoration: none,
+                font-variant: normal,
+                font-style: normal,
+                font-weight: normal,
+                text-transform: none,
+                white-space: normal,
+                text-overflow: normal
+            ),
+            uppercase: (
+                text-transform: uppercase
+            ),
+            lowercase: (
+                text-transform: lowercase
+            ),
+            nowrap: (
+                white-space: nowrap
+            ),
+            bold: (
+                font-weight: bold
+            ),
+            italic: (
+                font-style: italic
+            ),
+            break-word: (
+                word-break: break-word
+            ),
+            ellipsis: (
+                white-space: nowrap,
+                text-overflow: ellipsis,
+                overflow: hidden
+            ),
+            ff-lead: (
+                font-family: my-font-family(lead)
+            ),
+            ff-lead-em: (
+                font-family: my-font-family(lead-em)
+            ),
+            ff-lead-strong: (
+                font-family: my-font-family(lead-strong)
+            ),
+            ff-headline: (
+                font-family: my-font-family(headline)
+            ),
+            ff-monospace: (
+                font-family: my-font-family(monospace)
+            ),
+            fs-xxs: (
+                font-size: my-font-size(xxs)
+            ),
+            fs-xs: (
+                font-size: my-font-size(xs)
+            ),
+            fs-sm: (
+                font-size: my-font-size(sm)
+            ),
+            fs-md: (
+                font-size: my-font-size(md)
+            ),
+            fs-lg: (
+                font-size: my-font-size(lg)
+            ),
+            fs-xl: (
+                font-size: my-font-size(xl)
+            ),
+            fs-xxl: (
+                font-size: my-font-size(xxl)
+            )
         )
-    );
-*/
-$briks-components__columns__css-modifiers: (
-    1: (
-        column-count: 1
     ),
-    2: (
-        column-count: 2
-    ),
-    4: (
-        column-count: 4
-    ),
-    5: (
-        column-count: 5
-    )
-);
-/*
-    TEXTS
-    Briks component
-    ---
-    Text related CSS. Texts regroups font-variant, font-style, font-weight, text-transform, white-space, text-decoration, text-overflow
-*/
-$briks-components__texts__enabled: true; // false to disable
-$briks-components__texts__name: 'text'; // $briks-components-prefix will be added to this name
-$briks-components__texts__responsive: false; // false to disable
-
-/*
-    TEXTS CSS
-    Briks component
-    ---
-    Default CSS declarations of texts
-    Structure:
-    $briks-components__texts__css: (
-        property: value,
-        property: value
-        ...
-    );
-*/
-$briks-components__texts__css: (
-    // https://developer.mozilla.org/fr/docs/Web/CSS/font-variant
-    // https://developer.mozilla.org/fr/docs/Web/CSS/font-style
-    // https://developer.mozilla.org/fr/docs/Web/CSS/font-weight
-    // https://developer.mozilla.org/fr/docs/Web/CSS/text-transform
-    // https://developer.mozilla.org/fr/docs/Web/CSS/white-space
-    // https://developer.mozilla.org/fr/docs/Web/CSS/text-decoration
-    // https://developer.mozilla.org/fr/docs/Web/CSS/text-overflow
-);
-/*
-    TEXTS CSS MODIFIERS
-    ---
-    Sets CSS declarations of the different CSS properties related to text
-    Structure:
-    $briks-components__texts__css-modifiers: (
-        name-of-the-modifier-1: (
-            property: value,
-            property: value
-            ...
+    columns: (
+        enabled: true,
+        responsive: true,
+        defaults: (
+            column-count: 3,
+            column-gap: my-spacing(md),
         ),
-        name-of-the-modifier-2: (
-            property: value,
-            property: value
-            ...
+        modifiers: (
+            1: (
+                column-count: 1
+            ),
+            2: (
+                column-count: 2
+            ),
+            4: (
+                column-count: 4
+            ),
+            5: (
+                column-count: 5
+            )
         )
-    );
-*/
-$briks-components__texts__css-modifiers: (
-    // Name of the modifier
-    reset: (
-        text-decoration: none,
-        font-variant: normal,
-        font-style: normal,
-        font-weight: normal,
-        text-transform: none,
-        white-space: normal,
-        text-overflow: normal
     ),
-    uppercase: (
-        text-transform: uppercase
-    ),
-    lowercase: (
-        text-transform: lowercase
-    ),
-    nowrap: (
-        white-space: nowrap
-    ),
-    bold: (
-        font-weight: bold
-    ),
-    italic: (
-        font-style: italic
-    ),
-    break-word: (
-        word-break: break-word
-    ),
-    ellipsis: (
-        white-space: nowrap,
-        text-overflow: ellipsis,
-        overflow: hidden
-    ),
-    ff-lead: (
-        font-family: my-font-family(lead)
-    ),
-    ff-lead-em: (
-        font-family: my-font-family(lead-em)
-    ),
-    ff-lead-strong: (
-        font-family: my-font-family(lead-strong)
-    ),
-    ff-headline: (
-        font-family: my-font-family(headline)
-    ),
-    ff-monospace: (
-        font-family: my-font-family(monospace)
-    ),
-    fs-xxs: (
-        font-size: my-font-size(xxs)
-    ),
-    fs-xs: (
-        font-size: my-font-size(xs)
-    ),
-    fs-sm: (
-        font-size: my-font-size(sm)
-    ),
-    fs-md: (
-        font-size: my-font-size(md)
-    ),
-    fs-lg: (
-        font-size: my-font-size(lg)
-    ),
-    fs-xl: (
-        font-size: my-font-size(xl)
-    ),
-    fs-xxl: (
-        font-size: my-font-size(xxl)
-    )
-);
-
-
-/*
-    POSITIONS
-    Briks component
-    ---
-    Position related CSS. Positions includes position, top, right, bottom, left properties
-*/
-$briks-components__positions__enabled: true; // false to disable
-$briks-components__positions__name: 'position'; // $briks-components-prefix will be added to this name
-$briks-components__positions__responsive: true; // false to disable
-
-/*
-    POSITIONS CSS
-    Briks component
-    ---
-    Default CSS declarations of positions
-    Structure:
-    $briks-components__positions__css: (
-        property: value,
-        property: value
-        ...
-    );
-*/
-$briks-components__positions__css: (
-);
-/*
-    POSITIONS CSS MODIFIERS
-    ---
-    Sets CSS declarations of the different CSS properties related to positions
-    Structure:
-    $briks-components__positions__css-modifiers: (
-        name-of-the-modifier-1: (
-            property: value,
-            property: value
-            ...
+    container: (
+        enabled: true,
+        responsive: true,
+        defaults: (
+            margin: auto,
+            width: 100%
         ),
-        name-of-the-modifier-2: (
-            property: value,
-            property: value
-            ...
+        modifiers: (
+            w-xs: (
+                max-width: 400px
+            ),
+            w-sm: (
+                max-width: 700px
+            ),
+            w-md: (
+                max-width: 960px
+            ),
+            w-xl: (
+                max-width: 1440px
+            )
         )
-    );
-*/
-$briks-components__positions__css-modifiers: (
-    // Name of the modifier
-    absolute: (
-        position: absolute
-    ),
-    fixed: (
-        position: fixed
-    ),
-    sticky: (
-        position: sticky
-    ),
-    relative: (
-        position: relative
-    ),
-    top-left: (
-        top: 0%,
-        left: 0%
-    ),
-    top-center: (
-        top: 0%,
-        left: 50%
-    ),
-    top-right: (
-        top: 0%,
-        left: 100%
-    ),
-    middle-left: (
-        top: 50%,
-        left: 0%
-    ),
-    middle-center: (
-        top: 50%,
-        left: 50%
-    ),
-    middle-right: (
-        top: 50%,
-        left: 100%
-    ),
-    bottom-left: (
-        top: 100%,
-        left: 0%
-    ),
-    bottom-center: (
-        top: 100%,
-        left: 50%
-    ),
-    bottom-right: (
-        top: 100%,
-        left: 100%
-    ),
-    top-0: (
-        top: 0%
-    ),
-    top-50: (
-        top: 50%
-    ),
-    top-100: (
-        top: 100%
-    ),
-    right-0: (
-        right: 0%
-    ),
-    right-50: (
-        right: 50%
-    ),
-    right-100: (
-        right: 100%
-    ),
-    bottom-0: (
-        bottom: 0%
-    ),
-    bottom-50: (
-        bottom: 50%
-    ),
-    bottom-100: (
-        bottom: 100%
-    ),
-    left-0: (
-        left: 0%
-    ),
-    left-50: (
-        left: 50%
-    ),
-    left-100: (
-        left: 100%
-    ),
-    top-none: (
-        top: my-spacing(none)
-    ),
-    top-xxs: (
-        top: my-spacing(xxs)
-    ),
-    top-xs: (
-        top: my-spacing(xs)
-    ),
-    top-sm: (
-        top: my-spacing(sm)
-    ),
-    top-md: (
-        top: my-spacing(md)
-    ),
-    top-lg: (
-        top: my-spacing(lg)
-    ),
-    top-xl: (
-        top: my-spacing(xl)
-    ),
-    top-xxl: (
-        top: my-spacing(xxl)
-    ),
-    right-none: (
-        right: my-spacing(none)
-    ),
-    right-xxs: (
-        right: my-spacing(xxs)
-    ),
-    right-xs: (
-        right: my-spacing(xs)
-    ),
-    right-sm: (
-        right: my-spacing(sm)
-    ),
-    right-md: (
-        right: my-spacing(md)
-    ),
-    right-lg: (
-        right: my-spacing(lg)
-    ),
-    right-xl: (
-        right: my-spacing(xl)
-    ),
-    right-xxl: (
-        right: my-spacing(xxl)
-    ),
-    bottom-none: (
-        bottom: my-spacing(none)
-    ),
-    bottom-xxs: (
-        bottom: my-spacing(xxs)
-    ),
-    bottom-xs: (
-        bottom: my-spacing(xs)
-    ),
-    bottom-sm: (
-        bottom: my-spacing(sm)
-    ),
-    bottom-md: (
-        bottom: my-spacing(md)
-    ),
-    bottom-lg: (
-        bottom: my-spacing(lg)
-    ),
-    bottom-xl: (
-        bottom: my-spacing(xl)
-    ),
-    bottom-xxl: (
-        bottom: my-spacing(xxl)
-    ),
-    left-none: (
-        left: my-spacing(none)
-    ),
-    left-xxs: (
-        left: my-spacing(xxs)
-    ),
-    left-xs: (
-        left: my-spacing(xs)
-    ),
-    left-sm: (
-        left: my-spacing(sm)
-    ),
-    left-md: (
-        left: my-spacing(md)
-    ),
-    left-lg: (
-        left: my-spacing(lg)
-    ),
-    left-xl: (
-        left: my-spacing(xl)
-    ),
-    left-xxl: (
-        left: my-spacing(xxl)
-    ),
-    anchor-top-left: (
-        transform: translateX(0%) translateY(0%)
-    ),
-    anchor-top-center: (
-        transform: translateX(-50%) translateY(0%)
-    ),
-    anchor-top-right: (
-        transform: translateX(-100%) translateY(0%)
-    ),
-    anchor-middle-left: (
-        transform: translateX(0%) translateY(-50%)
-    ),
-    anchor-middle-center: (
-        transform: translateX(-50%) translateY(-50%)
-    ),
-    anchor-middle-right: (
-        transform: translateX(-100%) translateY(-50%)
-    ),
-    anchor-bottom-left: (
-        transform: translateX(0%) translateY(-100%)
-    ),
-    anchor-bottom-center: (
-        transform: translateX(-50%) translateY(-100%)
-    ),
-    anchor-bottom-right: (
-        transform: translateX(-100%) translateY(-100%)
     )
 );

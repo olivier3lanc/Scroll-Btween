@@ -77,38 +77,25 @@ jQuery(document).ready(function() {
         });
     });
 
-    // CREATE TOC
-    jQ_titles = jQuery('h1:not(.notoc),h2:not(.notoc),h3:not(.notoc),h4:not(.notoc),h5:not(.notoc),h6:not(.notoc)');
-    var jQ_toc = jQuery('#toc-container');
-    if(jQ_titles.length > 0){
+    // CREATE TOC 
+    var jQ_kramdownToc = jQuery('#markdown-toc').clone();
+    if(jQ_kramdownToc.length > 0){
         // TOC generation
-        jQ_toc.html(
+        const page_title = jQuery('main h1:first-child').eq(0).text();
+        jQ_kramdownToc.children('li').addClass('u-bt-thin-dashed-alt');
+        jQ_kramdownToc.find('ol,ul').addClass('u-ls-none u-m-none u-pl-xs');
+        jQ_kramdownToc.find('a').addClass('c-btn m-translucid m-block-left m-xs c-text m-ff-lead m-reset');
+        jQuery('#toc-container').html(
             '<div class="c-position m-absolute m-top-left m-anchor-top-left u-bc-primary-edge u-w-100vw u-h-100vh u-translucid u-z-10" u-none="md,xl" id="toc-overlay" onclick="tocbar();"></div>'+
-            '<button class="c-btn u-z-10 c-position m-fixed m-top-left m-anchor-top-right" u-none="md,xl" onclick="tocbar()">'+
-                '<span class="i-list"></span>'+
-            '</button>'+
+            // '<button class="c-btn u-z-10 c-position m-fixed m-top-left m-anchor-top-right" u-none="md,xl" onclick="tocbar()">'+
+            //     '<span class="i-list"></span>'+
+            // '</button>'+
             '<nav id="toc" class="u-sticky u-top-0 u-mh-100vh u-o-auto u-z-10">'+
-                '<ul class="u-p-none u-m-none u-ls-none"></ul>'+
+                '<ol class="u-ls-none u-m-none u-p-none">'+
+                    '<li><a href="#" class="c-btn m-translucid m-block-left u-pl-sm">'+page_title+'</a></li>'+
+                    jQ_kramdownToc.html()+
+                '</ol>'+
             '</nav>'
         );
-        jQ_toc = jQuery('nav#toc').children('ul');
-        jQ_titles.each(function(index){
-            if (jQuery(this).parent().css('display') != 'none' && jQuery(this).closest('.playground').length == 0) {
-                var text = jQuery(this).text(),
-                    classNamesFirst = 'c-btn m-translucid m-block-left u-pl-sm u-bt-thin-dashed-alt',
-                    classNamesOthers = 'c-btn m-translucid m-block-left m-xs u-bt-thin-dashed-alt',
-                    classNames = classNamesOthers;
-                if (index === 0) {
-                    classNames = classNamesFirst;
-                }
-                var id = text.replace(/\W/g,'_');
-                jQuery(this).attr('id', id);
-                jQ_toc.append(
-                    '<li>'+
-                        '<a href="#'+id+'" class="'+classNames+'">'+text+'</a>'+
-                    '</li>'
-                );
-            }
-        });
     }
 });

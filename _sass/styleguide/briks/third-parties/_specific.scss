@@ -140,3 +140,13 @@
         margin-right: my-spacing(sm);
     }
 }
+
+// KRAMDOWN TOC
+#markdown-toc {
+    padding-left: my-spacing(sm);
+}
+@include my-screen-size(md,xl) {
+    #markdown-toc {
+        display: none;
+    }
+}

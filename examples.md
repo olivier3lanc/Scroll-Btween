@@ -230,7 +230,7 @@ An example with a png over a jpg using both background and semaantic markup.
     body {
         margin: 0; padding:0; height: 400vh;
     }
-    #wrapper-playground {
+    .wrapper-playground {
         position: relative;
         top: 0;
         left: 0;
@@ -242,9 +242,14 @@ An example with a png over a jpg using both background and semaantic markup.
         background-size: 120%;
         background-position: 40% center;
         background-repeat: no-repeat;
+    }
+    .wrapper-playground.gyp1 {
         background-image: url(https://i.postimg.cc/mgXBtCtv/gyp-back.jpg);
     }
-    #wrapper-playground::before {
+    .wrapper-playground.gyp2 {
+        background-image: url(https://i.postimg.cc/9MZcXNFc/gyp2-back.jpg);
+    }
+    .wrapper-playground::before {
         content: '';
         float: left;
         padding-bottom: 66.66%;
@@ -287,7 +292,7 @@ An example with a png over a jpg using both background and semaantic markup.
     #detector { position: absolute; top: 100vh; }
     #scroll-btween-debugbar { display: none; }
 </style>
-<article id="wrapper-playground" scroll-btween="gyp-back" scroll-btween-detector="detector" data-background-position="|70 to 30|% center">
+<article class="wrapper-playground gyp1" scroll-btween="gyp-back" scroll-btween-detector="detector" data-background-position="|70 to 30|% center">
     <header>
         <h1>Bearded <span>vulture</span></h1>
         <p>Gypaetus barbatus</p>
@@ -297,5 +302,14 @@ An example with a png over a jpg using both background and semaantic markup.
     </figure>
 </article>
 <div id="detector"></div>
+<article class="wrapper-playground gyp2" scroll-btween="gyp-back2" data-background-position="|30 to 70|% center">
+    <header>
+        <h1>Bearded <span>vulture</span></h1>
+        <p>Gypaetus barbatus</p>
+    </header>
+    <figure scroll-btween="gyp-front2" data-left="|0 to 13|%" data-top="|0 to -5|%">
+        <img src="https://i.postimg.cc/D0hnSd8L/gyp2-front-min.png" alt="Bearded vulture">
+    </figure>
+</article>
 ```
 {: .playground}

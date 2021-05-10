@@ -22,7 +22,11 @@
     @each $font, $value in $briks-fonts {
         --#{$briks-css-variables-prefix}font-family_type_#{$font}:#{map-get(map-get($briks-fonts, $font), type)};
         @if map-get(map-get($briks-fonts, $font), type) == 'local' {
-            --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name)), unquote(map-get(map-get($briks-fonts, $font), fallback))};
+            @if map-get(map-get($briks-fonts, $font), fallback) == null {
+                --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name))};
+            } @else {
+                --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name)), unquote(map-get(map-get($briks-fonts, $font), fallback))};
+            }
             --#{$briks-css-variables-prefix}font-family_filename_#{$font}:#{map-get(map-get($briks-fonts, $font), filename)};
         }
         // Websafe
@@ -31,7 +35,11 @@
         }
         // If Google font
         @else if map-get(map-get($briks-fonts, $font), type) == 'google' {
-            --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name)), unquote(map-get(map-get($briks-fonts, $font), fallback))};
+            @if map-get(map-get($briks-fonts, $font), fallback) == null {
+                --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name))};
+            } @else {
+                --#{$briks-css-variables-prefix}font-family-#{$font}:#{unquote(map-get(map-get($briks-fonts, $font), name)), unquote(map-get(map-get($briks-fonts, $font), fallback))};
+            }
         }
     }
     // FONT SIZES

@@ -74,9 +74,9 @@ Horizontal scroll reveal.
 
 ```html
 <div id="example-reveal">
-    <img src="https://images.unsplash.com/photo-1614251777918-14ce369c48d6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=10&blur=1000" alt="Blurred image">
+    <img src="https://images.weserv.nl/?url=https://i.postimg.cc/h41Bqtcq/GOPR0533-1530442969141-high-1920.jpg&blur=20&q=40" alt="Blurred image">
     <div id="example-reveal-img-wrapper" scroll-btween="example-reveal" scroll-btween-detector="detector" data-width="|0 to 100|%">
-        <img src="https://images.unsplash.com/photo-1614251777918-14ce369c48d6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80" alt="Source image">
+        <img src="https://images.weserv.nl/?url=https://i.postimg.cc/h41Bqtcq/GOPR0533-1530442969141-high-1920.jpg&q=15&output=jpg" alt="Source image">
     </div>
 </div>
 <p id="detector">I am the detector for <strong>example-reveal</strong></p>
@@ -213,7 +213,7 @@ An example with a png over a jpg using the background properties.
         background-size: 90%, 110%;
         background-position: 40%, center;
         background-repeat: no-repeat;
-        background-image: url(https://i.postimg.cc/G2sYmvxK/gyp-front-min.png), url(https://i.postimg.cc/mgXBtCtv/gyp-back.jpg);
+        background-image: url(https://i.postimg.cc/KY7S70gN/gyp-front.webp), url(https://i.postimg.cc/TYjV6mms/gyp-back.webp);
     }
     #scroll-btween-debugbar { display: none; }
 </style>
@@ -244,10 +244,10 @@ An example with a png over a jpg using both background and semaantic markup.
         background-repeat: no-repeat;
     }
     .wrapper-playground.gyp1 {
-        background-image: url(https://i.postimg.cc/mgXBtCtv/gyp-back.jpg);
+        background-image: url(https://i.postimg.cc/TYjV6mms/gyp-back.webp);
     }
     .wrapper-playground.gyp2 {
-        background-image: url(https://i.postimg.cc/9MZcXNFc/gyp2-back.jpg);
+        background-image: url(https://i.postimg.cc/vBj4y22y/gyp2-back.webp);
     }
     .wrapper-playground::before {
         content: '';
@@ -268,6 +268,8 @@ An example with a png over a jpg using both background and semaantic markup.
     figure img {
         max-width: 100%;
         max-height: 100%;
+        width: 100%;
+        height: auto;
     }
     header {
         text-align: center;
@@ -276,7 +278,7 @@ An example with a png over a jpg using both background and semaantic markup.
     header h1 {
         margin-top: 0;
         margin-bottom: 0;
-        font-size: 20vmin;
+        font-size: 10vw;
         font-family: sans-serif;
     }
     header h1 span {
@@ -298,7 +300,7 @@ An example with a png over a jpg using both background and semaantic markup.
         <p>Gypaetus barbatus</p>
     </header>
     <figure scroll-btween="gyp-front" scroll-btween-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
-        <img src="https://i.postimg.cc/G2sYmvxK/gyp-front-min.png" alt="Bearded vulture">
+        <img src="https://i.postimg.cc/KY7S70gN/gyp-front.webp" alt="Bearded vulture">
     </figure>
 </article>
 <div id="detector"></div>
@@ -308,7 +310,7 @@ An example with a png over a jpg using both background and semaantic markup.
         <p>Gypaetus barbatus</p>
     </header>
     <figure scroll-btween="gyp-front2" data-left="|0 to 13|%" data-top="|0 to -5|%">
-        <img src="https://i.postimg.cc/D0hnSd8L/gyp2-front-min.png" alt="Bearded vulture">
+        <img src="https://i.postimg.cc/SsZWMGZ1/gyp2-front.webp" alt="Bearded vulture">
     </figure>
 </article>
 ```

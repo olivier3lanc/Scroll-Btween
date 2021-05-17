@@ -103,7 +103,7 @@ let playground = {
             if (document.getElementById('page-single-playground') !== null) {
                 // Insert into dedicated container
                 jQuery('#page-single-playground').html(
-                    '<ul class="c-grid m-space-between u-br-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt" data-playground-commands="'+playgroundId+'">'+
+                    '<ul class="m-w-12 c-grid m-space-between u-br-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt" data-playground-commands="'+playgroundId+'">'+
                         '<li class="m-grow u-p-sm u-bb-thin-dashed-alt"></li>'+
                         '<li class="c-grid">'+
                             '<a href="'+iframeUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Open in a new tab" target="_blank" data-playground-new-tab="'+playgroundId+'">'+
@@ -111,7 +111,7 @@ let playground = {
                             '</a>'+
                         '</li>'+
                     '</ul>'+
-                    '<div class="playground-instance m-grow" id="'+playgroundId+'-instance">'+
+                    '<div class="m-w-12 playground-instance u-h-100" id="'+playgroundId+'-instance">'+
                         '<div class="u-relative u-transition-none u-br-thin-dashed-alt u-o-auto u-h-100 u-mw-100" id="'+playgroundId+'-wrapper">'+
                             iframeStr+
                             '<div class="playground-preview c-position m-absolute m-top-left u-w-100 u-h-100 u-bg-play u-cur-pointer" onclick="playground.loadIframe(\''+playgroundId+'-iframe\')"></div>'+

@@ -100,37 +100,65 @@ let playground = {
                 buf.unshift(['&#', content[i].charCodeAt(), ';'].join(''));
             }
             trimmed = buf.join('');
-            // Insert HTML after hidden playground
-            jQuery(this).after(
-                '<code class="u-p-xxs u-fs-xxs u-bc-primary-edge u-lh-base u-bl-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt c-text m-nowrap u-c-primary-alt">'+
-                    '<span class="i-code u-va-middle"></span> playground'+
-                '</code>'+
-                '<ul class="c-grid m-space-between u-bl-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt" data-playground-commands="'+playgroundId+'">'+
-                    '<li class="m-grow u-p-sm u-bb-thin-dashed-alt"></li>'+
-                    '<li class="c-grid">'+
-                        '<a href="'+iframeUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Open in a new tab" target="_blank" data-playground-new-tab="'+playgroundId+'">'+
-                            '<span class="i-external-link"></span>'+
-                        '</a>'+
-                        '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt maximize" title="Maximize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
-                            '<span class="i-maximize-2"></span>'+
-                        '</button>'+
-                        '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt u-none minimize" title="Minimize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
-                            '<span class="i-minimize-2"></span>'+
-                        '</button>'+
-                    '</li>'+
-                '</ul>'+
-                '<div class="playground-instance" id="'+playgroundId+'-instance">'+
-                    '<div class="u-relative u-transition-none u-bl-thin-dashed-alt u-br-thin-dashed-alt u-o-auto u-resize-both u-mw-100" id="'+playgroundId+'-wrapper" style="min-height: '+window.site.playground.min_height+'">'+
-                        iframeStr+
-                        '<div class="playground-preview c-position m-absolute m-top-left u-w-100 u-h-100 u-bg-play u-cur-pointer" onclick="playground.loadIframe(\''+playgroundId+'-iframe\')"></div>'+
-                    '</div>'+
+            if (document.getElementById('page-single-playground') !== null) {
+                // Insert into dedicated container
+                jQuery('#page-single-playground').html(
+                    '<ul class="c-grid m-space-between u-br-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt" data-playground-commands="'+playgroundId+'">'+
+                        '<li class="m-grow u-p-sm u-bb-thin-dashed-alt"></li>'+
+                        '<li class="c-grid">'+
+                            '<a href="'+iframeUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Open in a new tab" target="_blank" data-playground-new-tab="'+playgroundId+'">'+
+                                '<span class="i-external-link"></span>'+
+                            '</a>'+
+                        '</li>'+
+                    '</ul>'+
+                    '<div class="playground-instance m-grow" id="'+playgroundId+'-instance">'+
+                        '<div class="u-relative u-transition-none u-br-thin-dashed-alt u-o-auto u-h-100 u-mw-100" id="'+playgroundId+'-wrapper">'+
+                            iframeStr+
+                            '<div class="playground-preview c-position m-absolute m-top-left u-w-100 u-h-100 u-bg-play u-cur-pointer" onclick="playground.loadIframe(\''+playgroundId+'-iframe\')"></div>'+
+                        '</div>'+
+                    '</div>'
+                );
+                jQuery(this).after(
                     '<pre id="'+playgroundId+'-iframe-code" class="u-m-none">'+
                         '<code class="language-html">'+
                             trimmed+
                         '</code>'+
-                    '</pre>'+
-                '</div>'
-            );
+                    '</pre>'
+                );
+
+            } else {
+                // Insert HTML after hidden playground
+                jQuery(this).after(
+                    '<code class="u-p-xxs u-fs-xxs u-bc-primary-edge u-lh-base u-bl-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt c-text m-nowrap u-c-primary-alt">'+
+                        '<span class="i-code u-va-middle"></span> playground'+
+                    '</code>'+
+                    '<ul class="c-grid m-space-between u-bl-thin-dashed-alt u-bt-thin-dashed-alt u-br-thin-dashed-alt" data-playground-commands="'+playgroundId+'">'+
+                        '<li class="m-grow u-p-sm u-bb-thin-dashed-alt"></li>'+
+                        '<li class="c-grid">'+
+                            '<a href="'+iframeUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Open in a new tab" target="_blank" data-playground-new-tab="'+playgroundId+'">'+
+                                '<span class="i-external-link"></span>'+
+                            '</a>'+
+                            '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt maximize" title="Maximize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
+                                '<span class="i-maximize-2"></span>'+
+                            '</button>'+
+                            '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt u-none minimize" title="Minimize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
+                                '<span class="i-minimize-2"></span>'+
+                            '</button>'+
+                        '</li>'+
+                    '</ul>'+
+                    '<div class="playground-instance" id="'+playgroundId+'-instance">'+
+                        '<div class="u-relative u-transition-none u-bl-thin-dashed-alt u-br-thin-dashed-alt u-o-auto u-resize-both u-mw-100" id="'+playgroundId+'-wrapper" style="min-height: '+window.site.playground.min_height+'">'+
+                            iframeStr+
+                            '<div class="playground-preview c-position m-absolute m-top-left u-w-100 u-h-100 u-bg-play u-cur-pointer" onclick="playground.loadIframe(\''+playgroundId+'-iframe\')"></div>'+
+                        '</div>'+
+                        '<pre id="'+playgroundId+'-iframe-code" class="u-m-none">'+
+                            '<code class="language-html">'+
+                                trimmed+
+                            '</code>'+
+                        '</pre>'+
+                    '</div>'
+                );
+            }
         });
         // Code formatter
         if (typeof Prism !== undefined) {

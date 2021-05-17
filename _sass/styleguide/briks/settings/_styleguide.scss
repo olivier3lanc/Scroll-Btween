@@ -609,7 +609,8 @@ $briks-utilities: (
             'main': 300px,
             'auto': auto,
             '100vh': 100vh,
-            '80vh': 80vh
+            '80vh': 80vh,
+            '50vh': 50vh
         ),
         additional-names-and-values: (),
         responsive: true
@@ -680,7 +681,7 @@ $briks-utilities: (
             '100': 100%
         ),
         additional-names-and-values: (),
-        responsive: false
+        responsive: true
     ),
     max-width: (
         enabled: true,

@@ -1,0 +1,15 @@
+---
+layout: styleguide/default
+---
+<main class="m-grow m-w-1 c-grid" m-nowrap="md,xl">
+    <div class="{{ page.content_class | default: 'm-grow m-w-1 m-w-12--sm u-mw-main u-bc-primary-max u-br-thin-dashed-alt' }}" id="{{ page.content_id | default: '' }}">
+        {% if page.content_id != 'homepage-content' %}
+            <header class="u-bb-thin-dashed-alt u-p-lg" u-p-sm="sm">
+                <h1 class="u-mt-none u-mb-xs u-lh-1">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                <p class="u-fs-lg u-m-none u-lh-base" u-fs-md="sm">{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}</p>
+            </header>
+        {% endif %}
+        {{ content }}
+    </div>
+    <div class="m-grow m-w-1 c-position m-sticky m-top-0 c-grid m-column u-bc-primary-max" m-w-12="sm" m-order--1="sm" u-mh-100vh="md,xl" u-h-50vh="sm" id="page-single-playground"></div>
+</main>

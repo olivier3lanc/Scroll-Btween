@@ -1,6 +1,6 @@
 # Jekyll LOCAL config
-#url: "http://localhost" # the base hostname & protocol for your site, e.g. http://example.com
-#baseurl: "/scroll-btween/_site" # the subpath of your site, e.g. /blog
+url: "http://localhost" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/scroll-btween/_site" # the subpath of your site, e.g. /blog
 #destination: ../marcelrent/public/proto-app # Build relative path destination. The destination directory e.g. /blog
 # keep_files: [cache]
 title: Scroll Btween # title of the documentation
@@ -15,6 +15,7 @@ metadata:
     #image: /styleguide/img/meta-image.png # Open Graph image file. Can be either relative URL from site root, absolute URL starting with 'http'
 
 sidebar: # Settings for the sidebar
+    search_enabled: true # enable or not the search box
     logo:
         font_size: 32px # If no logo_url, font size of the site title, ignored if url is enabled
         #url: /styleguide/img/favicon/android-chrome-512x512.png # Image URL: Can be local e.g. '/img/logo.png' or remote 'https://remotesite.com/img/logo.png'

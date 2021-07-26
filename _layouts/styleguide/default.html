@@ -24,9 +24,12 @@
                 </ul>
             </nav>
         </footer>
-        <script type="text/javascript" src="{{ '/styleguide/js/prism.min.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/styleguide/js/prism/prism-core.min.js' | relative_url }}"></script>
+        {% for language in site.prism.languages %}
+            <script type="text/javascript" src="{{ site.url }}{{ site.baseurl }}/styleguide/js/prism/prism-{{ language }}.min.js"></script>
+        {% endfor %}
         <script type="text/javascript" src="{{ '/styleguide/js/my-toggles.js' | relative_url }}"></script>
-        <script type="text/javascript" src="{{ '/styleguide/js/template.js' | relative_url }}"></script>
         <script type="text/javascript" src="{{ '/styleguide/js/playground.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/styleguide/js/template.js' | relative_url }}"></script>
     </body>
 </html>

@@ -29,20 +29,22 @@
                 {% endif %}
             </a>
         </li>
-{% if page_paths %}
-        <li id="sidebar-item-search">
-            <form class="c-form" action="{{ 'styleguide/search.html' | relative_url }}" method="get">
-                <input  type="search" 
-                        id="search-box" 
-                        name="query" 
-                        class="u-bl-none u-bt-thin-dashed-alt {% if page.title == 'Search results' %}u-br-large-solid{% else %}u-br-none{% endif %} u-bb-none u-bg-search"
-                        u-fs-xs="sm,md"
-                        u-p-xs="sm,md">
-                <label for="search-box" u-fs-xs="sm">Search</label>
-                <input type="submit" value="Search" class="u-none">
-            </form>
-        </li>
-        {% include styleguide/menu-basic.html %}
-{% endif %}
+        {% if page_paths %}
+            {% if site.sidebar.search_enabled %}
+                <li id="sidebar-item-search">
+                    <form class="c-form" action="{{ 'styleguide/search.html' | relative_url }}" method="get">
+                        <input  type="search" 
+                                id="search-box" 
+                                name="query" 
+                                class="u-bl-none u-bt-thin-dashed-alt {% if page.title == 'Search results' %}u-br-large-solid{% else %}u-br-none{% endif %} u-bb-none u-bg-search"
+                                u-fs-xs="sm,md"
+                                u-p-xs="sm,md">
+                        <label for="search-box" u-fs-xs="sm">Search</label>
+                        <input type="submit" value="Search" class="u-none">
+                    </form>
+                </li>
+            {% endif %}
+            {% include styleguide/menu-basic.html %}
+        {% endif %}
     </ul>
 </nav>

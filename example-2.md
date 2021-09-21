@@ -1,7 +1,7 @@
 ---
 title: Morphing
 description: Morphing text
-layout: styleguide/page-single-playground
+layout: libdoc/page-split
 ---
 ```html
 <style>

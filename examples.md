@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Detailed usage examples of ScrollBtween with its code
-#layout: styleguide/playground
+layout: libdoc/page
 #playground: true
 ---
 

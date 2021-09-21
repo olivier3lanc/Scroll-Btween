@@ -1,0 +1,46 @@
+---
+---
+/*
+    CORE
+    Settings and main functionalities
+    Include _core.scss to get all the functions and mixins
+    No CSS declaration is compiled from this file
+    Only core functions, mixins and variables
+    You may include this file in any SASS file, no changes will be made
+    Only core functions
+*/
+@import 'libdoc/briks/core';
+/*
+    SETTINGS
+    User settings
+*/
+@import 'libdoc/briks/settings/libdoc';
+/*
+    CSS VARIABLES
+    Requires _core.scss
+    This file generates CSS variables into the output file
+*/
+@import 'libdoc/briks/css-vars';
+/*
+    UTILITIES
+    Requires _core.scss
+    This file builds simple CSS classes containing only one or few properties in relation with core settings
+    In utilities, all properties are !important to override any setting
+*/
+@import 'libdoc/briks/utilities';
+
+/*
+    COMPONENTS
+    Requires _core.scss
+    This file builds CSS classes for complex elements with inheritance
+    In components, only inheritance is set, no never !important declaration
+*/
+@import 'libdoc/briks/components';
+/*
+    THIRD-PARTIES COMPONENTS
+    Requires _core.scss
+    Files that build CSS from Briks settings
+*/
+@import 'libdoc/briks/third-parties/html5';
+@import 'libdoc/briks/third-parties/toggles';
+@import 'libdoc/briks/third-parties/specific';

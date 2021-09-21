@@ -1,0 +1,57 @@
+.disabled,
+.#{$briks-utilities-prefix}disabled {
+    pointer-events: none;
+    opacity: 0.3;
+}
+// BACKGROUND COVER AND CONTAIN
+.#{$briks-utilities-prefix}cover,
+.#{$briks-utilities-prefix}contain {
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+// PLAYGROUND
+.playground {
+    display: none;
+}
+[data-playground-commands] {
+    &+p {
+        margin-top: 0;
+    }
+}
+
+// SIDEBAR
+#libdoc-sidebar-item-search {
+    &+.libdoc-sidebar-item {
+        border-top: my-border(thin-dashed-alt);
+    }
+}
+
+// GFM
+.task-list-item {
+    input {
+        margin-right: my-spacing(sm);
+    }
+}
+
+// LibDoc Content
+main {
+    // KRAMDOWN TOC
+    &:not(#page-split-container) {
+        #markdown-toc {
+            padding-left: my-spacing(sm);
+        }
+        @include my-screen-size(md,xl) {
+            #markdown-toc {
+                display: none;
+            }
+        }
+    }
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 { 
+        margin-top: 2em;
+    }
+}

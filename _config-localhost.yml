@@ -1,55 +1,94 @@
-# Jekyll LOCAL config
-url: "http://localhost" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/scroll-btween/_site" # the subpath of your site, e.g. /blog
-#destination: ../marcelrent/public/proto-app # Build relative path destination. The destination directory e.g. /blog
-# keep_files: [cache]
+# Jekyll configuration
+# ---
 title: Scroll Btween # title of the documentation
 description: >- # Description of the docs. (>- means to ignore newlines until next param)
   Scroll Btween uses scroll position of document - or any DOM element - to tween CSS values on any DOM element.
+baseurl: "/scroll-btween/_site" # the subpath of your site, e.g. /blog
+url: "http://localhost" # the base hostname & protocol for your site, e.g. http://example.com
+#permalink: /:path/:basename/:output_ext
+#destination: ../marcelrent/public/proto-app # Build relative path destination. The destination directory e.g. /blog
+#keep_files: [cache]
+#markdown: kramdown
+kramdown:
+    syntax_highlighter_opts:
+        disable: true
+sass:
+    style: compressed
+#exclude: ['/misc']
 
+
+# LibDoc configuration
+# ---
+
+# Metadata informations for the project
 metadata:
-    lang: en
-    #favicon: # PNG favicon URL <link rel="icon" type="image/png" href="[link_rel_icon]"> Can be either relative URL from site root, absolute URL starting with 'http'
-    author: Olivier Blanc # The author 
-    #color: '#323b44' # HEX format color to display
-    #image: /styleguide/img/meta-image.png # Open Graph image file. Can be either relative URL from site root, absolute URL starting with 'http'
+    # Sets the language of the project, default is en
+    #lang: en
+    # PNG favicon URL. Can be either relative URL from site root or absolute URL starting with 'http'. Default is LibDoc's favicon
+    #favicon: 
+    # Name of the author of the project, used into various places of the theme like footer. Default is empty
+    author: Olivier Blanc
+    # Theme color metadata used in some browsers like Chrome that applies this color on browser address bar.
+    # Color must be in HEX, default is LibDoc's color
+    #color: '#323b44'
+    # Open Graph image file. Can be either relative URL from site root, absolute URL starting with 'http'. Default is LibDoc's splash screen
+    #image: /libdoc/img/libdoc.png
 
-sidebar: # Settings for the sidebar
-    search_enabled: true # enable or not the search box
+# Sidebar 
+sidebar:
+    # Uncomment to disable search
+    #disable_search: true
+    # Top left branding/homepage link, specified image URL or site title if no URL is set
     logo:
-        font_size: 32px # If no logo_url, font size of the site title, ignored if url is enabled
-        #url: /styleguide/img/favicon/android-chrome-512x512.png # Image URL: Can be local e.g. '/img/logo.png' or remote 'https://remotesite.com/img/logo.png'
-        max_height: 40px # Logo image max height
+        # Image URL: Can be local e.g. '/img/logo.png' or remote 'https://remotesite.com/img/logo.png'
+        # url: /libdoc/img/favicon/android-chrome-512x512.png
+        # Logo image max height, applies only of url is set
+        max_height: 40px
+        # If no logo url, font size of the site title, ignored if url is set
+        #font_size: 32px
+    # Display additional links anywhere into the sidebar
     additional_links:
-        -   url: '#'
-            title: Other Link
-            order: 1000
-            category: Archives
-
-playground:
-    #min_height: 600px
-    stylesheets: # Style sheets in <head>. Can be either relative URL from site root, absolute URL starting with 'http'
-        #- css/normalize.css
-        #- css/new.min.css
-        #- styleguide/css/prism.css
-    #scripts_head: # Javascript files in <head>. Can be either relative URL from site root, absolute URL starting with 'http'
-    #    - https://test.com/jquery.min.js
-    #    - script-head.js
-    scripts_body: # Javascript files near </body>. Can be either relative URL from site root, absolute URL starting with 'http'
-        - js/ola.min.js
-        - js/scroll-btween.js
-        - js/scroll-btween-debugbar.js
-
+        #-   #url: # Local or remote URL
+             #title: # Link text
+             #order: # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
+             #category: # Add this this link into a category just like pages
+        
+# Badges
+# Feature that allows to display badges into the footer https://shields.io image html and url
 shields:
-    # https://shields.io image html and url
-    -   image_html: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/olivier3lanc/Jekyll-LibDoc?logo=github&style=flat-square">
-        link_url: 'https://test1.com'
-    -   image_html: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/olivier3lanc/Jekyll-LibDoc?logo=github&style=flat-square">
-        link_url: 'https://test4.com'
+    -   image_html: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/olivier3lanc/Scroll-Btween?logo=github&style=flat-square">
+        link_url: https://github.com/olivier3lanc/Scroll-Btween
 
-assets: # Files types to display in 'styleguide/assets' layout
-    path_from_root: / # The path from which files are available do download. '/' id the root
-    extensions_enabled: # File extension to display
+# Settings for the playground context
+playground:
+    # Sets a minimum height for each playground, default is 300px
+    #min_height: 600px
+    # Style sheets in <head>. Can be either:
+    # Relative URL from site root starting with slash /
+    # Absolute URL starting with 'http'
+    stylesheets: 
+        #- /example-project/css/tailwind.min.css
+        # - https://unpkg.com/tailwindcss@2.2.7/dist/tailwind.min.css
+    # Javascript in <head>. Can be either:
+    # Relative URL from site root starting with slash /
+    # Absolute URL starting with 'http'
+    scripts_head:
+        # - https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js
+        # - /libdoc/js/my-toggles.js
+    # Javascript at the end of <body>. Can be either:
+    # Relative URL from site root starting with slash /
+    # Absolute URL starting with 'http'
+    scripts_body: # Javascript files near </body>. Can be either relative URL from site root, absolute URL starting with 'http'
+        - /js/ola.min.js
+        - /js/scroll-btween.js
+        - /js/scroll-btween-debugbar.js
+
+# Settings for the assets layout
+assets:
+    # The path from which files are available do download. '/' is the root
+    #path_from_root: /
+    # File extension to display
+    extensions_enabled: 
         - pdf
         - js
         - css
@@ -71,7 +110,8 @@ assets: # Files types to display in 'styleguide/assets' layout
         - mp4
         - webm
         - ogv
-    image_extensions: # Array list of image extensions (without point) to display as image into asset template
+    # Array list of image extensions (without point) to display as image into asset grid
+    image_extensions: 
         - svg
         - jpg
         - jpeg
@@ -79,27 +119,11 @@ assets: # Files types to display in 'styleguide/assets' layout
         - png
         - webp
 
-# Jekyll defaults
-defaults:
-    -
-        values:
-            layout: "styleguide/page"
-
-
-# Build settings - Do not edit excepting you do know what you do
-#markdown: kramdown
-kramdown:
-    syntax_highlighter_opts:
-        disable: true
-
-sass:
-    style: compressed
-#exclude: ['/misc']
-
-# Syntax highlighter
+# Settings for Prism syntax highlighter used in LibDoc
+# https://prismjs.com/
 prism:
-    # dark, funky, okaidia, twilight, solarizedlight, tomorrow, 
-    theme: okaidia
+    # coy, dark, funky, okaidia, twilight, solarizedlight, tomorrow, 
+    theme: tomorrow
     # CSS font-size property override for <code>
     font_size: 0.9em
     # CSS line-height property override for <code>
@@ -244,7 +268,7 @@ prism:
         #- lua
         #- makefile
         - markdown
-        #- markup-templating
+        # - markup-templating
         #- matlab
         #- mel
         #- mizar
@@ -312,7 +336,7 @@ prism:
         #- rust
         #- sas
         #- sass
-        #- scss
+        - scss
         #- scala
         #- scheme
         #- shell-session
@@ -359,9 +383,12 @@ prism:
         #- wiki
         #- wolfram
         #- xeora
-        #- xml-doc
+        # - xml-doc
         #- xojo
         #- xquery
         - yaml
         #- yang
         #- zig
+
+# Link powered by LibDoc 
+#disable_powered_by_link: true

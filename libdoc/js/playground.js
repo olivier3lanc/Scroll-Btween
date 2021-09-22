@@ -107,13 +107,13 @@ let playground = {
                 buf.unshift(['&#', content[i].charCodeAt(), ';'].join(''));
             }
             trimmed = buf.join('');
-            if (document.getElementById('page-split') !== null && playgroundIndex == 0) {
+            if (document.getElementById('libdoc-page-split') !== null && playgroundIndex == 0) {
                 // Remove header if playground expand
                 if (window.location.href.indexOf('page-split.html#') > 0) {
                     jQuery('#libdoc-page-split-header').remove();
                 }
                 // Insert into dedicated container
-                jQuery('#page-split').html(
+                jQuery('#libdoc-page-split').html(
                     '<ul class="m-w-12 c-grid m-right u-bt-thin-dashed-alt u-br-thin-dashed-alt u-bc-primary-edge" m-nowrap="md,xl" data-playground-commands="'+playgroundId+'">'+
                         '<li class="m-grow u-p-sm u-bb-thin-dashed-alt c-text m-ff-monospace u-bc-primary-edge">'+playgroundTitle+'</li>'+
                         '<li class="c-grid m-nowrap m-order--1--sm">'+
@@ -138,7 +138,7 @@ let playground = {
                         '</div>'+
                     '</div>'
                 );
-                jQuery(this).after(
+                jQuery('#libdoc-featured-code').after(
                     '<pre id="'+playgroundId+'-iframe-code" class="u-m-none">'+
                         '<code class="language-html">'+
                             trimmed+

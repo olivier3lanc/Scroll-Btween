@@ -37,7 +37,7 @@
 // LibDoc Content
 main {
     // KRAMDOWN TOC
-    &:not(#page-split-container) {
+    &:not(#libdoc-page-split-container) {
         #markdown-toc {
             padding-left: my-spacing(sm);
         }

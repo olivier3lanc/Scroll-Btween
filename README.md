@@ -22,10 +22,10 @@ unlisted: true
         background-repeat: no-repeat;
     }
     .wrapper-playground.gyp1 {
-        background-image: url(https://i.postimg.cc/TYjV6mms/gyp-back.webp);
+        background-image: url(../img/gyp-back.webp);
     }
     .wrapper-playground.gyp2 {
-        background-image: url(https://i.postimg.cc/vBj4y22y/gyp2-back.webp);
+        background-image: url(../img/gyp2-back.webp);
     }
     .wrapper-playground::before {
         content: '';
@@ -78,7 +78,7 @@ unlisted: true
         <p>Gypaetus barbatus</p>
     </header>
     <figure scroll-btween="gyp-front" scroll-btween-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
-        <img src="https://i.postimg.cc/KY7S70gN/gyp-front.webp" alt="Bearded vulture">
+        <img src="../img/gyp-front.webp" alt="Bearded vulture">
     </figure>
 </article>
 <div id="detector"></div>
@@ -88,7 +88,7 @@ unlisted: true
         <p>Gypaetus barbatus</p>
     </header>
     <figure scroll-btween="gyp-front2" data-left="|0 to 13|%" data-top="|0 to -5|%">
-        <img src="https://i.postimg.cc/SsZWMGZ1/gyp2-front.webp" alt="Bearded vulture">
+        <img src="../img/gyp2-front.webp" alt="Bearded vulture">
     </figure>
 </article>
 ```

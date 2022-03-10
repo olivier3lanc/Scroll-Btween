@@ -56,7 +56,7 @@ Star wars end credits style.
 </style>
 <section id="wrapper-playground">
     <article    scroll-btween="text"
-                scroll-btween-detector="detector"
+                data-detector="detector"
                 data-transform="rotateX(50deg) translateY(|30 to -150|%)">
         <h1>Delphis mote however to or whose coffined</h1>
         <p><a href="#earth"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif" alt="alt text"></a> Little to congealed sick his stalked. Sun flatterers soul had me a his. Blazon a massy his of gild and. Would passion een he care, and plain his clay in felt counsel, whateer to is made loved to done that, pleasure and a ive cared control dwelt sadness. All by to in time night. Yet who befell wassailers if he have nor lands, or be sea his so. Brow begun sighed sacred or this some of. To uncouth bliss his many where loathed the found and. Sighed parasites nor childe chaste once visit it childe the.</p>
@@ -74,7 +74,7 @@ Horizontal scroll reveal.
 ```html
 <div id="example-reveal">
     <img src="https://images.weserv.nl/?url=https://i.ibb.co/TBSCq7C/GOPR0533-1530442969141-high-1920.jpg&blur=20&q=30&output=webp" alt="Blurred image">
-    <div id="example-reveal-img-wrapper" scroll-btween="example-reveal" scroll-btween-detector="detector" data-width="|0 to 100|%">
+    <div id="example-reveal-img-wrapper" scroll-btween="example-reveal" data-detector="detector" data-width="|0 to 100|%">
         <img src="https://images.weserv.nl/?url=https://i.ibb.co/TBSCq7C/GOPR0533-1530442969141-high-1920.jpg&q=15&output=webp" alt="Source image">
     </div>
 </div>
@@ -122,7 +122,7 @@ Horizontal scroll reveal.
 A progress bar fixed at the top of the window, progression level based on the document scroll position.
 
 ```html
-<div id="progress-bar" scroll-btween="foo" scroll-btween-detector="page-wrapper" data-width="|0 to 100|%"></div>
+<div id="progress-bar" scroll-btween="foo" data-detector="page-wrapper" data-width="|0 to 100|%"></div>
 <div id="page-wrapper">Start, scroll until the end and watch the progress bar at the top...</div>
 <p>This is the end of the page <a href="#">Return to top</a></p>
 <style>
@@ -298,12 +298,12 @@ An example with a png over a jpg using both background and semaantic markup.
     #detector { position: absolute; top: 100vh; }
     #scroll-btween-debugbar { display: none; }
 </style>
-<article class="wrapper-playground gyp1" scroll-btween="gyp-back" scroll-btween-detector="detector" data-background-position="|70 to 30|% center">
+<article class="wrapper-playground gyp1" scroll-btween="gyp-back" data-detector="detector" data-background-position="|70 to 30|% center">
     <header>
         <h1>Bearded <span>vulture</span></h1>
         <p>Gypaetus barbatus</p>
     </header>
-    <figure scroll-btween="gyp-front" scroll-btween-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
+    <figure scroll-btween="gyp-front" data-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
         <img src="https://i.postimg.cc/KY7S70gN/gyp-front.webp" alt="Bearded vulture">
     </figure>
 </article>

@@ -1,4 +1,4 @@
-let scrollBtween = {
+const scrollBtween = {
     defaults: {
         frameDurationinMs: 20, // Integer - Duration in ms between to animation states
         tweenerIntervalinMs: 300, // Integer - Available only if tweener is enabled, duration between to tweens
@@ -18,8 +18,8 @@ let scrollBtween = {
     getIntersection: function(el) {
         let response = -1;
         if (typeof el == 'object') {
-            const detector_id = el.getAttribute('scroll-btween-detector');
-            if (detector_id !== null) {
+            const detector_id = el.dataset.detector;
+            if (detector_id !== undefined) {
                 const el_detector = document.getElementById(detector_id);
                 if (el_detector !== null) {
                     el = el_detector;
@@ -134,7 +134,7 @@ let scrollBtween = {
             }
             // Init window scroll listener only if tweener is enabled
             if (typeof Ola == 'function') {
-                window.addEventListener('scroll', scrollBtween.updateTweenerValues);
+                window.addEventListener('scroll', scrollBtween.updateTweenerValues, {passive: true});
                 window.addEventListener('load', scrollBtween.updateTweenerValues);
             }
             scrollBtween.interval = setInterval(scrollBtween.frame, scrollBtween.defaults.frameDurationinMs);

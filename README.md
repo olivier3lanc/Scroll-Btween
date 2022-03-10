@@ -3,6 +3,12 @@ layout: libdoc/page-split
 permalink: index.html
 unlisted: true
 ---
+
+ScrollBtween uses scroll position of document - or any DOM element - to tween CSS values on any DOM element.
+
+* You can tween multiple CSS properties at the same time.
+* You can add multiple tweens on the same CSS property.
+
 ```html
 <style>
     body {
@@ -72,12 +78,12 @@ unlisted: true
     #detector { position: absolute; top: 100vh; }
     #scroll-btween-debugbar { display: none; }
 </style>
-<article class="wrapper-playground gyp1" scroll-btween="gyp-back" scroll-btween-detector="detector" data-background-position="|70 to 30|% center">
+<article class="wrapper-playground gyp1" scroll-btween="gyp-back" data-detector="detector" data-background-position="|70 to 30|% center">
     <header>
         <h1>Bearded <span>vulture</span></h1>
         <p>Gypaetus barbatus</p>
     </header>
-    <figure scroll-btween="gyp-front" scroll-btween-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
+    <figure scroll-btween="gyp-front" data-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
         <img src="../img/gyp-front.webp" alt="Bearded vulture">
     </figure>
 </article>
@@ -93,12 +99,6 @@ unlisted: true
 </article>
 ```
 {: .playground title="Demo - Parallax on Bearded Vultures"}
-
-ScrollBtween uses scroll position of document - or any DOM element - to tween CSS values on any DOM element.
-
-* You can tween multiple CSS properties at the same time.
-* You can add multiple tweens on the same CSS property.
-
 ## Installation
 
 Include Javascript file `scroll-btween.js` just before the end body tag `</body>`. For smoother results, use the [great tweener library ola.js](https://github.com/franciscop/ola)
@@ -227,7 +227,7 @@ The following playground shows the associated **intersection with its id which i
 By default, scroll binded elements are their own detector: It means the [intersection](#how-it-works) it computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
 
 ```html
-<h2 scroll-btween="foo" scroll-btween-detector="detector" data-background-color="rgb(|0 to 255|,|255 to 0|,0)">
+<h2 scroll-btween="foo" data-detector="detector" data-background-color="rgb(|0 to 255|,|255 to 0|,0)">
     I am foo: Green until detector passes.<br>
     I fade to red when my detector passes the viewport.
 </h2>

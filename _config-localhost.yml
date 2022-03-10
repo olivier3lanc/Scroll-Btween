@@ -140,7 +140,7 @@ assets:
 # https://prismjs.com/
 prism:
     # coy, dark, funky, okaidia, twilight, solarizedlight, tomorrow, 
-    theme: tomorrow
+    theme: okaidia
     # CSS font-size property override for <code>
     font_size: 0.9em
     # CSS line-height property override for <code>

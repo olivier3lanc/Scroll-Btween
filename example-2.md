@@ -45,27 +45,27 @@ layout: libdoc/page-split
 <article>
     <p>
         <span scroll-btween="w1" 
-                scroll-btween-detector="detector-w1" 
+                data-detector="detector-w1" 
                 data-opacity="|0:1 to 98:1 to 100:0|" 
                 data-letter-spacing="|0:-0.1 to 100:0|em">my</span>
         <span scroll-btween="w2" 
-                scroll-btween-detector="detector-w2" 
+                data-detector="detector-w2" 
                 data-opacity="|0:0 to 2:1 to 98:1 to 100:0|" 
                 data-letter-spacing="|0:-0.1 to 100:0|em">first</span>
         <span scroll-btween="w3" 
-                scroll-btween-detector="detector-w3" 
+                data-detector="detector-w3" 
                 data-opacity="|0:0 to 2:1 to 98:1 to 100:0|" 
                 data-letter-spacing="|0:-0.1 to 100:0|em">morphing</span>
         <span scroll-btween="w4" 
-                scroll-btween-detector="detector-w4" 
+                data-detector="detector-w4" 
                 data-opacity="|0:0 to 2:1 to 98:1 to 100:0|" 
                 data-letter-spacing="|0:-0.1 to 100:0|em">text</span>
         <span scroll-btween="w5" 
-                scroll-btween-detector="detector-w5" 
+                data-detector="detector-w5" 
                 data-opacity="|0:0 to 2:1 to 98:1 to 100:0|" 
                 data-letter-spacing="|0:-0.1 to 100:0|em">to</span>
         <span scroll-btween="w6" 
-                scroll-btween-detector="detector-w6" 
+                data-detector="detector-w6" 
                 data-opacity="|0:0 to 2:1 to 98:1 to 100:0|" 
                 data-letter-spacing="|0:-0.1 to 100:0|em">display</span>
     </p>

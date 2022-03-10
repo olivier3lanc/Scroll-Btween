@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% if site.playground.metadata.cache == false or site.playground.metadata.cache == false %}
+        {% if site.playground.metadata.cache == false %}
             <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
             <meta http-equiv="Pragma" content="no-cache">
             <meta http-equiv="Expires" content="0">
@@ -22,8 +22,12 @@
         {% endif %}
 
         <!-- Favicons -->
-        {% assign favicon_path_or_url = page.playground.metadata.favicon | default: site.playground.metadata.favicon %}
+        {% assign favicon_path_or_url = page.playground.metadata.favicon | default: page.playground.metadata.favicon_auto | default: site.playground.metadata.favicon | default: site.playground.metadata.favicon_auto %}
         {% if favicon_path_or_url contains 'http://' or favicon_path_or_url contains 'https://' %}
+        {% else %}
+            {% assign favicon_path_or_url = site.url | append: site.baseurl | append: favicon_path_or_url %}
+        {% endif %}
+        {% if favicon_path_or_url.size > 9 %}
             {% assign ico_split = favicon_path_or_url | split: '.ico' %}
             {% assign ico_split_size = ico_split | size %}
             {% assign favicon_path_or_url_size = favicon_path_or_url | size %}
@@ -40,25 +44,29 @@
                 <link rel="icon" href="{{ favicon_path_or_url }}" type="image/x-icon">
                 <link rel="shortcut icon" href="{{ favicon_path_or_url }}" type="image/x-icon">
             {% else %}
-                <link rel="icon" type="image/png" href="{{ favicon_path_or_url }}">
-            {% endif %}
-            {% assign favicon_base_url = 'https://images.weserv.nl/?url=' | append: favicon_path_or_url %}
-            {% if favicon_path_or_url.size > 0 %}
-                <link rel="icon" type="image/png" href="{{ favicon_path_or_url }}">
-                <link rel="apple-touch-icon" sizes="57x57" href="{{ favicon_base_url }}&w=57&h=57&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="60x60" href="{{ favicon_base_url }}&w=60&h=60&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="72x72" href="{{ favicon_base_url }}&w=72&h=72&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="76x76" href="{{ favicon_base_url }}&w=76&h=76&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="114x114" href="{{ favicon_base_url }}&w=114&h=114&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="120x120" href="{{ favicon_base_url }}&w=120&h=120&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="144x144" href="{{ favicon_base_url }}&w=144&h=144&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="152x152" href="{{ favicon_base_url }}&w=152&h=152&fit=cover&cbg=transparent&output=png">
-                <link rel="apple-touch-icon" sizes="180x180" href="{{ favicon_base_url }}&w=180&h=180&fit=cover&cbg=transparent&output=png">
-                <link rel="icon" type="image/png" sizes="192x192"  href="{{ favicon_base_url }}&w=192&h=192&fit=cover&cbg=transparent&output=png">
-                <link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_base_url }}&w=32&h=32&fit=cover&cbg=transparent&output=png">
-                <link rel="icon" type="image/png" sizes="96x96" href="{{ favicon_base_url }}&w=96&h=96&fit=cover&cbg=transparent&output=png">
-                <link rel="icon" type="image/png" sizes="16x16" href="{{ favicon_base_url }}&w=16&h=16&fit=cover&cbg=transparent&output=png">
-                <meta name="msapplication-TileImage" content="{{ favicon_base_url }}&w=144&h=144&fit=cover&cbg=transparent&output=png">
+                {% if site.playground.metadata.favicon_auto.size > 0 %}
+                    <link rel="icon" type="image/png" href="https://images.weserv.nl/?url={{ favicon_path_or_url }}&w=32&h=32&fit=cover&cbg=transparent&output=png">
+                    {% assign favicon_base_url = 'https://images.weserv.nl/?url=' | append: favicon_path_or_url %}
+                    {% unless favicon_path_or_url contains 'data:image' %}
+                        <link rel="icon" type="image/png" href="{{ favicon_path_or_url }}">
+                        <link rel="apple-touch-icon" sizes="57x57" href="{{ favicon_base_url }}&w=57&h=57&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="60x60" href="{{ favicon_base_url }}&w=60&h=60&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="72x72" href="{{ favicon_base_url }}&w=72&h=72&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="76x76" href="{{ favicon_base_url }}&w=76&h=76&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="114x114" href="{{ favicon_base_url }}&w=114&h=114&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="120x120" href="{{ favicon_base_url }}&w=120&h=120&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="144x144" href="{{ favicon_base_url }}&w=144&h=144&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="152x152" href="{{ favicon_base_url }}&w=152&h=152&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="180x180" href="{{ favicon_base_url }}&w=180&h=180&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="192x192"  href="{{ favicon_base_url }}&w=192&h=192&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_base_url }}&w=32&h=32&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="96x96" href="{{ favicon_base_url }}&w=96&h=96&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="16x16" href="{{ favicon_base_url }}&w=16&h=16&fit=cover&cbg=transparent&output=png">
+                        <meta name="msapplication-TileImage" content="{{ favicon_base_url }}&w=144&h=144&fit=cover&cbg=transparent&output=png">
+                    {% endunless %}
+                {% else %}
+                    <link rel="icon" type="image/png" href="{{ favicon_path_or_url }}">
+                {% endif %}
             {% endif %}
         {% endif %}
         

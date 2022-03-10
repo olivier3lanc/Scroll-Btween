@@ -15,10 +15,10 @@
         {% endif %}
         {% assign previous_category = sorted_page.category %}
             {% if sorted_page.unlisted != true %}
-                <li class="u-relative u-o-hidden libdoc-sidebar-item">
+                <li class="u-relative u-o-hidden libdoc-sidebar-item {% if page.url == sorted_page.url %}libdoc-sidebar-current-item{% endif %}">
                     {% if page.title == sorted_page.title %}{% endif %}
                     <a  href="{{ sorted_page.url | relative_url | default: '#' }}"
-                        class="c-btn m-translucid m-block-right u-ta-right {% if page.url == sorted_page.url %}u-br-large-solid{% endif %}"
+                        class="c-btn m-translucid m-block-right u-ta-right {% if page.url == sorted_page.url %}u-br-large-solid u-bc-primary-edge{% endif %}"
                         u-fs-xs="sm,md"
                         u-p-xs="sm,md"
                         data-iframe-mode="{{ sorted_page.iframe_mode }}"

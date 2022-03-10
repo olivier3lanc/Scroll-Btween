@@ -71,12 +71,11 @@ Star wars end credits style.
 ## Reveal
 
 Horizontal scroll reveal.
-
 ```html
 <div id="example-reveal">
-    <img src="https://images.weserv.nl/?url=https://i.postimg.cc/h41Bqtcq/GOPR0533-1530442969141-high-1920.jpg&blur=20&q=40" alt="Blurred image">
+    <img src="https://images.weserv.nl/?url=https://i.ibb.co/TBSCq7C/GOPR0533-1530442969141-high-1920.jpg&blur=20&q=30&output=webp" alt="Blurred image">
     <div id="example-reveal-img-wrapper" scroll-btween="example-reveal" scroll-btween-detector="detector" data-width="|0 to 100|%">
-        <img src="https://images.weserv.nl/?url=https://i.postimg.cc/h41Bqtcq/GOPR0533-1530442969141-high-1920.jpg&q=15&output=jpg" alt="Source image">
+        <img src="https://images.weserv.nl/?url=https://i.ibb.co/TBSCq7C/GOPR0533-1530442969141-high-1920.jpg&q=15&output=webp" alt="Source image">
     </div>
 </div>
 <p id="detector">I am the detector for <strong>example-reveal</strong></p>
@@ -107,7 +106,12 @@ Horizontal scroll reveal.
         width: auto;
         height: 100%;
     }
-    #detector { margin-top: 100vh; margin-bottom: 60vh; }
+    #detector { 
+        margin-top: 100vh; 
+        margin-bottom: 60vh;
+        color: white;
+        position: relative;
+    }
     #scroll-btween-debugbar { display: none }
 </style>
 ```

@@ -120,6 +120,9 @@ let playground = {
                             '<a href="'+iframeUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Open in a new tab" target="_blank" data-playground-new-tab="'+playgroundId+'">'+
                                 '<span class="i-external-link u-fs-md"></span>'+
                             '</a>'+
+                            '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Refresh this playground" onclick="document.getElementById(\''+playgroundId+'-iframe\').contentWindow.location.reload()">'+
+                                '<span class="i-refresh u-fs-md"></span>'+
+                            '</button>'+
                             // '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt maximize" title="Maximize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
                             //     '<span class="i-maximize-2 u-fs-md"></span>'+
                             // '</button>'+
@@ -138,13 +141,23 @@ let playground = {
                         '</div>'+
                     '</div>'
                 );
-                jQuery('#libdoc-featured-code').after(
-                    '<pre id="'+playgroundId+'-iframe-code" class="u-m-none">'+
-                        '<code class="language-html">'+
-                            trimmed+
-                        '</code>'+
-                    '</pre>'
-                );
+                if (jQ_this.hasClass('playground-pin')) {
+                    jQuery('#libdoc-featured-code').after(
+                        '<pre id="'+playgroundId+'-iframe-code" class="u-m-none">'+
+                            '<code class="language-html">'+
+                                trimmed+
+                            '</code>'+
+                        '</pre>'
+                    );
+                } else {
+                    jQ_this.after(
+                        '<pre id="'+playgroundId+'-iframe-code" class="u-m-none">'+
+                            '<code class="language-html">'+
+                                trimmed+
+                            '</code>'+
+                        '</pre>'
+                    );
+                }
 
             } else {
                 // Insert HTML after hidden playground
@@ -158,9 +171,9 @@ let playground = {
                             '<a href="'+iframeUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Open in a new tab" target="_blank" data-playground-new-tab="'+playgroundId+'">'+
                                 '<span class="i-external-link u-fs-md"></span>'+
                             '</a>'+
-                            '<a href="'+pageFeaturedPlaygroundUrl+'" class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Expand and split this playground">'+
-                                '<span class="i-maximize-2 u-fs-md"></span>'+
-                            '</a>'+
+                            '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt" title="Refresh this playground" onclick="document.getElementById(\''+playgroundId+'-iframe\').contentWindow.location.reload()">'+
+                                '<span class="i-refresh u-fs-md"></span>'+
+                            '</button>'+
                             
                             // '<button class="c-btn u-p-sm u-bl-thin-dashed-alt u-bb-thin-dashed-alt maximize" title="Maximize playground" onclick="playground.expand(\''+playgroundId+'\')">'+
                             //     '<span class="i-maximize-2 u-fs-md"></span>'+

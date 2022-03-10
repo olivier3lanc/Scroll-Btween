@@ -133,26 +133,26 @@ let resizer = {
                     height: 100%;
                     border-left: var(--sg-border-thin-dashed-alt);
                 }
-                .resizer.resizer-width:hover { 
-                    width: 100px; 
-                    right: -50px;
+                .resizer.resizer-width.hover { 
+                    width: 100vw; 
+                    right: -50vw;
                     background: transparent;
                     border-left: none;
                 }
-                .resizer.resizer-width:hover::before { 
-                    right: calc(50% + 10px);
+                .resizer.resizer-width.hover::before { 
+                    right: calc(-50vw + 10px);
                 }
-                .resizer.resizer-width:hover::after { 
+                .resizer.resizer-width.hover::after { 
                     content: '';
                     width: 10px;
-                    left: calc(50% - 10px);
+                    left: calc(50vw - 10px);
                     position: absolute;
                     height: 100%;
                     cursor: col-resize;
                     background: var(--sg-background-stripes) var(--sg-color-primary-alt);
                 }
                 .resizer.resizer-height { bottom: 0%; left: 0px; width: 100%; height: 0px; cursor: row-resize; }
-                .resizer.resizer-height:hover { height: 100px; bottom: -50px; }
+                .resizer.resizer-height.hover { height: 100px; bottom: -50px; }
                 .resizer.resizer-height::after {
                     content: '';
                     height: 6px;
@@ -170,7 +170,7 @@ let resizer = {
                     height: 16px;
                     cursor: nwse-resize; 
                 }
-                .resizer.resizer-width.resizer-height:hover {
+                .resizer.resizer-width.resizer-height.hover {
                     top: inherit;
                     bottom: -16px;
                     right: -16px;
@@ -236,6 +236,7 @@ let resizer = {
     instances: {},
     initDrag: function(e) {
         // console.log('initDrag: ');
+        e.target.classList.add('hover');
         resizer.instances[e.target.id].startX = e.clientX;
         resizer.instances[e.target.id].startY = e.clientY;
         if (e.target.classList.contains('resizer-width')) {
@@ -251,6 +252,7 @@ let resizer = {
      },
      
      doDrag: function(e) {
+        resizer.instances[e.target.id].el_resizeable.style.maxWidth = 'inherit';
         if (e.target.classList.contains('resizer-width')) {
             resizer.instances[e.target.id].el_resizeable.style.width = (resizer.instances[e.target.id].startWidth + e.clientX - resizer.instances[e.target.id].startX) + 'px';
         }
@@ -260,6 +262,7 @@ let resizer = {
      },
      
      stopDrag: function(e) {
+        e.target.classList.remove('hover');
         document.documentElement.removeEventListener('mousemove', resizer.doDrag, false);    
         document.documentElement.removeEventListener('mouseup', resizer.stopDrag, false);
      }
@@ -327,3 +330,18 @@ if (iframe_mode_url !== null) {
     iframeModeEmbed(iframe_mode_url);
 }
 
+// Auto scroll to current active page item in sidebar 
+const el_libdoc_sidebar_menu = document.getElementById('libdoc-sidebar-menu');
+if (el_libdoc_sidebar_menu !== null) {
+    const el_libdoc_sidebar_current_item = el_libdoc_sidebar_menu.querySelector('.libdoc-sidebar-current-item');
+    if (el_libdoc_sidebar_current_item !== null) {
+        const libdoc_sidebar_current_item_offset_top = el_libdoc_sidebar_current_item.offsetTop;
+        const libdoc_sidebar_current_item_offset_threshold = window.innerHeight - 2 * el_libdoc_sidebar_current_item.clientHeight;
+        if (libdoc_sidebar_current_item_offset_top > libdoc_sidebar_current_item_offset_threshold) {
+            el_libdoc_sidebar_menu.scrollTo({
+                top: libdoc_sidebar_current_item_offset_top,
+                behavior: 'smooth'
+            });
+        }
+    }
+}

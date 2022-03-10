@@ -2,13 +2,13 @@
 layout: libdoc/default
 ---
 <main class="m-grow m-w-1 c-grid" m-nowrap="md,xl" id="libdoc-page-split-container">
-    <div class="{{ page.content_class | default: 'm-w-6 m-w-12--sm u-bc-primary-max u-br-thin-dashed-alt u-bb-thin-dashed-alt u-relative resizeable resizeable-width' }}">
+    <div class="{{ page.content_class | default: 'm-w-6 m-w-12--sm u-bc-primary-max u-br-thin-dashed-alt u-bb-thin-dashed-alt u-relative resizeable resizeable-width' }}" style="max-width: 70ch">
         <header id="libdoc-page-split-header" class="u-bb-thin-dashed-alt u-p-lg" u-p-sm="sm">
             <h1 class="u-mt-none u-mb-xs u-lh-1">{{ page.title | default: site.title }}</h1>
             <p class="u-fs-lg u-m-none u-lh-base" u-fs-md="sm">{{ page.description | default: site.description }}</p>
         </header>
         <div id="libdoc-featured-code"></div>
-        <div class="{% if page.playground_expand == true %}{% else %}u-pl-lg u-pr-lg u-pl-sm--sm u-pr-sm--sm{% endif %}">
+        <div id="libdoc-content" class="u-p-lg u-p-sm--sm">
             {{ content }}
         </div>        
     </div>

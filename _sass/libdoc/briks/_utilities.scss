@@ -7,17 +7,6 @@
                     .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name} {
                         #{$property}: briks-generic-utility($property, $name, $value) !important;
                     }
-                    // Pseudo elements
-                    @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                        @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                            .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:\:#{$pseudo_element} {
-                                &::#{$pseudo_element} {
-                                    content: '';
-                                    #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                }
-                            }
-                        }
-                    }
 
                     // Pseudo classes
                     @if (type-of(map-get($data, pseudo-classes)) == list or type-of(map-get($data, pseudo-classes)) == string) and length(map-get($data, pseudo-classes)) > 0 {
@@ -25,19 +14,6 @@
                             .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class} {
                                 &:#{$pseudo_class} {
                                     #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                }
-                            }
-                            // Combining pseudo classes and pseudo elements
-                            @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                                @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                                    .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}\:\:#{$pseudo_element} {
-                                        &:#{$pseudo_class} {
-                                            &::#{$pseudo_element} {
-                                                content: '';
-                                                #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -49,35 +25,11 @@
                     .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name} {
                         #{$property}: $value !important;
                     }
-                    // Pseudo elements
-                    @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                        @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                            .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:\:#{$pseudo_element} {
-                                &::#{$pseudo_element} {
-                                    content: '';
-                                    #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                }
-                            }
-                        }
-                    }
                     // Pseudo classes
                     @if (type-of(map-get($data, pseudo-classes)) == list or type-of(map-get($data, pseudo-classes)) == string) and length(map-get($data, pseudo-classes)) > 0 {
                         @each $pseudo_class, $enabled in map-get($data, pseudo-classes) {
                             .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}:#{$pseudo_class} {
                                 #{$property}: briks-generic-utility($property, $name, $value) !important;
-                            }
-                        }
-                        // Combining pseudo classes and pseudo elements
-                        @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                            @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                                .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}\:\:#{$pseudo_element} {
-                                    &:#{$pseudo_class} {
-                                        &::#{$pseudo_element} {
-                                            content: '';
-                                            #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
@@ -93,39 +45,12 @@
                                     #{$property}: briks-generic-utility($property, $name, $value)  !important;
                                 }
 
-                                // Pseudo elements
-                                @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                                    @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                                        .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:\:#{$pseudo_element}#{$briks-responsive-prefix}#{$screen-size},
-                                        [#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:\:#{$pseudo_element}*="#{$screen-size}"] {
-                                            &::#{$pseudo_element} {
-                                                content: '';
-                                                #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                            }
-                                        }
-                                    }
-                                }
-
                                 // Pseudo classes
                                 @if (type-of(map-get($data, pseudo-classes)) == list or type-of(map-get($data, pseudo-classes)) == string) and length(map-get($data, pseudo-classes)) > 0 {
                                     @each $pseudo_class, $enabled in map-get($data, pseudo-classes) {
                                         .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}#{$briks-responsive-prefix}#{$screen-size}:#{$pseudo_class},
                                         [#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}*="#{$screen-size}"]:#{$pseudo_class} {
                                             #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                        }
-                                        // Combining pseudo classes and pseudo elements
-                                        @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                                            @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                                                .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}\:\:#{$pseudo_element}#{$briks-responsive-prefix}#{$screen-size},
-                                                [#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}\:\:#{$pseudo_element}*="#{$screen-size}"] {
-                                                    &:#{$pseudo_class} {
-                                                        &::#{$pseudo_element} {
-                                                            content: '';
-                                                            #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                                        }
-                                                    }
-                                                }
-                                            }
                                         }
                                     }
                                 }
@@ -138,39 +63,12 @@
                                     #{$property}: $value !important;
                                 }
 
-                                // Pseudo elements
-                                @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                                    @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                                        .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:\:#{$pseudo_element}#{$briks-responsive-prefix}#{$screen-size},
-                                        [#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:\:#{$pseudo_element}*="#{$screen-size}"] {
-                                            &::#{$pseudo_element} {
-                                                content: '';
-                                                #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                            }
-                                        }
-                                    }
-                                }
-
                                 // Pseudo classes
                                 @if (type-of(map-get($data, pseudo-classes)) == list or type-of(map-get($data, pseudo-classes)) == string) and length(map-get($data, pseudo-classes)) > 0 {
                                     @each $pseudo_class, $enabled in map-get($data, pseudo-classes) {
                                         .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}#{$briks-responsive-prefix}#{$screen-size}:#{$pseudo_class},
                                         [#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}*="#{$screen-size}"]:#{$pseudo_class} {
                                             #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                        }
-                                        // Combining pseudo classes and pseudo elements
-                                        @if (type-of(map-get($data, pseudo-elements)) == list or type-of(map-get($data, pseudo-elements)) == string) and length(map-get($data, pseudo-elements)) > 0 {
-                                            @each $pseudo_element, $enabled in map-get($data, pseudo-elements) {
-                                                .#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}\:\:#{$pseudo_element}#{$briks-responsive-prefix}#{$screen-size},
-                                                [#{$briks-utilities-prefix}#{map-get($data, prefix)}#{$name}\:#{$pseudo_class}\:\:#{$pseudo_element}*="#{$screen-size}"] {
-                                                    &:#{$pseudo_class} {
-                                                        &::#{$pseudo_element} {
-                                                            content: '';
-                                                            #{$property}: briks-generic-utility($property, $name, $value) !important;
-                                                        }
-                                                    }
-                                                }
-                                            }
                                         }
                                     }
                                 }

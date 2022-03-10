@@ -40,6 +40,9 @@ main {
     &:not(#libdoc-page-split-container) {
         #markdown-toc {
             padding-left: my-spacing(sm);
+            &+* {
+                margin-top: 0px;
+            }
         }
         @include my-screen-size(md,xl) {
             #markdown-toc {
@@ -54,4 +57,14 @@ main {
     h6 { 
         margin-top: 2em;
     }
+}
+#libdoc-content {
+    &>* {
+        &:first-child {
+            margin-top: 0px;
+        }
+    }
+}
+#markdown-toc {
+    margin-top: 0px;
 }

@@ -307,9 +307,9 @@ const iframeModeEmbed = function(url) {
             document.querySelectorAll('.libdoc-sidebar-item a').forEach(function(el) {
                 const href = el.href;
                 if (href == url) {
-                    el.classList.add('u-br-large-solid');
+                    el.classList.add('u-br-large-solid', 'u-bc-primary-edge');
                 } else {
-                    el.classList.remove('u-br-large-solid');
+                    el.classList.remove('u-br-large-solid', 'u-bc-primary-edge');
                 }
             });
         }

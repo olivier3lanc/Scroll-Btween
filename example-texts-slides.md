@@ -86,4 +86,4 @@ order: 100
     #scroll-btween-debugbar { display: none; }
 </style>
 ```
-{: .playground}
+{: .playground .playground-pin}

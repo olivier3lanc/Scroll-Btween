@@ -19,22 +19,23 @@ order: 100
 <style>
     #detector { height: 500vh; }
     #wrapper-playground { 
-        perspective: 90vmin;
+        perspective: 90vmax;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        font-size: 5vmin;
+        font-size: 3vmax;
     }
     [scroll-btween="text"] {
+        height: 100vh;
         transform-origin: top;
         padding: 3em;
         margin: auto;
-        max-width: 40vmin;
+        max-width: 40vmax;
     }
     img { margin-right: 1em; float:left; max-width: 100%; }
     #scroll-btween-debugbar { display: none; }
 </style>
 ```
-{: .playground}
+{: .playground .playground-pin}

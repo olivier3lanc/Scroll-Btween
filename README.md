@@ -28,7 +28,7 @@ ScrollBtween uses scroll position of document - or any DOM element - to tween CS
         background-repeat: no-repeat;
     }
     .wrapper-playground.gyp1 {
-        background-image: url(../img/gyp-back.webp);
+        background-image: url(../img/gyp-back-1000.webp);
     }
     .wrapper-playground.gyp2 {
         background-image: url(../img/gyp2-back.webp);
@@ -84,19 +84,10 @@ ScrollBtween uses scroll position of document - or any DOM element - to tween CS
         <p>Gypaetus barbatus</p>
     </header>
     <figure scroll-btween="gyp-front" data-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
-        <img src="../img/gyp-front.webp" alt="Bearded vulture">
+        <img src="../img/gyp-front-1000.webp" alt="Bearded vulture">
     </figure>
 </article>
 <div id="detector"></div>
-<article class="wrapper-playground gyp2" scroll-btween="gyp-back2" data-background-position="|30 to 70|% center">
-    <header>
-        <h1>Bearded <span>vulture</span></h1>
-        <p>Gypaetus barbatus</p>
-    </header>
-    <figure scroll-btween="gyp-front2" data-left="|0 to 13|%" data-top="|0 to -5|%">
-        <img src="../img/gyp2-front.webp" alt="Bearded vulture">
-    </figure>
-</article>
 ```
 {: .playground title="Demo - Parallax on Bearded Vultures"}
 ## Installation

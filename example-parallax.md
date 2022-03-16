@@ -6,27 +6,31 @@ category: Examples
 order: 100
 ---
 ```html
-<article scroll-btween="foo" 
+<figure scroll-btween="foo" 
         data-detector="detector"
-        data-background-position="calc(50% + |0 to 200|px) calc(50% - |0 to 100|px), calc(50% - |0 to 100|px)">
-    
-</article>
+        data-background-size="cover, auto |100 to 110|%"
+        data-background-position="calc(50% + |0 to 110|px) calc(50% - |0 to 90|px), center">
+</figure>
 <div id="detector"></div>
 <style>
     body {
-        margin: 0; padding-bottom: 100vh;
+        margin: 0; 
+        height: 100vh;
     }
-    article {
-        background-size: cover;
-        background-image: url('../img/gyp-front.webp'), url('../img/gyp-back.webp');
-        aspect-ratio: 1;
-
+    figure {
+        position: fixed;
+        width: 100%;
+        aspect-ratio: 1.5;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        background-image: url('../img/gyp-front-1000.webp'), url('../img/gyp-back-1000.webp');
     }
     #detector {
-        position: absolute;
-        top: 100vh;
+        margin-top: 100vh;
     }
     #scroll-btween-debugbar { display: none; }
 </style>
 ```
-{: .playground .playground-pin title="Parallax on images"}
+{: .playground .playground-pin title="Add parallax on two image layers"}

@@ -48,10 +48,14 @@ sidebar:
         #font_size: 32px
     # Display additional links anywhere into the sidebar
     additional_links:
-        #-   #url: # Local or remote URL
-             #title: # Link text
-             #order: # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
-             #category: # Add this this link into a category just like pages
+        -   url: https://olivier3lanc.github.io/folio-casa-de-papel/ # Local or remote URL
+            title: La Casa de Papel # Link text
+            order: 200 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
+            category: Showcase # Add this this link into a category just like pages
+        -   url: https://olivier3lanc.github.io/folio-dark/ # Local or remote URL
+            title: D A R K # Link text
+            order: 200 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
+            category: Showcase # Add this this link into a category just like pages
         
 # Badges
 # Feature that allows to display badges into the footer https://shields.io image html and url

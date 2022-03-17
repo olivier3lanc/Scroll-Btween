@@ -9,6 +9,18 @@ Scroll Btween was crafted to simply tween any CSS values on any DOM element in r
 * You can tween multiple CSS properties at the same time.
 * You can add multiple tweens on the same CSS property.
 
+## Support
+
+| Browser | Mobile | Desktop |
+| :- | :-: | :-: |
+| Chrome | ✅ | ✅ |
+| Safari | ✅ | ✅ |
+| Firefox | ✅  | ✅  |
+| Opera | ✅ | ✅ |
+| Chromium based browsers (Vivaldi, Brave, ...) | ✅ | ✅ |
+
+Demo on parallax images
+
 ```html
 <article class="wrapper-playground gyp1" scroll-btween="gyp-back" data-detector="detector" data-background-position="|70 to 30|% center">
     <header>

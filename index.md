@@ -4,12 +4,31 @@ permalink: index.html
 unlisted: true
 ---
 
-ScrollBtween uses scroll position of document - or any DOM element - to tween CSS values on any DOM element.
+Scroll Btween was crafted to simply tween any CSS values on any DOM element in relation with its position into the viewport.
 
 * You can tween multiple CSS properties at the same time.
 * You can add multiple tweens on the same CSS property.
 
 ```html
+<article class="wrapper-playground gyp1" scroll-btween="gyp-back" data-detector="detector" data-background-position="|70 to 30|% center">
+    <header>
+        <h1>Free like <span>a bird</span></h1>
+        <p>Gypaetus barbatus</p>
+    </header>
+    <figure scroll-btween="gyp-front" data-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
+        <img src="../img/gyp-front-1000.webp" alt="Bearded vulture">
+    </figure>
+</article>
+<div id="detector"></div>
+<article class="wrapper-playground gyp2" scroll-btween="gyp-back2" data-background-position="|30 to 70|% center">
+    <header>
+        <h1>Bearded <span>vulture</span></h1>
+        <p>Gypaetus barbatus</p>
+    </header>
+    <figure scroll-btween="gyp-front2" data-left="|0 to 13|%" data-top="|0 to -5|%">
+        <img src="../img/gyp2-front-1000.webp" alt="Bearded vulture">
+    </figure>
+</article>
 <style>
     body {
         margin: 0; padding:0; height: 400vh;
@@ -62,7 +81,7 @@ ScrollBtween uses scroll position of document - or any DOM element - to tween CS
     header h1 {
         margin-top: 0;
         margin-bottom: 0;
-        font-size: 10vw;
+        font-size: 13vw;
         font-family: sans-serif;
     }
     header h1 span {
@@ -78,24 +97,5 @@ ScrollBtween uses scroll position of document - or any DOM element - to tween CS
     #detector { position: absolute; top: 100vh; }
     #scroll-btween-debugbar { display: none; }
 </style>
-<article class="wrapper-playground gyp1" scroll-btween="gyp-back" data-detector="detector" data-background-position="|70 to 30|% center">
-    <header>
-        <h1>Bearded <span>vulture</span></h1>
-        <p>Gypaetus barbatus</p>
-    </header>
-    <figure scroll-btween="gyp-front" data-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
-        <img src="../img/gyp-front-1000.webp" alt="Bearded vulture">
-    </figure>
-</article>
-<div id="detector"></div>
-<article class="wrapper-playground gyp2" scroll-btween="gyp-back2" data-background-position="|30 to 70|% center">
-    <header>
-        <h1>Bearded <span>vulture</span></h1>
-        <p>Gypaetus barbatus</p>
-    </header>
-    <figure scroll-btween="gyp-front2" data-left="|0 to 13|%" data-top="|0 to -5|%">
-        <img src="../img/gyp2-front-1000.webp" alt="Bearded vulture">
-    </figure>
-</article>
 ```
-{: .playground title="Demo - Parallax on Bearded Vultures"}
+{: .playground title="Demo - Parallax on images"}

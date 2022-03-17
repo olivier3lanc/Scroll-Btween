@@ -8,10 +8,20 @@ order: 12
 * 
 {:toc}
 
-**The scrollBtween syntax follows the CSS value inline syntax.** You can add as much tweens as you want. You can even add multiple tweens on the same CSS property. You can specify the tween to apply as follows:
+**The Scroll Btween syntax follows the CSS value inline syntax.** You can add as much tweens as you want. You can even add multiple tweens on the same CSS property. You can specify the tween to apply as follows:
 
 ```html
-<div scroll-btween="[YOUR_UNIQUE_ID]" data-[CSS_PROPERTY]="|[X] to [Y]|"></div>
+<!-- Syntax -->
+<div scroll-btween="[YOUR_UNIQUE_ID]" data-[CSS_PROPERTY]="|[X1] to [Y1]|...|[X2] to [Y2]|..."></div>
+<!-- Example 1 -->
+<p scroll-btween="foo" data-left="|-50 to 50|%">A paragraph</p>
+<!-- Example 2 -->
+<p  scroll-btween="foo2" 
+    data-transform="translateX(|-100 to 0|%) translateY(|50 to 0|%) scale(|1 to 2|)">Another paragraph</p>
+<!-- Example 3 -->
+<p  scroll-btween="foo3" 
+    data-background-color="rgba(|34 to 255|, |255 to 128|, 50, |1 to 0.2|)" 
+    data-padding="|2 to 3|em |1 to 3|em">Another paragraph</p>
 ```
 
 * `scroll-btween="[YOUR_UNIQUE_ID]"` Declaration to assign CSS tweening on this node.
@@ -69,7 +79,7 @@ order: 12
 
 ## Detector
 
-By default, scroll binded elements are their own detector: It means the [intersection](#how-it-works) it computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
+By default, scroll binded elements are their own detector: It means the [intersection](#how-it-works) is computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
 
 ```html
 <h2 scroll-btween="foo" data-detector="detector" data-background-color="rgb(|0 to 255|,|255 to 0|,0)">

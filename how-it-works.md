@@ -1,6 +1,6 @@
 ---
 title: How it works?
-description: Details about Scroll Btween
+description: It's all about intersection
 layout: libdoc/page
 category: Getting started
 order: 15

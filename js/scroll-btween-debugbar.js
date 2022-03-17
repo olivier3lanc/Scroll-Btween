@@ -2,12 +2,12 @@
 scrollBtween.debugbar = function() {
     const style = ''+
     '<style>'+
-        '#scroll-btween-debugbar { position: fixed; top: 0; right: 0; background: #343b43; color: white; font-size: small; font-family: sans-serif; padding: 1em 0em 1em 1em; }'+
+        '#scroll-btween-debugbar { position: fixed; top: 0; right: 0; background: #343b43; color: white; font-size: small; font-family: monospace; padding: 1em 0em 1em 1em; }'+
         '#scroll-btween-debugbar ul { display: flex; padding: 0em 1em 0em 0em; list-style: none; margin: 0; }'+
         '#scroll-btween-debugbar ul ul { flex-direction: column }'+
         '#scroll-btween-debugbar li { display: flex; justify-content: space-between; }'+
         '#scroll-btween-debugbar li > span:first-child { padding-right: 1em; }'+
-        '#scroll-btween-debugbar li > span:last-child { white-space:nowrap; max-width: 10ch; overflow:hidden; text-overflow: ellipsis; }'+
+        '#scroll-btween-debugbar li > span:last-child { white-space:nowrap; width: 7ch; overflow:hidden; text-overflow: ellipsis; }'+
     '</style>';
     document.querySelector('head').insertAdjacentHTML('beforeend', style);
     document.querySelector('body').insertAdjacentHTML('beforeend', '<div id="scroll-btween-debugbar"></div>');

@@ -3,6 +3,7 @@ title: Usage
 description: How to use Scroll Btween
 layout: libdoc/page
 category: Getting started
+order: 12
 ---
 * 
 {:toc}

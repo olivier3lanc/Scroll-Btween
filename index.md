@@ -6,8 +6,13 @@ unlisted: true
 
 Scroll Btween was crafted to simply tween any CSS values on any DOM element in relation with its position into the viewport.
 
-* You can tween multiple CSS properties at the same time.
-* You can add multiple tweens on the same CSS property.
+## Key Features
+
+* **Native Javascript**
+* **No dependencies**
+* **Easy to use** see [usage](usage.html)
+* **You can tween multiple CSS properties at the same time**
+* **You can add multiple tweens on the same CSS property**
 
 ## Support
 

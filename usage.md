@@ -10,9 +10,22 @@ order: 12
 
 **The Scroll Btween syntax follows the CSS value inline syntax.** You can add as much tweens as you want. You can even add multiple tweens on the same CSS property. You can specify the tween to apply as follows:
 
+## Global parameters
+
+Adjustable global parameters accessible in `scoll-btween.js` 
+
+| `scrollBtween.defaults.` | Type | Default | Description |
+|:-|:-|:-|:-|
+| `frameDurationinMs` | integer | 20 | Duration in ms between to animation states |
+| `tweenerIntervalinMs` | integer | 300 | Smoothness of the change. Available only if Ola tweener is enabled, duration between to tweens |
+
 ```html
 <!-- Syntax -->
-<div scroll-btween="[YOUR_UNIQUE_ID]" data-[CSS_PROPERTY]="|[X1] to [Y1]|...|[X2] to [Y2]|..."></div>
+<div    scroll-btween="[YOUR_UNIQUE_ID]"
+        data-[CSS_PROPERTY]="|[X1] to [Y1]|...|[X2] to [Y2]|..."></div>
+```
+
+```html
 <!-- Example 1 -->
 <p scroll-btween="foo" data-left="|-50 to 50|%">A paragraph</p>
 <!-- Example 2 -->
@@ -27,9 +40,9 @@ order: 12
 * `scroll-btween="[YOUR_UNIQUE_ID]"` Declaration to assign CSS tweening on this node.
 * `data-[CSS_PROPERTY]="|X to Y|"` Enter standard CSS value expression specifying numeric values to tween between pipes `|X to Y|`.
     * `data-[CSS_PROPERTY]` specifies the CSS property onto which applying the tween. For example `data-color` or `data-width` etc.
-    * `X` is the start value when the element not visible into the viewport yet - [intersection](#how-it-works) is below 0.
+    * `X` is the start value when the element not visible into the viewport yet - [intersection](how-it-work.html) is below 0.
     * `[space]to[space]` is the operator to enter between X start value and Y end value.
-    * `Y` is the end value when the element has passed the viewport - [intersection](#how-it-works) is over 1.
+    * `Y` is the end value when the element has passed the viewport - [intersection](how-it-work.html) is over 1.
 
 
 ```html
@@ -79,7 +92,7 @@ order: 12
 
 ## Detector
 
-By default, scroll binded elements are their own detector: It means the [intersection](#how-it-works) is computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
+By default, scroll binded elements are their own detector: It means the [intersection](how-it-work.html) is computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
 
 ```html
 <h2 scroll-btween="foo" data-detector="detector" data-background-color="rgb(|0 to 255|,|255 to 0|,0)">
@@ -98,15 +111,15 @@ By default, scroll binded elements are their own detector: It means the [interse
 
 ## Keyframes
 
-As seen earlier, [intersection](#how-it-works) is based on the position of the element - or its [detector](#Detector) - into the viewport. 
+As seen earlier, [intersection](how-it-works.html) is based on the position of the element - or its [detector](#Detector) - into the viewport. 
 It is possible to split the transition into multiple parts using **keyframes** with the following syntax:
 
 * `data-[CSS_PROPERTY]="|a:X to b:Y to c:Z to etc|"` A CSS property is set with keyframes.
 * `a`, `b` and `c` are percentages of the element's position into the viewport.
 * `a < b < c` keyframes always start from 0 and go to 100.
-* `X` is the start value of the CSS property when [intersection](#how-it-works) is equal (in percent) to `a`.
-* `Y` is the intermediate value of the CSS property when [intersection](#how-it-works) is equal (in percent) to `b`.
-* `Z` is the intermediate value of the CSS property when [intersection](#how-it-works) is equal (in percent) to `c`.
+* `X` is the start value of the CSS property when [intersection](how-it-work.html) is equal (in percent) to `a`.
+* `Y` is the intermediate value of the CSS property when [intersection](how-it-work.html) is equal (in percent) to `b`.
+* `Z` is the intermediate value of the CSS property when [intersection](how-it-work.html) is equal (in percent) to `c`.
 * etc
 
 

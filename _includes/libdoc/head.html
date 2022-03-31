@@ -82,7 +82,7 @@
     <meta property="og:url" content="{{ site_url }}{{ page.url }}">
     <meta property="og:title" content="{{ page.title | default: site.title }}">
     <meta property="og:description" content="{{ page.description | default: site.description }}">
-    {% if page.metadata.image contains 'https://' or page.metadata.image contains 'http://' %}
+    {% if page.metadata.image contains 'https://' or site.metadata.image contains 'https://' or page.metadata.image contains 'http://' or site.metadata.image contains 'http://' %}
         <meta property="og:image" content="{{ page.metadata.image | default: site.metadata.image }}">
     {% else %}
         {% if page.metadata.image.size > 0 or site.metadata.image.size > 0 %}

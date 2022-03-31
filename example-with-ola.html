@@ -1,0 +1,171 @@
+---
+title: With Ola
+description: Example without smoothness
+layout: libdoc/blank
+category: Examples
+order: 101
+iframe_mode: true
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.playground.metadata.lang | default: site.metadata.lang | default: 'en' }}">
+    <head>
+        {% assign site_url = site.url | append: site.baseurl %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if site.playground.metadata.cache == false %}
+            <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+            <meta http-equiv="Pragma" content="no-cache">
+            <meta http-equiv="Expires" content="0">
+        {% endif %}
+
+        <!-- Playground metadata -->
+        <title>{{ page.title | default:site.title }}</title>
+        <meta name="description" content="{{ page.description | default: site.description }}">
+        <meta itemprop="name" content="{{ page.title | default: site.title }}">
+        <meta name="description" itemprop="description" content="{{ page.description | default: site.description }}">
+        <meta name="application-name" content="{{ page.title | default: site.title }}">
+        {% if site.playground.metadata.author %}
+            <meta name="author" content="{{ site.playground.metadata.author }}">
+        {% endif %}
+
+        <!-- Favicons -->
+        {% assign favicon_path_or_url = page.playground.metadata.favicon | default: page.playground.metadata.favicon_auto | default: site.playground.metadata.favicon | default: site.playground.metadata.favicon_auto %}
+        {% if favicon_path_or_url contains 'http://' or favicon_path_or_url contains 'https://' %}
+        {% else %}
+            {% assign favicon_path_or_url = site.url | append: site.baseurl | append: favicon_path_or_url %}
+        {% endif %}
+        {% if favicon_path_or_url.size > 9 %}
+            {% assign ico_split = favicon_path_or_url | split: '.ico' %}
+            {% assign ico_split_size = ico_split | size %}
+            {% assign favicon_path_or_url_size = favicon_path_or_url | size %}
+            {% assign is_image_x_icon = false %}
+            {% if ico_split_size == 1 and favicon_path_or_url_size > ico_split[0].size %}
+                {% assign is_image_x_icon = true %}
+            {% endif %}
+            {% if favicon_path_or_url contains 'data:image' %}
+                {% assign is_image_x_icon = true %}
+            {% endif %}
+            {% if favicon_path_or_url contains 'data:image/svg+xml' or favicon_path_or_url contains '.svg' %}
+                <link rel="icon" type="image/svg+xml" href="{{ favicon_path_or_url }}">
+            {% elsif is_image_x_icon == true %}
+                <link rel="icon" href="{{ favicon_path_or_url }}" type="image/x-icon">
+                <link rel="shortcut icon" href="{{ favicon_path_or_url }}" type="image/x-icon">
+            {% else %}
+                {% if site.playground.metadata.favicon_auto.size > 0 %}
+                    <link rel="icon" type="image/png" href="https://images.weserv.nl/?url={{ favicon_path_or_url }}&w=32&h=32&fit=cover&cbg=transparent&output=png">
+                    {% assign favicon_base_url = 'https://images.weserv.nl/?url=' | append: favicon_path_or_url %}
+                    {% unless favicon_path_or_url contains 'data:image' %}
+                        <link rel="icon" type="image/png" href="{{ favicon_path_or_url }}">
+                        <link rel="apple-touch-icon" sizes="57x57" href="{{ favicon_base_url }}&w=57&h=57&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="60x60" href="{{ favicon_base_url }}&w=60&h=60&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="72x72" href="{{ favicon_base_url }}&w=72&h=72&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="76x76" href="{{ favicon_base_url }}&w=76&h=76&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="114x114" href="{{ favicon_base_url }}&w=114&h=114&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="120x120" href="{{ favicon_base_url }}&w=120&h=120&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="144x144" href="{{ favicon_base_url }}&w=144&h=144&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="152x152" href="{{ favicon_base_url }}&w=152&h=152&fit=cover&cbg=transparent&output=png">
+                        <link rel="apple-touch-icon" sizes="180x180" href="{{ favicon_base_url }}&w=180&h=180&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="192x192"  href="{{ favicon_base_url }}&w=192&h=192&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_base_url }}&w=32&h=32&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="96x96" href="{{ favicon_base_url }}&w=96&h=96&fit=cover&cbg=transparent&output=png">
+                        <link rel="icon" type="image/png" sizes="16x16" href="{{ favicon_base_url }}&w=16&h=16&fit=cover&cbg=transparent&output=png">
+                        <meta name="msapplication-TileImage" content="{{ favicon_base_url }}&w=144&h=144&fit=cover&cbg=transparent&output=png">
+                    {% endunless %}
+                {% else %}
+                    <link rel="icon" type="image/png" href="{{ favicon_path_or_url }}">
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        
+        <meta name="msapplication-TileColor" content="{{ site.playground.metadata.color | default: '#ffffff' }}">
+        <meta name="theme-color" content="{{ page.playground.metadata.color | default: site.playground.metadata.color | default: '#FFFFFF' }}">
+
+        <!-- Microsoft -->
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="msapplication-starturl" content="{{ site_url }}{{ page.url }}">
+        <meta name="msapplication-tooltip" content="{{ page.title | default: site.title }}">
+        <meta name="msapplication-TileColor" content="{{ page.playground.metadata.color | default: site.playground.metadata.color | default: '#FFFFFF' }}">
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ site_url }}{{ page.url }}">
+        <meta property="og:title" content="{{ page.title | default: site.title }}">
+        <meta property="og:description" content="{{ page.description | default: site.description }}">
+        {% if page.playground.metadata.image contains 'https://' or site.playground.metadata.image contains 'https://' or page.playground.metadata.image contains 'http://' or site.playground.metadata.image contains 'http://' %}
+            <meta property="og:image" content="{{ page.playground.metadata.image | default: site.playground.metadata.image }}">
+        {% else %}
+            {% if page.playground.metadata.image.size > 0 or site.playground.metadata.image.size > 0 %}
+                <meta property="og:image" content="{{ site_url }}{{ page.playground.metadata.image | default: site.playground.metadata.image }}">
+            {% endif %}
+        {% endif %}
+        
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+        <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+        <meta name="twitter:url" content="{{ site_url }}{{ page.url }}">
+        {% if page.playground.metadata.image contains 'https://' or site.playground.metadata.image contains 'https://' or page.playground.metadata.image contains 'http://' or site.playground.metadata.image contains 'http://' %}
+            <meta name="twitter:image" content="{{ page.playground.metadata.image | default: site.playground.metadata.image }}">
+        {% else %}
+            {% if page.playground.metadata.image.size > 0 or site.playground.metadata.image.size > 0 %}
+                <meta name="twitter:image" content="{{ site_url }}{{ page.playground.metadata.image | default: site.playground.metadata.image }}">
+            {% endif %}
+        {% endif %}
+
+        <!-- iOS -->
+        <meta name="apple-mobile-web-app-title" content="{{ page.title | default: site.title }}">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="{{ page.playground.metadata.color | default: site.playground.metadata.color | default: '#FFFFFF' }}">
+
+        <!-- Android -->
+        <meta name="theme-color" content="{{ page.playground.metadata.color | default: site.playground.metadata.color | default: '#FFFFFF' }}">
+        <meta name="color-scheme" content="light">
+        <meta name="mobile-web-app-capable" content="yes">
+        
+        {% for stylesheet_url in site.playground.stylesheets %}
+            {% if stylesheet_url contains 'https://' or stylesheet_url contains 'http://' %}
+                <link rel="stylesheet" href="{{ stylesheet_url }}">
+            {% else %}
+                <link rel="stylesheet" href="{{ site_url }}{{ stylesheet_url }}">
+            {% endif %}
+        {% endfor %}
+        {% for script_url in site.playground.scripts_head %}
+            {% if script_url contains 'https://' or script_url contains 'http://' %}
+                <script type="text/javascript" src="{{ script_url }}"></script>
+            {% else %}
+                <script type="text/javascript" src="{{ site_url }}{{ script_url }}"></script>
+            {% endif %}
+        {% endfor %}
+    </head>
+    <body>
+        <figure scroll-btween="foo" 
+                data-detector="detector"
+                data-background-size="cover, auto |100 to 110|%"
+                data-background-position="calc(50% + |0 to 110|px) calc(50% - |0 to 90|px), center">
+        </figure>
+        <div id="detector"></div>
+        <style>
+            body {
+                margin: 0; 
+                height: 100vh;
+            }
+            figure {
+                position: fixed;
+                width: 100%;
+                aspect-ratio: 1.5;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                background-image: url('../img/gyp-front-1000.webp'), url('../img/gyp-back-1000.webp');
+            }
+            #detector {
+                margin-top: 100vh;
+            }
+            #scroll-btween-debugbar { display: none; }
+        </style>
+        <script src="{{site.url}}{{site.baseurl}}/js/ola.min.js"></script>
+        <script src="{{site.url}}{{site.baseurl}}/js/scroll-btween.js"></script>
+    </body>
+</html>

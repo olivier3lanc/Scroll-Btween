@@ -1,7 +1,7 @@
 const scrollBtween = {
     defaults: {
         frameDurationinMs: 20, // Integer - Duration in ms between to animation states
-        tweenerIntervalinMs: 300, // Integer - Available only if tweener is enabled, duration between to tweens
+        tweenerIntervalinMs: 300, // Integer - Smoothness of the change. Available only if Ola tweener is enabled, duration between to tweens
         enabled: true // boolean - Sets the status of animation interval
     },
     // Ola instance

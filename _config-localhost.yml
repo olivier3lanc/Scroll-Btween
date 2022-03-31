@@ -48,13 +48,17 @@ sidebar:
         #font_size: 32px
     # Display additional links anywhere into the sidebar
     additional_links:
+        -   url: https://github.com/olivier3lanc/Scroll-Btween # Local or remote URL
+            title: <span class="i-github u-mr-xxs"></span> View on GitHub # Link text
+            order: 0 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
+            # category: Showcase # Add this this link into a category just like pages
         -   url: https://olivier3lanc.github.io/folio-casa-de-papel/ # Local or remote URL
             title: La Casa de Papel # Link text
-            order: 200 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
+            order: 50 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
             category: Showcase # Add this this link into a category just like pages
         -   url: https://olivier3lanc.github.io/folio-dark/ # Local or remote URL
             title: D A R K # Link text
-            order: 200 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
+            order: 50 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
             category: Showcase # Add this this link into a category just like pages
         
 # Badges

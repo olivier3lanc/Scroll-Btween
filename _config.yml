@@ -41,9 +41,9 @@ sidebar:
     # Top left branding/homepage link, specified image URL or site title if no URL is set
     logo:
         # Image URL: Can be local e.g. '/img/logo.png' or remote 'https://remotesite.com/img/logo.png'
-        # url: /libdoc/img/favicon/android-chrome-512x512.png
+        url: /img/logo-scroll-btween.svg
         # Logo image max height, applies only of url is set
-        max_height: 40px
+        max_height: 60px
         # If no logo url, font size of the site title, ignored if url is set
         #font_size: 32px
     # Display additional links anywhere into the sidebar

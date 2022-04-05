@@ -46,6 +46,7 @@ Demo on parallax images
         <img src="../img/gyp2-front-1000.webp" alt="Bearded vulture">
     </figure>
 </article>
+<p>Photo credits Olivier 3lanc</p>
 <style>
     body {
         margin: 0; padding:0; height: 400vh;
@@ -111,6 +112,7 @@ Demo on parallax images
         font-style: italic;
         font-size: 5vmin;
     }
+    body > p { text-align: right; font-size: 12px; padding-right: 1em }
     #detector { position: absolute; top: 100vh; }
     #scroll-btween-debugbar { display: none; }
 </style>

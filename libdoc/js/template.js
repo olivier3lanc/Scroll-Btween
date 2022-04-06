@@ -71,7 +71,7 @@ jQuery(document).ready(function() {
     //Manage external links
     jQuery('main a[href^="http"], .libdoc-sidebar-item a[href^="http"]').each(function(){
         // Only if link is not in .playground
-        if (jQuery(this).closest('.playground').length == 0) {
+        if (jQuery(this).closest('.playground, [data-playground-commands]').length == 0) {
             var link = jQuery(this).attr('href');
             //Check if it is an internal link (check if hostname is contained into the link string)
             const location_host_pathname = location.host + location.pathname;

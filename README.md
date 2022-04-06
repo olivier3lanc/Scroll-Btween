@@ -142,7 +142,17 @@ It is possible to split the transition into multiple parts using **keyframes** w
     I go from 0px to 150px of padding left when i roam between 40% and 60% of the screen.
 </h2>
 ```
+## Methods
 
+Scroll Btween comes with methods to start and stop tween.
+
+```javascript
+// Stops all tweens
+scrollBtween.stop()
+
+// Starts all tweens
+scrollBtween.stop()
+```
 ## How it works
 
 [Documentation](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html)

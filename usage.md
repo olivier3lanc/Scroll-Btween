@@ -138,3 +138,15 @@ It is possible to split the transition into multiple parts using **keyframes** w
 </style>
 ```
 {:.playground}
+
+## Methods
+
+Scroll Btween comes with methods to start and stop tween.
+
+```javascript
+// Stops all tweens
+scrollBtween.stop()
+
+// Starts all tweens
+scrollBtween.stop()
+```

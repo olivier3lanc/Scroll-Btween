@@ -46,7 +46,7 @@ Scroll Btween was crafted to simply tween any CSS values on any DOM element in r
 
 Include Javascript file `scroll-btween.js` just before the end body tag `</body>`. For smoother results, use the [great tweener library ola.js](https://github.com/franciscop/ola)
 
-* [Download ola.min.js](https://olivier3lanc.github.io/Scroll-Btween/js/ola.min.js)
+* [Download ola.min.js](https://olivier3lanc.github.io/Scroll-Btween/js/ola.min.js) (optional)
 * [Download scroll-btween.js](https://olivier3lanc.github.io/Scroll-Btween/js/scroll-btween.js)
 
 **Place Ola always before scroll-btween.js**
@@ -144,15 +144,14 @@ It is possible to split the transition into multiple parts using **keyframes** w
 ```
 ## Methods
 
-Scroll Btween comes with methods to start and stop tween.
+Scroll Btween comes with the following methods.
 
-```javascript
-// Stops all tweens
-scrollBtween.stop()
+* `scrollBtween.getIntersection(element)` Returns the intersection value of the specified element.
+* `scrollBtween.update()` Start Scroll Btween or update instances if DOM has changed.
+* `scrollBtween.stop()` Stops all tweens, disable all tweens.
+* `scrollBtween.start()` Start all tweens.
 
-// Starts all tweens
-scrollBtween.stop()
-```
+
 ## How it works
 
 [Documentation](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html)

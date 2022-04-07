@@ -68,10 +68,10 @@ let copyToClipboard = function(value) {
 // });
 jQuery(document).ready(function() {
     myToggle.update();
-    //Manage external links
-    jQuery('main a[href^="http"], .libdoc-sidebar-item a[href^="http"]').each(function(){
+    // EXTERNAL LINKS MANAGEMENT
+    jQuery('main a[href^="http"]:not(#libdoc-codemirror-external-link), .libdoc-sidebar-item a[href^="http"]').each(function(){
         // Only if link is not in .playground
-        if (jQuery(this).closest('.playground, [data-playground-commands]').length == 0) {
+        if (jQuery(this).closest('.playground, [data-playground-commands], #libdoc-assets').length == 0) {
             var link = jQuery(this).attr('href');
             //Check if it is an internal link (check if hostname is contained into the link string)
             const location_host_pathname = location.host + location.pathname;
@@ -83,6 +83,37 @@ jQuery(document).ready(function() {
             }
         }
     });
+
+    // AUTO ANCHORS
+    const el_content_titles_anchors = document.querySelectorAll('main h1:not(#libdoc-page-title), main h2, main h3, main h4, main h5, main h6');
+    if (el_content_titles_anchors !== null) {
+        // Insert style
+        const anchors_style = `
+            <style>
+                main a.libdoc-anchor {
+                    position: absolute;
+                    transform: translateX(-150%) skewX(30deg);
+                    font-family: var(--sg-font-family-lead);
+                    opacity: 0;
+                    transition: opacity 300ms, transform 300ms;
+                }
+                main h1:not(#libdoc-page-title):hover > a.libdoc-anchor, 
+                main h2:hover > a.libdoc-anchor, 
+                main h3:hover > a.libdoc-anchor, 
+                main h4:hover > a.libdoc-anchor, 
+                main h5:hover > a.libdoc-anchor, 
+                main h6:hover > a.libdoc-anchor {
+                    opacity: 1;
+                    transform: translateX(-110%) skewX(0deg);
+                }
+            </style>
+        `;
+        document.head.insertAdjacentHTML('beforeend', anchors_style);
+        document.querySelectorAll('main h1:not(#libdoc-page-title), main h2, main h3, main h4, main h5, main h6').forEach(function(el) {
+            const link_title = 'Permanent link to: '+site.title+' > '+document.title+' > '+el.innerText;
+            el.insertAdjacentHTML('afterbegin', '<a href="#'+el.id+'" class="libdoc-anchor" title="'+link_title+'">#</a>');
+        });
+    }
 
     // RESPONSIVE TABLES
     document.querySelectorAll('main table').forEach(function(el_table) {

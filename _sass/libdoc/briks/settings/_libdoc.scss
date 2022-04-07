@@ -76,7 +76,7 @@ $briks-colors: (
     primary-edge:           briks-smart-contrast(95, $primary-color),
     primary-max:            briks-smart-contrast(100, $primary-color),
     hilight:                fuchsia,
-    hilight-alt:            steelblue,
+    hilight-alt:            #036dde,
     hilight-edge:           yellowgreen,
     hilight-ultra:          #7303e3
 );
@@ -363,6 +363,9 @@ $briks-borders: (
     thin-solid: 1px solid my-color(primary),
     thin-solid-alt: 1px solid my-color(primary-alt),
     thin-solid-edge: 1px solid my-color(primary-edge),
+    thin-solid-hilight: 1px solid my-color(hilight),
+    thin-solid-hilight-alt: 1px solid my-color(hilight-alt),
+    thin-solid-hilight-edge: 1px solid my-color(hilight-edge),
     large-solid: 3px solid my-color(primary),
     large-solid-alt: 3px solid my-color(primary-alt),
     large-solid-edge: 3px solid my-color(primary-edge),

@@ -137,7 +137,9 @@ const scrollBtween = {
                 window.addEventListener('scroll', scrollBtween.updateTweenerValues, {passive: true});
                 window.addEventListener('load', scrollBtween.updateTweenerValues);
             }
-            scrollBtween.interval = setInterval(scrollBtween.frame, scrollBtween.defaults.frameDurationinMs);
+            requestAnimationFrame(scrollBtween.apply);
+            // Old method
+            // scrollBtween.interval = setInterval(scrollBtween.frame, scrollBtween.defaults.frameDurationinMs);
         }
     },
     // Update tweener values witht new values from scroll bindr nodes
@@ -194,17 +196,20 @@ const scrollBtween = {
                 }
             }
         }
+        if (scrollBtween.defaults.enabled) {
+            requestAnimationFrame(scrollBtween.apply);
+        }
     },
     // Method to apply on each animatiton interval
     frame: function() {
         if (scrollBtween.defaults.enabled) {
             scrollBtween.apply();
-            // requestAnimationFrame(scrollBtween.apply);
         }
     },
     // Start / Resume animation interval
     start: function() {
         scrollBtween.defaults.enabled = true;
+        requestAnimationFrame(scrollBtween.apply);
     },
     // Stop / Pause animation interval
     stop: function() {

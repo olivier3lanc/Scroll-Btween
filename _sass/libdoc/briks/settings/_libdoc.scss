@@ -2251,6 +2251,20 @@ $briks-components__buttons__hooks-modifiers: (
             background-color: my-color(primary-edge),
         ),
     ),
+    ff-lead: (
+        // Hook
+        root-css: (
+            font-family: my-font-family(lead),
+            font-weight: normal
+        )
+        // hover-css: (
+        //     color: my-color(primary-alt),
+        //     background-color: transparent
+        // ),
+        // active-css: (
+        //     background-color: my-color(primary-edge),
+        // ),
+    ),
     // Name of the modifier
     tab: (
         // Hook

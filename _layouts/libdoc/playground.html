@@ -155,13 +155,24 @@
                     if (isJson(stringifiedSentObject)) {
                         const sentObject = JSON.parse(stringifiedSentObject);
                         document.body.insertAdjacentHTML('afterbegin', sentObject.content);
-                        // console.log('code included');
+                        // console.log(sentObject.options);
+                        // Sets the optional title of the Playground
+                        document.title = sentObject.options.title;
                     }
                 }
             }
             // console.log('HTML included');
         </script>
+        {% for script_url in site.playground.scripts_body_modules %}
+            <!-- JS type="module" -->
+            {% if script_url contains 'https://' or script_url contains 'http://' %}
+                <script type="module" src="{{ script_url }}"></script>
+            {% else %}
+                <script type="module" src="{{ site_url }}{{ script_url }}"></script>
+            {% endif %}
+        {% endfor %}
         {% for script_url in site.playground.scripts_body %}
+            <!-- JS type="text/javascript" -->
             {% if script_url contains 'https://' or script_url contains 'http://' %}
                 <script type="text/javascript" src="{{ script_url }}"></script>
             {% else %}

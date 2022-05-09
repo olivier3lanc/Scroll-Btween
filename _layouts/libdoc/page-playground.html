@@ -9,7 +9,7 @@ layout: libdoc/default
         </header>
         <div id="libdoc-featured-code"></div>
         <div id="libdoc-content" class="u-p-lg u-p-sm--sm">
-            {{ content }}
+            <pre class="playground" title="{{page.title}}"><code class="language-html">{{ content | strip | escape }}</code></pre>
         </div>        
     </div>
     <div id="libdoc-page-split" class="m-grow c-position c-grid m-column u-bc-primary-max u-o-hidden u-bb-thin-dashed-alt u-z-10" m-sticky="md,xl" m-top-0="md,xl" m-w-12="sm" m-order--1="sm" u-h-100vh="md,xl"></div>

@@ -72,7 +72,6 @@ Adjustable global parameters accessible in `scoll-btween.js`
 
 | `scrollBtween.defaults.` | Type | Default | Description |
 |:-|:-|:-|:-|
-| `frameDurationinMs` | integer | 20 | Duration in ms between to animation states |
 | `tweenerIntervalinMs` | integer | 300 | Smoothness of the change. Available only if Ola tweener is enabled, duration between to tweens |
 
 ```html

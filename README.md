@@ -104,7 +104,7 @@ Adjustable global parameters accessible in `scoll-btween.js`
 
 [Documentation](https://olivier3lanc.github.io/Scroll-Btween/usage.html#detector)
 
-By default, scroll binded elements are their own detector: It means the [intersection](how-it-works.html) is computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
+By default, scroll binded elements are their own detector: It means the [intersection](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html) is computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
 
 ```html
 <h2 scroll-btween="foo" 
@@ -120,15 +120,16 @@ By default, scroll binded elements are their own detector: It means the [interse
 
 [Documentation](https://olivier3lanc.github.io/Scroll-Btween/usage.html#keyframes)
 
-As seen earlier, [intersection](how-it-works.html) is based on the position of the element - or its [detector](#detector) - into the viewport. 
+As seen earlier, [intersection](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html) is based on the position of the element - or its [detector](#detector) - into the viewport. 
 It is possible to split the transition into multiple parts using **keyframes** with the following syntax:
 
-* `data-[CSS_PROPERTY]="|a:X to b:Y to c:Z to etc|"` A CSS property is set with keyframes.
-* `a`, `b` and `c` are percentages of the element's position into the viewport.
-* `a < b < c` keyframes always start from 0 and go to 100.
-* `X` is the start value of the CSS property when [intersection](how-it-works.html) is equal (in percent) to `a`.
-* `Y` is the intermediate value of the CSS property when [intersection](how-it-works.html) is equal (in percent) to `b`.
-* `Z` is the intermediate value of the CSS property when [intersection](how-it-works.html) is equal (in percent) to `c`.
+* `data-[CSS_PROPERTY]="|0:V to a:W to b:X to c:Y to 100:Z|"` A CSS property is set with keyframes.
+* `0`, `a`, `b` and `c`, `100` are percentages of the element's position into the viewport. `a < b < c` keyframes percentages always start from 0 and go to 100.
+* `V` is the start value of the CSS property when [intersection](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html) is equal (in percent) to `0`.
+* `W` is the start value of the CSS property when [intersection](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html) is equal (in percent) to `a`.
+* `X` is the start value of the CSS property when [intersection](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html) is equal (in percent) to `b`.
+* `Y` is the intermediate value of the CSS property when [intersection](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html) is equal (in percent) to `c`.
+* `Z` is the intermediate value of the CSS property when [intersection](https://olivier3lanc.github.io/Scroll-Btween/how-it-works.html) is equal (in percent) to `100`.
 * etc
 
 ```html

@@ -74,6 +74,10 @@ sidebar:
 shields:
     -   image_html: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/olivier3lanc/Scroll-Btween?logo=github&style=flat-square">
         link_url: https://github.com/olivier3lanc/Scroll-Btween
+    -   image_html: <img alt="no trackers, no cookies and no analytics" title="This website has no trackers, no cookies and no analytics. Only feedback is important :)" src="https://img.shields.io/badge/no%20trackers|cookies|analytics-Just%20feedback-green?style=flat-square">
+        link_url: 'mailto:olivier3lanc@gmail.com'
+    # -   image_html: <img alt="No cookies on this website. Contact me if you find one" src="https://img.shields.io/badge/No-cookies-green">
+    # -   image_html: <img alt="No analytics on this website. Feedback only!" src="https://img.shields.io/badge/No-analytics-green">
 
 # Settings for the playground context
 playground:

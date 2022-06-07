@@ -1,4 +1,8 @@
+
+
 # Scroll Btween
+
+![Logo Scroll Btween](img/logo-scroll-btween.svg)
 
 [Documentation and examples](https://olivier3lanc.github.io/Scroll-Btween/)
 

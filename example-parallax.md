@@ -25,7 +25,7 @@ order: 100
         left: 0;
         margin: 0;
         padding: 0;
-        background-image: url('../img/gyp-front-1000.webp'), url('../img/gyp-back-1000.webp');
+        background-image: url('../../img/gyp-front-1000.webp'), url('../../img/gyp-back-1000.webp');
     }
     #detector {
         margin-top: 100vh;

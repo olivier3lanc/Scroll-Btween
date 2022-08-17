@@ -1,0 +1,3 @@
+# Jekyll assets folder
+
+To avoid mixing LibDoc files and user files, this folder contains only a subfolder named `libdoc` which contains necessary static files of LibDoc's Theme. **Place your static files (images, medias, html, css, javascript) anywhere into this folder excepting into libdoc folder**, this avoids overwriting or delete your work on future LibDoc updates.

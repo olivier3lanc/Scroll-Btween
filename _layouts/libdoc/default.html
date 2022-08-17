@@ -26,13 +26,13 @@
                 {% endif %}
             </nav>
         </footer>
-        <script type="text/javascript" src="{{ '/libdoc/js/prism/prism-core.min.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/assets/libdoc/js/prism/prism-core.min.js' | relative_url }}"></script>
         {% for language in site.prism.languages %}
-            <script type="text/javascript" src="{{ site.url }}{{ site.baseurl }}/libdoc/js/prism/prism-{{ language }}.min.js"></script>
+            <script type="text/javascript" src="{{ site.url }}{{ site.baseurl }}/assets/libdoc/js/prism/prism-{{ language }}.min.js"></script>
         {% endfor %}
-        <script type="text/javascript" src="{{ '/libdoc/js/my-toggles.js' | relative_url }}"></script>
-        <script type="text/javascript" src="{{ '/libdoc/js/template.js' | relative_url }}"></script>
-        <script type="text/javascript" src="{{ '/libdoc/js/playground.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/assets/libdoc/js/my-toggles.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/assets/libdoc/js/template.js' | relative_url }}"></script>
+        <script type="text/javascript" src="{{ '/assets/libdoc/js/playground.js' | relative_url }}"></script>
 
         <aside my-toggle-name="libdoc-modal" class="c-position m-fixed m-top-left u-w-100 u-h-100 u-z-100">
             <div class="c-grid m-center m-middle m-position m-fixed m-top-left u-w-100 u-h-100">

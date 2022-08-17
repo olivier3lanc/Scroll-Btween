@@ -52,6 +52,7 @@ order: 100
         margin: 0; padding:0;
         background-color: black;
         color: white;
+        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; 
     }
     article {
         position: fixed;

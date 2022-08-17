@@ -1,0 +1,24 @@
+---
+title: Search results
+description: Search results of the specified query
+layout: libdoc/page
+unlisted: true
+---
+<ul id="libdoc-search-results" class="u-p-none u-ls-none"></ul>
+<script>
+    window.store = {
+        {% for post in site.html_pages %}
+            {% if post.unlisted != true %}
+                "{{ post.url | slugify }}": {
+                    "title": "{{ post.title | default: post.name }}",
+                    "author": "{{ post.author }}",
+                    "category": "{{ post.category }}",
+                    "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+                    "url": "{{ post.url }}"
+                }{% unless forloop.last %},{% endunless %}
+            {% endif %}
+        {% endfor %}
+    };
+</script>
+<script type="text/javascript" src="{{ 'assets/libdoc/js/lunr.min.js' | relative_url }}"></script>
+<script type="text/javascript" src="{{ 'assets/libdoc/js/search.js' | relative_url }}"></script>

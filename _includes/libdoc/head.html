@@ -114,15 +114,15 @@
     <meta name="mobile-web-app-capable" content="yes">
     
     <!-- Style sheets -->
-    <link rel="stylesheet" href="{{ '/libdoc/css/normalize.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/libdoc/fonts/icomoon/style.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/libdoc/css/libdoc.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/libdoc/css/normalize.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/libdoc/fonts/icomoon/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/libdoc/css/libdoc.css' | relative_url }}">
 
     <!-- Prism syntax highlighter -->
     {% if site.prism.theme %}
-        <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/libdoc/css/prism/prism-{{ site.prism.theme }}.css">
+        <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/libdoc/css/prism/prism-{{ site.prism.theme }}.css">
     {% else %}
-        <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/libdoc/css/prism/prism.css">
+        <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/libdoc/css/prism/prism.css">
     {% endif %}
     {% if site.prism.font_size or site.prism.line_height %}
         <style>
@@ -135,7 +135,7 @@
     {% endif %}
 
     <!-- Head scripts -->
-    <script type="text/javascript" src="{{ '/libdoc/js/jquery-3.5.1.slim.min.js' | relative_url }}"></script>
+    <script type="text/javascript" src="{{ '/assets/libdoc/js/jquery-3.5.1.slim.min.js' | relative_url }}"></script>
 
     <!-- LibDoc config -->
     <script>

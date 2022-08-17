@@ -1,0 +1,86 @@
+---
+layout: libdoc/blank
+unlisted: true
+---
+<p class="u-mt-none">Here is the list of resources applied into the playground.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Resource URL</th>
+            <th>Type</th>
+            <th>Placement</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in site.playground.stylesheets %}
+            <tr>
+                <td data-title="Resource URL">{{ item | absolute_url }}</td>
+                <td data-title="Type"><span class="u-fs-lg i-css"></span></td>
+                <td data-title="Placement">head</td>
+                <td data-title="Actions">
+                    <button class="c-btn m-translucid u-p-sm" 
+                            title="Copy URL" 
+                            onclick="copyToClipboard('{{ item | absolute_url }}')">
+                        <span class="i-copy u-mr-xs"></span>
+                    </button>
+                    <a href="{{ item | absolute_url }}" class="c-btn u-p-sm" title="Download file" download="">
+                        <span class="i-download"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        {% for item in site.playground.scripts_head %}
+            <tr>
+                <td data-title="Resource URL">{{ item | absolute_url }}</td>
+                <td data-title="Type"><span class="u-fs-lg i-js"></span></td>
+                <td data-title="Placement">head</td>
+                <td data-title="Actions">
+                    <button class="c-btn m-translucid u-p-sm" 
+                            title="Copy URL" 
+                            onclick="copyToClipboard('{{ item | absolute_url }}')">
+                        <span class="i-copy u-mr-xs"></span>
+                    </button>
+                    <a href="{{ item | absolute_url }}" class="c-btn u-p-sm" title="Download file" download="">
+                        <span class="i-download"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        {% for item in site.playground.scripts_body_modules %}
+            <tr>
+                <td data-title="Resource URL">{{ item | absolute_url }}</td>
+                <td data-title="Type"><span class="u-fs-lg i-js"></span> module</td>
+                <td data-title="Placement">End body before text/javascript</td>
+                <td data-title="Actions">
+                    <button class="c-btn m-translucid u-p-sm" 
+                            title="Copy URL" 
+                            onclick="copyToClipboard('{{ item | absolute_url }}')">
+                        <span class="i-copy u-mr-xs"></span>
+                    </button>
+                    <a href="{{ item | absolute_url }}" class="c-btn u-p-sm" title="Download JS file module" download="">
+                        <span class="i-download"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        {% for item in site.playground.scripts_body %}
+            <tr>
+                <td data-title="Resource URL">{{ item | absolute_url }}</td>
+                <td data-title="Type"><span class="u-fs-lg i-js"></span></td>
+                <td data-title="Placement">End body</td>
+                <td data-title="Actions">
+                    <button class="c-btn m-translucid u-p-sm" 
+                            title="Copy URL" 
+                            onclick="copyToClipboard('{{ item | absolute_url }}')">
+                        <span class="i-copy u-mr-xs"></span>
+                    </button>
+                    <a href="{{ item | absolute_url }}" class="c-btn u-p-sm" title="Download JS file" download="">
+                        <span class="i-download"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

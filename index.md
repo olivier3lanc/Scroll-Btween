@@ -33,7 +33,7 @@ Demo on parallax images
         <p>Gypaetus barbatus</p>
     </header>
     <figure scroll-btween="gyp-front" data-detector="detector" data-left="|3 to -3|%" data-top="|0 to -20|%">
-        <img src="../img/gyp-front-1000.webp" alt="Bearded vulture">
+        <img src="../../img/gyp-front-1000.webp" alt="Bearded vulture">
     </figure>
 </article>
 <div id="detector"></div>
@@ -43,7 +43,7 @@ Demo on parallax images
         <p>Gypaetus barbatus</p>
     </header>
     <figure scroll-btween="gyp-front2" data-left="|0 to 13|%" data-top="|0 to -5|%">
-        <img src="../img/gyp2-front-1000.webp" alt="Bearded vulture">
+        <img src="../../img/gyp2-front-1000.webp" alt="Bearded vulture">
     </figure>
 </article>
 <p>Photo credits Olivier 3lanc</p>
@@ -65,10 +65,10 @@ Demo on parallax images
         background-repeat: no-repeat;
     }
     .wrapper-playground.gyp1 {
-        background-image: url(../img/gyp-back-1000.webp);
+        background-image: url(../../img/gyp-back-1000.webp);
     }
     .wrapper-playground.gyp2 {
-        background-image: url(../img/gyp2-back-1000.webp);
+        background-image: url(../../img/gyp2-back-1000.webp);
     }
     .wrapper-playground::before {
         content: '';

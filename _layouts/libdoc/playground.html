@@ -22,7 +22,7 @@
         {% endif %}
 
         <!-- Favicons -->
-        {% assign favicon_path_or_url = page.playground.metadata.favicon | default: page.playground.metadata.favicon_auto | default: site.playground.metadata.favicon | default: site.playground.metadata.favicon_auto | default: '/libdoc/img/favicon/favicon-32x32.png' %}
+        {% assign favicon_path_or_url = page.playground.metadata.favicon | default: page.playground.metadata.favicon_auto | default: site.playground.metadata.favicon | default: site.playground.metadata.favicon_auto | default: '/assets/libdoc/img/favicon/favicon-32x32.png' %}
         {% if favicon_path_or_url contains 'http://' or favicon_path_or_url contains 'https://' %}
         {% else %}
             {% assign favicon_path_or_url = site.url | append: site.baseurl | append: favicon_path_or_url %}

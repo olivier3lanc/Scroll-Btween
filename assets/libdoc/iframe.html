@@ -1,0 +1,16 @@
+---
+title: Iframe mode
+layout: libdoc/default
+unlisted: true
+---
+<main class="m-grow m-w-1 c-grid m-nowrap m-center">
+    <div class="{{ page.content_class | default: 'm-grow m-w-1 u-mw-main u-bc-primary-max u-b-thin-dashed-alt' }}">
+        <header class="u-bb-thin-dashed-alt u-p-lg" u-p-sm="sm">
+            <h1 id="libdoc-page-title" class="u-mt-none u-mb-xs">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+            <p class="u-fs-lg u-m-none u-lh-base" u-fs-md="sm">{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}
+                {% if page.title == 'Search results' %} <a href="{{ page.url | absolute_url }}?query=" class="link libdoc-search-query">query</a>{% endif %}</p>
+        </header>
+        <div id="libdoc-content" class="u-p-lg u-p-sm--sm"></div>
+    </div>
+    <div id="libdoc-toc-container" class="m-fw-mini c-position m-top-right m-anchor-top-left u-bc-primary-edge u-z-10" u-fixed="sm" u-none="sm"></div>
+</main>

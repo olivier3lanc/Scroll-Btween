@@ -48,7 +48,7 @@ order: 100
         width: 100%;
         height: 100vh;
         overflow: hidden;
-        background: center / cover no-repeat url('../img/canopy.webp');
+        background: center / cover no-repeat url('../../img/canopy.webp');
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;

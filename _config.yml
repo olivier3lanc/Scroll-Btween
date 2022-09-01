@@ -1,5 +1,10 @@
 # Jekyll configuration
 # ---
+# START # TO USE JEKYLL LIBDOC LOCALLY AS REMOTE THEME
+remote_theme: olivier3lanc/Jekyll-LibDoc
+# plugins:
+#   - jekyll-remote-theme
+# END # TO USE JEKYLL LIBDOC LOCALLY AS REMOTE THEME
 title: Scroll Btween # title of the documentation
 description: >- # Description of the docs. (>- means to ignore newlines until next param)
   Tween any CSS values on any DOM element in relation with its position into the viewport.
@@ -39,7 +44,7 @@ metadata:
     # Color must be in HEX, default is LibDoc's color
     # color: '#346cbe'
     # Open Graph image file. Can be either relative URL from site root, absolute URL starting with 'http'. Default is LibDoc's splash screen
-    #image: /img/html5_la_casa_de_papel.webp
+    image: /img/meta-image.png
     # image: https://preview.tabler.io/static/og.png
 
 # Sidebar 
@@ -98,7 +103,7 @@ playground:
         # color: '#206bc4'
         # Open Graph image file. Can be either relative URL from site root, absolute URL starting with 'http'. Default is LibDoc's splash screen
         #image: /img/html5_la_casa_de_papel.webp
-        image: https://og-image.vercel.app/**Scroll**Btween.jpeg?theme=dark&md=1&fontSize=200px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-black.svg
+        image: /img/meta-image.png
     # Sets a minimum height for each playground, default is 300px
     #min_height: 600px
     # Style sheets in <head>. Can be either:

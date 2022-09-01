@@ -10,3 +10,4 @@
 /_config-local-ip.yml
 /_config-ip.yml
 /.jekyll-cache
+Gemfile.lock

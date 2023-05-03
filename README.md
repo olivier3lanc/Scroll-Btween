@@ -50,16 +50,29 @@ Scroll Btween was crafted to simply tween any CSS values on any DOM element in r
 
 Include Javascript file `scroll-btween.js` just before the end body tag `</body>`. For smoother results, use the [great tweener library ola.js](https://github.com/franciscop/ola)
 
+**Place Ola always before scroll-btween.js**
+
+### Local
+
 * [Download ola.min.js](https://olivier3lanc.github.io/Scroll-Btween/js/ola.min.js) (optional)
 * [Download scroll-btween.js](https://olivier3lanc.github.io/Scroll-Btween/js/scroll-btween.js)
-
-**Place Ola always before scroll-btween.js**
 
 ```html
 <!-- Optional - but recommended - always before scroll-btween.js -->
 <script src="path/to/ola.min.js"></script>
 <!-- Required -->
 <script src="path/to/scroll-btween.js"></script>
+```
+
+### CDN
+
+via [https://www.jsdelivr.com/](https://www.jsdelivr.com/)
+
+```html
+<!-- Ola.js lastest version -->
+https://cdn.jsdelivr.net/gh/franciscop/ola/ola.min.js
+<!-- Minified Scroll Btween lastest version -->
+https://cdn.jsdelivr.net/gh/olivier3lanc/Scroll-Btween/js/scroll-btween.min.js
 ```
 
 ## Usage

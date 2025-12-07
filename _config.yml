@@ -73,10 +73,10 @@ sidebar:
             title: D A R K # Link text
             order: 50 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
             category: Showcase # Add this this link into a category just like pages
-        -   url: https://oliver3lanc.me/folio-dark/ # Local or remote URL
-            title: D A R K # Link text
-            order: 50 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
-            category: Showcase # Add this this link into a category just like pages
+        -   url: https://oliver3lanc.me # Local or remote URL
+            title: Olivier 3lanc - UI UX developer # Link text
+            order: 1000 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
+            category: About # Add this this link into a category just like pages
         
 # Badges
 # Feature that allows to display badges into the footer https://shields.io image html and url

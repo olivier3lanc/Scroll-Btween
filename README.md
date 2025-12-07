@@ -4,33 +4,33 @@
 
 ![Logo Scroll Btween](img/logo-scroll-btween.svg)
 
-[Documentation and examples](https://oliver3lanc.me/Scroll-Btween/)
+[Documentation and examples](https://olivier3lanc.me/Scroll-Btween/)
 
 Scroll Btween was crafted to simply tween any CSS values on any DOM element in relation with its position into the viewport.
 
 ## Showcase
 
-[![La Casa de Papel](https://github.com/olivier3lanc/folio-casa-de-papel/raw/master/img/html5_la_casa_de_papel.webp)](https://oliver3lanc.me/folio-casa-de-papel/)
+[![La Casa de Papel](https://github.com/olivier3lanc/folio-casa-de-papel/raw/master/img/html5_la_casa_de_papel.webp)](https://olivier3lanc.me/folio-casa-de-papel/)
 
-[![D A R K](https://github.com/olivier3lanc/folio-dark/raw/master/img/dark-cinematics.webp)](https://oliver3lanc.me/folio-dark/)
+[![D A R K](https://github.com/olivier3lanc/folio-dark/raw/master/img/dark-cinematics.webp)](https://olivier3lanc.me/folio-dark/)
 
 ## Examples
 
-* [Colors](https://oliver3lanc.me/Scroll-Btween/example-colors.html)
-* [Image reveal](https://oliver3lanc.me/Scroll-Btween/example-image-reveal.html)
-* [Page progress](https://oliver3lanc.me/Scroll-Btween/example-page-progress.html)
-* [Parallax](https://oliver3lanc.me/Scroll-Btween/example-parallax.html)
-* [Star Wars](https://oliver3lanc.me/Scroll-Btween/example-star-wars.html)
-* [Text background clip](https://oliver3lanc.me/Scroll-Btween/example-text-background-clip.html)
-* [Text slides](https://oliver3lanc.me/Scroll-Btween/example-texts-slides.html)
-* [Without Ola](https://oliver3lanc.me/Scroll-Btween/example-without-ola.html)
-* [With Ola](https://oliver3lanc.me/Scroll-Btween/example-with-ola.html)
+* [Colors](https://olivier3lanc.me/Scroll-Btween/example-colors.html)
+* [Image reveal](https://olivier3lanc.me/Scroll-Btween/example-image-reveal.html)
+* [Page progress](https://olivier3lanc.me/Scroll-Btween/example-page-progress.html)
+* [Parallax](https://olivier3lanc.me/Scroll-Btween/example-parallax.html)
+* [Star Wars](https://olivier3lanc.me/Scroll-Btween/example-star-wars.html)
+* [Text background clip](https://olivier3lanc.me/Scroll-Btween/example-text-background-clip.html)
+* [Text slides](https://olivier3lanc.me/Scroll-Btween/example-texts-slides.html)
+* [Without Ola](https://olivier3lanc.me/Scroll-Btween/example-without-ola.html)
+* [With Ola](https://olivier3lanc.me/Scroll-Btween/example-with-ola.html)
 
 ## Key Features
 
 * **Native Javascript**
 * **No dependencies**
-* **Easy to use** see [usage](https://oliver3lanc.me/Scroll-Btween/usage.html)
+* **Easy to use** see [usage](https://olivier3lanc.me/Scroll-Btween/usage.html)
 * **You can tween multiple CSS properties at the same time**
 * **You can add multiple tweens on the same CSS property**
 
@@ -44,7 +44,7 @@ Scroll Btween was crafted to simply tween any CSS values on any DOM element in r
 | Opera | ✅ | ✅ |
 | Chromium based browsers (Vivaldi, Brave, ...) | ✅ | ✅ |
 
-[Demo on parallax images](https://oliver3lanc.me/Scroll-Btween/libdoc/playground.html#eyJvcHRpb25zIjp7InRpdGxlIjoiRGVtbyAtIFBhcmFsbGF4IG9uIGltYWdlcyJ9LCJjb250ZW50IjoiPGFydGljbGUgY2xhc3M9XCJ3cmFwcGVyLXBsYXlncm91bmQgZ3lwMVwiIHNjcm9sbC1idHdlZW49XCJneXAtYmFja1wiIGRhdGEtZGV0ZWN0b3I9XCJkZXRlY3RvclwiIGRhdGEtYmFja2dyb3VuZC1wb3NpdGlvbj1cInw3MCB0byAzMHwlIGNlbnRlclwiPlxuICAgIDxoZWFkZXI+XG4gICAgICAgIDxoMT5GcmVlIGxpa2UgPHNwYW4+YSBiaXJkPC9zcGFuPjwvaDE+XG4gICAgICAgIDxwPkd5cGFldHVzIGJhcmJhdHVzPC9wPlxuICAgIDwvaGVhZGVyPlxuICAgIDxmaWd1cmUgc2Nyb2xsLWJ0d2Vlbj1cImd5cC1mcm9udFwiIGRhdGEtZGV0ZWN0b3I9XCJkZXRlY3RvclwiIGRhdGEtbGVmdD1cInwzIHRvIC0zfCVcIiBkYXRhLXRvcD1cInwwIHRvIC0yMHwlXCI+XG4gICAgICAgIDxpbWcgc3JjPVwiLi4vaW1nL2d5cC1mcm9udC0xMDAwLndlYnBcIiBhbHQ9XCJCZWFyZGVkIHZ1bHR1cmVcIj5cbiAgICA8L2ZpZ3VyZT5cbjwvYXJ0aWNsZT5cbjxkaXYgaWQ9XCJkZXRlY3RvclwiPjwvZGl2PlxuPGFydGljbGUgY2xhc3M9XCJ3cmFwcGVyLXBsYXlncm91bmQgZ3lwMlwiIHNjcm9sbC1idHdlZW49XCJneXAtYmFjazJcIiBkYXRhLWJhY2tncm91bmQtcG9zaXRpb249XCJ8MzAgdG8gNzB8JSBjZW50ZXJcIj5cbiAgICA8aGVhZGVyPlxuICAgICAgICA8aDE+QmVhcmRlZCA8c3Bhbj52dWx0dXJlPC9zcGFuPjwvaDE+XG4gICAgICAgIDxwPkd5cGFldHVzIGJhcmJhdHVzPC9wPlxuICAgIDwvaGVhZGVyPlxuICAgIDxmaWd1cmUgc2Nyb2xsLWJ0d2Vlbj1cImd5cC1mcm9udDJcIiBkYXRhLWxlZnQ9XCJ8MCB0byAxM3wlXCIgZGF0YS10b3A9XCJ8MCB0byAtNXwlXCI+XG4gICAgICAgIDxpbWcgc3JjPVwiLi4vaW1nL2d5cDItZnJvbnQtMTAwMC53ZWJwXCIgYWx0PVwiQmVhcmRlZCB2dWx0dXJlXCI+XG4gICAgPC9maWd1cmU+XG48L2FydGljbGU+XG48c3R5bGU+XG4gICAgYm9keSB7XG4gICAgICAgIG1hcmdpbjogMDsgcGFkZGluZzowOyBoZWlnaHQ6IDQwMHZoO1xuICAgIH1cbiAgICAud3JhcHBlci1wbGF5Z3JvdW5kIHtcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICB0b3A6IDA7XG4gICAgICAgIGxlZnQ6IDA7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgYmFja2dyb3VuZC1zaXplOiAxMjAlO1xuICAgICAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiA0MCUgY2VudGVyO1xuICAgICAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIH1cbiAgICAud3JhcHBlci1wbGF5Z3JvdW5kLmd5cDEge1xuICAgICAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoLi4vaW1nL2d5cC1iYWNrLTEwMDAud2VicCk7XG4gICAgfVxuICAgIC53cmFwcGVyLXBsYXlncm91bmQuZ3lwMiB7XG4gICAgICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi9pbWcvZ3lwMi1iYWNrLTEwMDAud2VicCk7XG4gICAgfVxuICAgIC53cmFwcGVyLXBsYXlncm91bmQ6OmJlZm9yZSB7XG4gICAgICAgIGNvbnRlbnQ6ICcnO1xuICAgICAgICBmbG9hdDogbGVmdDtcbiAgICAgICAgcGFkZGluZy1ib3R0b206IDY2LjY2JTtcbiAgICB9XG4gICAgZmlndXJlIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB0b3A6IDA7XG4gICAgICAgIGxlZnQ6IDA7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAwO1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgfVxuICAgIGZpZ3VyZSBpbWcge1xuICAgICAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgICAgIG1heC1oZWlnaHQ6IDEwMCU7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgfVxuICAgIGhlYWRlciB7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgY29sb3I6ICNGRkZGRkZjMjtcbiAgICB9XG4gICAgaGVhZGVyIGgxIHtcbiAgICAgICAgbWFyZ2luLXRvcDogMDtcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMDtcbiAgICAgICAgZm9udC1zaXplOiAxM3Z3O1xuICAgICAgICBmb250LWZhbWlseTogc2Fucy1zZXJpZjtcbiAgICB9XG4gICAgaGVhZGVyIGgxIHNwYW4ge1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOyAvKiBTZXRzIGluIGZyb250IG9mIHRoZSBpbWFnZSAqL1xuICAgICAgICB6LWluZGV4OiAxOyAvKiBTZXRzIGluIGZyb250IG9mIHRoZSBpbWFnZSAqL1xuICAgIH1cbiAgICBoZWFkZXIgcCB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgZm9udC1zdHlsZTogaXRhbGljO1xuICAgICAgICBmb250LXNpemU6IDV2bWluO1xuICAgIH1cbiAgICAjZGV0ZWN0b3IgeyBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogMTAwdmg7IH1cbiAgICAjc2Nyb2xsLWJ0d2Vlbi1kZWJ1Z2JhciB7IGRpc3BsYXk6IG5vbmU7IH1cbjwvc3R5bGU+XG4ifQ==)
+[Demo on parallax images](https://olivier3lanc.me/Scroll-Btween/libdoc/playground.html#eyJvcHRpb25zIjp7InRpdGxlIjoiRGVtbyAtIFBhcmFsbGF4IG9uIGltYWdlcyJ9LCJjb250ZW50IjoiPGFydGljbGUgY2xhc3M9XCJ3cmFwcGVyLXBsYXlncm91bmQgZ3lwMVwiIHNjcm9sbC1idHdlZW49XCJneXAtYmFja1wiIGRhdGEtZGV0ZWN0b3I9XCJkZXRlY3RvclwiIGRhdGEtYmFja2dyb3VuZC1wb3NpdGlvbj1cInw3MCB0byAzMHwlIGNlbnRlclwiPlxuICAgIDxoZWFkZXI+XG4gICAgICAgIDxoMT5GcmVlIGxpa2UgPHNwYW4+YSBiaXJkPC9zcGFuPjwvaDE+XG4gICAgICAgIDxwPkd5cGFldHVzIGJhcmJhdHVzPC9wPlxuICAgIDwvaGVhZGVyPlxuICAgIDxmaWd1cmUgc2Nyb2xsLWJ0d2Vlbj1cImd5cC1mcm9udFwiIGRhdGEtZGV0ZWN0b3I9XCJkZXRlY3RvclwiIGRhdGEtbGVmdD1cInwzIHRvIC0zfCVcIiBkYXRhLXRvcD1cInwwIHRvIC0yMHwlXCI+XG4gICAgICAgIDxpbWcgc3JjPVwiLi4vaW1nL2d5cC1mcm9udC0xMDAwLndlYnBcIiBhbHQ9XCJCZWFyZGVkIHZ1bHR1cmVcIj5cbiAgICA8L2ZpZ3VyZT5cbjwvYXJ0aWNsZT5cbjxkaXYgaWQ9XCJkZXRlY3RvclwiPjwvZGl2PlxuPGFydGljbGUgY2xhc3M9XCJ3cmFwcGVyLXBsYXlncm91bmQgZ3lwMlwiIHNjcm9sbC1idHdlZW49XCJneXAtYmFjazJcIiBkYXRhLWJhY2tncm91bmQtcG9zaXRpb249XCJ8MzAgdG8gNzB8JSBjZW50ZXJcIj5cbiAgICA8aGVhZGVyPlxuICAgICAgICA8aDE+QmVhcmRlZCA8c3Bhbj52dWx0dXJlPC9zcGFuPjwvaDE+XG4gICAgICAgIDxwPkd5cGFldHVzIGJhcmJhdHVzPC9wPlxuICAgIDwvaGVhZGVyPlxuICAgIDxmaWd1cmUgc2Nyb2xsLWJ0d2Vlbj1cImd5cC1mcm9udDJcIiBkYXRhLWxlZnQ9XCJ8MCB0byAxM3wlXCIgZGF0YS10b3A9XCJ8MCB0byAtNXwlXCI+XG4gICAgICAgIDxpbWcgc3JjPVwiLi4vaW1nL2d5cDItZnJvbnQtMTAwMC53ZWJwXCIgYWx0PVwiQmVhcmRlZCB2dWx0dXJlXCI+XG4gICAgPC9maWd1cmU+XG48L2FydGljbGU+XG48c3R5bGU+XG4gICAgYm9keSB7XG4gICAgICAgIG1hcmdpbjogMDsgcGFkZGluZzowOyBoZWlnaHQ6IDQwMHZoO1xuICAgIH1cbiAgICAud3JhcHBlci1wbGF5Z3JvdW5kIHtcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICB0b3A6IDA7XG4gICAgICAgIGxlZnQ6IDA7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgYmFja2dyb3VuZC1zaXplOiAxMjAlO1xuICAgICAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiA0MCUgY2VudGVyO1xuICAgICAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIH1cbiAgICAud3JhcHBlci1wbGF5Z3JvdW5kLmd5cDEge1xuICAgICAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoLi4vaW1nL2d5cC1iYWNrLTEwMDAud2VicCk7XG4gICAgfVxuICAgIC53cmFwcGVyLXBsYXlncm91bmQuZ3lwMiB7XG4gICAgICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi9pbWcvZ3lwMi1iYWNrLTEwMDAud2VicCk7XG4gICAgfVxuICAgIC53cmFwcGVyLXBsYXlncm91bmQ6OmJlZm9yZSB7XG4gICAgICAgIGNvbnRlbnQ6ICcnO1xuICAgICAgICBmbG9hdDogbGVmdDtcbiAgICAgICAgcGFkZGluZy1ib3R0b206IDY2LjY2JTtcbiAgICB9XG4gICAgZmlndXJlIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB0b3A6IDA7XG4gICAgICAgIGxlZnQ6IDA7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAwO1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgfVxuICAgIGZpZ3VyZSBpbWcge1xuICAgICAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgICAgIG1heC1oZWlnaHQ6IDEwMCU7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgfVxuICAgIGhlYWRlciB7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgY29sb3I6ICNGRkZGRkZjMjtcbiAgICB9XG4gICAgaGVhZGVyIGgxIHtcbiAgICAgICAgbWFyZ2luLXRvcDogMDtcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMDtcbiAgICAgICAgZm9udC1zaXplOiAxM3Z3O1xuICAgICAgICBmb250LWZhbWlseTogc2Fucy1zZXJpZjtcbiAgICB9XG4gICAgaGVhZGVyIGgxIHNwYW4ge1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOyAvKiBTZXRzIGluIGZyb250IG9mIHRoZSBpbWFnZSAqL1xuICAgICAgICB6LWluZGV4OiAxOyAvKiBTZXRzIGluIGZyb250IG9mIHRoZSBpbWFnZSAqL1xuICAgIH1cbiAgICBoZWFkZXIgcCB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgZm9udC1zdHlsZTogaXRhbGljO1xuICAgICAgICBmb250LXNpemU6IDV2bWluO1xuICAgIH1cbiAgICAjZGV0ZWN0b3IgeyBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogMTAwdmg7IH1cbiAgICAjc2Nyb2xsLWJ0d2Vlbi1kZWJ1Z2JhciB7IGRpc3BsYXk6IG5vbmU7IH1cbjwvc3R5bGU+XG4ifQ==)
 
 ## Installation
 
@@ -54,8 +54,8 @@ Include Javascript file `scroll-btween.js` just before the end body tag `</body>
 
 ### Local
 
-* [Download ola.min.js](https://oliver3lanc.me/Scroll-Btween/js/ola.min.js) (optional)
-* [Download scroll-btween.js](https://oliver3lanc.me/Scroll-Btween/js/scroll-btween.js)
+* [Download ola.min.js](https://olivier3lanc.me/Scroll-Btween/js/ola.min.js) (optional)
+* [Download scroll-btween.js](https://olivier3lanc.me/Scroll-Btween/js/scroll-btween.js)
 
 ```html
 <!-- Optional - but recommended - always before scroll-btween.js -->
@@ -77,13 +77,13 @@ https://cdn.jsdelivr.net/gh/olivier3lanc/Scroll-Btween/js/scroll-btween.min.js
 
 ## Usage
 
-[Documentation](https://oliver3lanc.me/Scroll-Btween/usage.html)
+[Documentation](https://olivier3lanc.me/Scroll-Btween/usage.html)
 
 **The Scroll Btween syntax follows the CSS value inline syntax.** You can add as much tweens as you want. You can even add multiple tweens on the same CSS property. You can specify the tween to apply as follows:
 
 ### Global parameters
 
-[Documentation](https://oliver3lanc.me/Scroll-Btween/usage.html#global-parameters)
+[Documentation](https://olivier3lanc.me/Scroll-Btween/usage.html#global-parameters)
 
 Adjustable global parameters accessible in `scoll-btween.js` 
 
@@ -119,9 +119,9 @@ Adjustable global parameters accessible in `scoll-btween.js`
 
 ### Detector
 
-[Documentation](https://oliver3lanc.me/Scroll-Btween/usage.html#detector)
+[Documentation](https://olivier3lanc.me/Scroll-Btween/usage.html#detector)
 
-By default, scroll binded elements are their own detector: It means the [intersection](https://oliver3lanc.me/Scroll-Btween/how-it-works.html) is computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
+By default, scroll binded elements are their own detector: It means the [intersection](https://olivier3lanc.me/Scroll-Btween/how-it-works.html) is computed in relation with this element itself. But **it possible to assign another DOM element as detector** for the intersection.
 
 ```html
 <h2 scroll-btween="foo" 
@@ -135,18 +135,18 @@ By default, scroll binded elements are their own detector: It means the [interse
 
 ### Keyframes
 
-[Documentation](https://oliver3lanc.me/Scroll-Btween/usage.html#keyframes)
+[Documentation](https://olivier3lanc.me/Scroll-Btween/usage.html#keyframes)
 
-As seen earlier, [intersection](https://oliver3lanc.me/Scroll-Btween/how-it-works.html) is based on the position of the element - or its [detector](#detector) - into the viewport. 
+As seen earlier, [intersection](https://olivier3lanc.me/Scroll-Btween/how-it-works.html) is based on the position of the element - or its [detector](#detector) - into the viewport. 
 It is possible to split the transition into multiple parts using **keyframes** with the following syntax:
 
 * `data-[CSS_PROPERTY]="|0:V to a:W to b:X to c:Y to 100:Z|"` A CSS property is set with keyframes.
 * `0`, `a`, `b` and `c`, `100` are percentages of the element's position into the viewport. `a < b < c` keyframes percentages always start from 0 and go to 100.
-* `V` is the start value of the CSS property when [intersection](https://oliver3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `0`.
-* `W` is the start value of the CSS property when [intersection](https://oliver3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `a`.
-* `X` is the start value of the CSS property when [intersection](https://oliver3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `b`.
-* `Y` is the intermediate value of the CSS property when [intersection](https://oliver3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `c`.
-* `Z` is the intermediate value of the CSS property when [intersection](https://oliver3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `100`.
+* `V` is the start value of the CSS property when [intersection](https://olivier3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `0`.
+* `W` is the start value of the CSS property when [intersection](https://olivier3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `a`.
+* `X` is the start value of the CSS property when [intersection](https://olivier3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `b`.
+* `Y` is the intermediate value of the CSS property when [intersection](https://olivier3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `c`.
+* `Z` is the intermediate value of the CSS property when [intersection](https://olivier3lanc.me/Scroll-Btween/how-it-works.html) is equal (in percent) to `100`.
 * etc
 
 ```html
@@ -171,7 +171,7 @@ Scroll Btween comes with the following methods.
 
 ## How it works
 
-[Documentation](https://oliver3lanc.me/Scroll-Btween/how-it-works.html)
+[Documentation](https://olivier3lanc.me/Scroll-Btween/how-it-works.html)
 
 The following playground shows the associated **intersection with its id which is the key value to sync CSS properties**. 
 * `Below 0` the element is below the viewport. 

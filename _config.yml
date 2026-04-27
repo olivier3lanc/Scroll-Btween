@@ -77,6 +77,10 @@ sidebar:
             title: Olivier 3lanc - UI UX developer # Link text
             order: 1000 # Sets the rank of the page link into the sidebar, higher values give lower rank for the page link
             category: About # Add this this link into a category just like pages
+        -   url: https://www.olivewhite.com
+            title: Olive White Photographies
+            order: 1010
+            category: Author
         
 # Badges
 # Feature that allows to display badges into the footer https://shields.io image html and url

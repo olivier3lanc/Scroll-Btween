@@ -184,7 +184,7 @@ The following playground shows the associated **intersection with its id which i
 
 ## Credits
 
-Photo credits [Olivier 3lanc](https://github.com/olivier3lanc)
+Photo credits [Olive White Photographies](https://www.olivewhite.com)
 
 ## License
 
